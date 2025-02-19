@@ -1,0 +1,45 @@
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: var(--black);
+  padding: var(--outer-margin);
+  height: 100vh;
+
+  * {
+    color: var(--white);
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .copyright {
+    display: flex;
+    flex-direction: row;
+    //width: 100%;
+    font-size: 0.7rem;
+
+    .text {
+      //flex: 0 0 70%;
+    }
+
+    .about {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      white-space: nowrap;
+
+      @include mq($until: desktop) {
+        //flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}

@@ -32,7 +32,14 @@ export default function Header({}: HeaderProps) {
 			<div className={s.wrap}>
 				{rows.map((row, i) => (
 					<div key={i} className={s.row}>
-						<motion.h2 style={headerstyle}>{row}</motion.h2>
+						<motion.h2
+							transition={{ delay: 0.5 }}
+							initial={{ y: 60 }}
+							whileInView={{ y: 0 }}
+							viewport={{ once: false }}
+						>
+							{row}
+						</motion.h2>
 					</div>
 				))}
 			</div>

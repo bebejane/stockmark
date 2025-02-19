@@ -8,6 +8,7 @@ import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Blank() {
+	return null;
 	const ref = useRef<HTMLDivElement | null>(null);
 	const { innerHeight, innerWidth } = useWindowSize();
 	const [scrollY, setScrollY] = React.useState(0);
