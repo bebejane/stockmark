@@ -1,0 +1,44 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: var(--outer-margin);
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+
+
+      &:nth-child(even) {
+        align-items: flex-end;
+      }
+
+      h2 {
+        font-size: 60px;
+        line-height: 1;
+        text-transform: uppercase;
+
+      }
+
+    }
+
+
+  }
+}

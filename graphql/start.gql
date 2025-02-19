@@ -1,0 +1,8 @@
+query Start {
+	start {
+		id
+		video {
+			...MediaFragment
+		}
+	}
+}
