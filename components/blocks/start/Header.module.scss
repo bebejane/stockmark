@@ -1,26 +1,17 @@
-.hero {
+.header {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-  }
-
-  .text {
+  .wrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 100vh;
-    margin-top: 100vh;
+    height: 100%;
     padding: var(--outer-margin);
 
     .row {
@@ -29,25 +20,20 @@
       justify-content: center;
       align-items: flex-start;
       width: 100%;
-
-      &:nth-child(even) {
-        align-items: flex-end;
-      }
-
-      span,
-      img {
-        margin-right: 0.2em;
-      }
+      overflow: hidden;
+      position: relative;
 
       h2 {
         font-size: 50px;
-        line-height: 1;
+        line-height: 1.2;
         text-transform: uppercase;
+
       }
 
-      img {
-        max-height: 0.8em;
+      &:last-child {
+        align-items: flex-end;
       }
+
     }
   }
 }

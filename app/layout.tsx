@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import Navbar from '../components/nav/Navbar';
 import { buildMenu } from '../lib/menu';
+import { Suspense } from 'react';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -18,7 +19,9 @@ export default async function RootLayout({ children }: LayoutProps) {
 		<>
 			<html lang='en'>
 				<body id='root'>
-					<Navbar menu={menu} />
+					<Suspense>
+						<Navbar menu={menu} />
+					</Suspense>
 					<main className={s.main}>{children}</main>
 				</body>
 			</html>
