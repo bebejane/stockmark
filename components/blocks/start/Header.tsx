@@ -33,7 +33,7 @@ export default function Header({}: HeaderProps) {
 				{rows.map((row, i) => (
 					<div key={i} className={s.row}>
 						<motion.h2
-							transition={{ delay: 0.5 }}
+							transition={{ delay: 0.1 }}
 							initial={{ y: 60 }}
 							whileInView={{ y: 0 }}
 							viewport={{ once: false }}
