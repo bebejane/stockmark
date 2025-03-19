@@ -1,0 +1,22 @@
+query You {
+	you {
+		id
+		title
+		headline {
+			blocks
+			links
+			value
+		}
+		inevestHeadline
+		investText {
+			blocks
+			links
+			value
+		}
+		text {
+			blocks
+			links
+			value
+		}
+	}
+}

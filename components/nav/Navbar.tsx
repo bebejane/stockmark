@@ -15,6 +15,7 @@ export default function Navbar({ menu }: NavbarProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
+	const invert = path === '/';
 	const [selected, setSelected] = useState<string | null>(null);
 
 	const parent = menu.find(({ id }) => id === selected);
@@ -23,7 +24,7 @@ export default function Navbar({ menu }: NavbarProps) {
 
 	return (
 		<>
-			<nav className={cn(s.navbar, s.inverted)}>
+			<nav className={cn(s.navbar, invert && s.inverted)}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
 						<img src='/images/logo.svg' alt='Logo' />
@@ -44,9 +45,7 @@ export default function Navbar({ menu }: NavbarProps) {
 						))}
 				</ul>
 				<ul className={s.contact}>
-					<li className={cn(contact.slug === pathname && s.active)}>
-						<Link href={'/kontakt'}>{contact.title}</Link>
-					</li>
+					<li className={cn(contact.slug === pathname && s.active)}>{contact.title}</li>
 				</ul>
 			</nav>
 			<nav className={cn(s.sub, sub && s.open)} onMouseLeave={() => setSelected(null)}>

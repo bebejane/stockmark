@@ -11,18 +11,27 @@
   padding: var(--outer-margin);
   z-index: var(--z-navbar);
 
+  .logo {
+    flex: 1 1 auto;
+  }
+
   &.inverted {
 
     a,
     a:hover {
       color: var(--white);
     }
+
+    .logo {
+      img {
+        filter: invert(1);
+      }
+    }
+
   }
 
 
-  .logo {
-    flex: 1 1 auto;
-  }
+
 
   ul {
     display: flex;

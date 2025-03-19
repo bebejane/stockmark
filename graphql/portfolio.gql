@@ -1,0 +1,29 @@
+query Portfolio($first: IntType = 100, $skip: IntType = 0) {
+	portfolioHeadline {
+		headline {
+			blocks
+			links
+			value
+		}
+	}
+	allCompanies(first: $first, skip: $skip) {
+		...CompanyFragment
+	}
+	_allCompaniesMeta {
+		count
+	}
+}
+
+fragment CompanyFragment on CompanyRecord {
+	id
+	name
+	url
+	text {
+		blocks
+		links
+		value
+	}
+	image {
+		...ImageFragment
+	}
+}

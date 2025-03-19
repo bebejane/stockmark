@@ -1,5 +1,3 @@
-import { apiQuery } from 'next-dato-utils/api';
-//import { MenuDocument } from '@graphql';
 
 export type MenuItem = {
   id: string,
@@ -13,7 +11,6 @@ export type MenuItem = {
 export type Menu = MenuItem[]
 
 export const buildMenu = async (): Promise<Menu> => {
-
 
   const menu: Menu = [{
     id: 'about',
@@ -30,11 +27,10 @@ export const buildMenu = async (): Promise<Menu> => {
   }, {
     id: 'portfolio',
     title: 'Portfölj',
-    slug: '/portfolio',
+    slug: '/portfolj',
   }, {
     id: 'contact',
     title: 'Kontakt',
-    slug: '/kontakt',
   }]
   return menu
 }

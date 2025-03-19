@@ -1,0 +1,31 @@
+query About {
+	about {
+		id
+		title
+		headline {
+			blocks
+			links
+			value
+		}
+		headlinePeople
+		headlinePrinciples
+		images {
+			...ImageFragment
+		}
+		principles {
+			... on PrincipleItemRecord {
+				...PrincipleFragment
+			}
+		}
+	}
+}
+
+fragment PrincipleFragment on PrincipleItemRecord {
+	id
+	title
+	text {
+		blocks
+		links
+		value
+	}
+}

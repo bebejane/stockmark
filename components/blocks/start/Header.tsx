@@ -28,7 +28,7 @@ export default function Header({}: HeaderProps) {
 	}, [scrollYProgress]); //make sur
 
 	return (
-		<section className={s.header} ref={ref}>
+		<section className={s.header} ref={ref} data-lenis-snap={true}>
 			<div className={s.wrap}>
 				{rows.map((row, i) => (
 					<div key={i} className={s.row}>

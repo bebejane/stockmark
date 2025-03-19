@@ -6,7 +6,7 @@ import { apiQuery } from 'next-dato-utils/api';
 export default async function Footer({ menu }: { menu: Menu }) {
 	return (
 		<>
-			<footer className={s.footer}>
+			<footer className={s.footer} data-lenis-snap={true}>
 				<nav>
 					<h2>VI KOMMER. VI STANNAR. VI SKAPAR. TILLSAMMANS.</h2>
 					<h3>Vem är du?</h3>

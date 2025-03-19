@@ -50,7 +50,7 @@ export default function Hero({ video }: HeroProps) {
 	}, [scrollYProgress]); //make sur
 
 	return (
-		<section className={s.hero} ref={ref}>
+		<section className={s.hero} ref={ref} data-lenis-snap={true}>
 			<motion.video
 				suppressHydrationWarning={true}
 				initial={false}
@@ -65,7 +65,7 @@ export default function Hero({ video }: HeroProps) {
 				disablePictureInPicture={true}
 				poster={`${thumbnailUrl}?time=0`}
 			/>
-			<div className={s.text}>
+			<div className={s.text} data-lenis-snap={true}>
 				{rows.map((cols, i) => (
 					<div key={i} className={s.row}>
 						<h2 key={i}>

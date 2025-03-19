@@ -1,0 +1,16 @@
+query Contact {
+	contact {
+		...ContactFragment
+	}
+}
+
+fragment ContactFragment on ContactRecord {
+	id
+	email
+	name
+	phone
+	text
+	portrait {
+		...ImageFragment
+	}
+}

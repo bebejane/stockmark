@@ -1,0 +1,21 @@
+query Manifest {
+	manifest {
+		id
+		title
+		headline {
+			blocks
+			links
+			value
+		}
+		intro {
+			blocks
+			links
+			value
+		}
+		text {
+			blocks
+			links
+			value
+		}
+	}
+}

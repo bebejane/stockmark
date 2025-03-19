@@ -1,4 +1,24 @@
 
+declare module '*/about.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const About: DocumentNode;
+export const PrincipleFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/contact.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Contact: DocumentNode;
+export const ContactFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -62,6 +82,25 @@ declare module '*/global.gql' {
 }
     
 
+declare module '*/manifest.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Manifest: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/portfolio.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Portfolio: DocumentNode;
+export const CompanyFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/seo.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -75,6 +114,15 @@ declare module '*/start.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Start: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/you.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const You: DocumentNode;
 
   export default defaultDocument;
 }

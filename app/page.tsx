@@ -13,9 +13,7 @@ export default async function Home() {
 	return (
 		<>
 			<Hero video={start?.video as FileField} />
-			<Blank />
 			<Header />
-			<Blank />
 		</>
 	);
 }
