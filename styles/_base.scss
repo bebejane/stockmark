@@ -42,6 +42,7 @@ html {
 main {
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -71,6 +72,10 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
+}
+
+article {
+	padding-top: var(--navbar-height);
 }
 
 article p a {
