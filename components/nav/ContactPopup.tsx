@@ -14,27 +14,31 @@ export default function ContactPopup({ allContacts, show, onClose }: ContactPopu
 				<span>Kontakt</span>
 				<button onClick={onClose}>Stäng</button>
 			</div>
-			<p>
-				Stockmark AB
-				<br />
-
-				Kungsgatan 9
-				111 43 Stockholm
-				<br />
-				<a href='mailto:info@stockmark.se'>info@stockmark.se</a>
-			</p>
-			<ul>
-				{allContacts?.map(({ name, email, phone, portrait }) => (
-					<li key={name}>
-						<div className={s.name}>
-							{name}
-							<br />
-							<span className="small"><a href={`mailto:${email}`}>{email}</a></span>
-						</div>
-						<div className={cn(s.phone, "small")}>{phone}</div>
-					</li>
-				))}
-			</ul>
-		</div >
+			<div className={s.content}>
+				<p>
+					Stockmark AB
+					<br />
+					Kungsgatan 9
+					<br />
+					111 43 Stockholm
+					<br />
+					<a href='mailto:info@stockmark.se'>info@stockmark.se</a>
+				</p>
+				<ul>
+					{allContacts?.map(({ name, email, phone, portrait }) => (
+						<li key={name}>
+							<div className={s.name}>
+								{name}
+								<br />
+								<span className='small'>
+									<a href={`mailto:${email}`}>{email}</a>
+								</span>
+							</div>
+							<div className={cn(s.phone, 'small')}>{phone}</div>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
 	);
 }

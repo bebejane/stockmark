@@ -1,25 +1,26 @@
 .popup {
-  display: none;
+  --padding: 1rem;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
   margin: calc(var(--outer-margin));
-  margin-right: calc(var(--outer-margin) - 1rem);
-  background-color: var(--black);
+  margin-right: calc(var(--outer-margin) - var(--padding));
   border-radius: 10px;
-  color: var(--white);
-  padding: 1rem;
+  padding: var(--padding);
   margin-top: 1rem;
-  //height: calc(100vh - var(--outer-margin));
+  background-color: var(--black);
+  color: var(--white);
 
-  &.show {
-    display: block;
-  }
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(calc(100% - var(--outer-margin) - var(--padding)));
+  transition: transform 0.3s ease-out, background-color 0.3s ease-in-out 0.3s, color 0.3s ease-in-out 0.3s;
 
   .header {
     display: flex;
     flex-direction: row;
-    margin-bottom: var(--space-small);
 
     span {
       flex: 1 1 100%;
@@ -31,45 +32,65 @@
     }
   }
 
-  a {
-    color: var(--white);
-    &:hover {
-      color: var(--blue-light);
-    }
-  }
-
-  > p {
-    margin-top: 1rem;
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-
+  .content {
     margin-top: var(--space-small);
 
-    li {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      padding: 0;
-      padding-bottom: 1em;
+    a {
+      color: var(--white);
 
-      &:hover > * {
-        color: var(--white) !important;
-      }
-
-      .name {
-        flex: 1 1 auto;
-        margin-right: 1rem;
-      }
-
-      .phone {
-        flex: 1 1;
-        text-align: right;
-        white-space: nowrap;
+      &:hover {
+        color: var(--blue-light);
       }
     }
+
+
+    >p {
+      margin-top: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin-top: var(--space-small);
+
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        padding: 0;
+        padding-bottom: 1em;
+
+        &:hover>* {
+          color: var(--white) !important;
+        }
+
+        .name {
+          flex: 1 1 auto;
+          margin-right: 1rem;
+        }
+
+        .phone {
+          flex: 1 1;
+          text-align: right;
+          white-space: nowrap;
+        }
+      }
+    }
+
+
+  }
+
+  &.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0%);
+    background-color: var(--black);
+    color: var(--white);
+
+    a {
+      color: var(--white);
+    }
+
   }
 }
