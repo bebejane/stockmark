@@ -4,7 +4,9 @@
 :root {
 	--black: #161616;
 	--white: #fcfcfc;
+	--blue: #104781;
 	--red: #bf0000;
+
 	--outer-margin: 4rem;
 	--navbar-height: calc(1em + calc(2 * var(--space-small)));
 	--background: var(--white);
@@ -18,8 +20,7 @@
 	--body-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 	--headline-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 
-	@include mediaqueries.mq($from: tablet) {
-	}
+	@include mediaqueries.mq($from: tablet) {}
 
 	@include mediaqueries.mq($until: tablet) {
 		--outer-margin: 1.2rem;
@@ -104,12 +105,10 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mediaqueries.mq($from: tablet) {
-	}
+	@include mediaqueries.mq($from: tablet) {}
 
 	&.back {
-		@include mediaqueries.mq($from: tablet) {
-		}
+		@include mediaqueries.mq($from: tablet) {}
 	}
 }
 
@@ -119,13 +118,11 @@ figcaption {
 	margin-bottom: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
-select {
-}
+select {}
 
 select {
 	-webkit-appearance: none;

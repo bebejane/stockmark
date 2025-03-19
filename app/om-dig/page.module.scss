@@ -1,4 +1,9 @@
 .page {
-  display: block;
+
+  ul {
+    //list-style: none;
+    padding: 0;
+    column-count: 2;
+  }
 
 }
