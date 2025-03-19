@@ -1,5 +1,4 @@
-.navbar,
-.sub {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -25,6 +24,7 @@
   }
 
   &.inverted {
+
     a,
     a:hover {
       color: var(--white);
@@ -48,19 +48,19 @@
       padding-right: 1.5rem;
       position: relative;
 
-      & > * {
+      &>* {
         transition: color 0.3s ease-in-out;
       }
 
-      &:hover > * {
+      &:hover>* {
         color: var(--blue) !important;
       }
 
-      &:last-child {
+      &:last-of-type {
         padding-right: 0;
       }
 
-      &.active > * {
+      &.active>* {
         color: var(--blue) !important;
       }
 
@@ -117,26 +117,4 @@
     color: var(--blue);
   }
 
-}
-
-.sub {
-  display: none;
-  margin-top: var(--navbar-height);
-  background-color: var(--blue);
-
-  padding-left: calc(var(--margin) + var(--outer-margin));
-
-  &.open {
-    display: flex;
-  }
-
-  * {
-    color: var(--white);
-  }
-
-  ul {
-    li.active > a {
-      color: var(--blue-light) !important;
-    }
-  }
 }

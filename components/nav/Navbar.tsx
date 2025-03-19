@@ -72,20 +72,6 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 					/>
 				</ul>
 			</nav>
-			<nav className={cn(s.sub, sub && s.open)} onMouseLeave={() => setSelected(null)}>
-				<ul>
-					{sub?.map(({ id, title, href, slug }) => (
-						<li
-							key={id}
-							className={cn((slug === pathname || pathname.startsWith(slug)) && s.active)}
-						>
-							<Link href={slug ?? href} onClick={() => setSelected(null)}>
-								{title}
-							</Link>
-						</li>
-					))}
-				</ul>
-			</nav>
 		</>
 	);
 }
