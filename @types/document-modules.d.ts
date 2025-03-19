@@ -13,6 +13,7 @@ declare module '*/contact.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Contact: DocumentNode;
+export const AllContacts: DocumentNode;
 export const ContactFragment: DocumentNode;
 
   export default defaultDocument;
