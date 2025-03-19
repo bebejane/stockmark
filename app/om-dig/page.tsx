@@ -9,7 +9,7 @@ export default async function Home() {
 
 	return (
 		<>
-			Om dig
+			<article>Om dig</article>
 			<DraftMode url={draftUrl} path={'/om-dig'} />
 		</>
 	);

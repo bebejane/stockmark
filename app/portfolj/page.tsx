@@ -12,7 +12,7 @@ export default async function Home() {
 
 	return (
 		<>
-			Portfolj
+			<article>Portfolj</article>
 			<DraftMode url={draftUrl} path={'/portfolj'} />
 		</>
 	);

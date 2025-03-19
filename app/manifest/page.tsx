@@ -11,7 +11,7 @@ export default async function Home() {
 
 	return (
 		<>
-			Manifest
+			<article>Manifest</article>
 			<DraftMode url={draftUrl} path={'/manifest'} />
 		</>
 	);
