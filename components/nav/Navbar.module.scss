@@ -56,6 +56,13 @@
       &.active>* {
         color: var(--blue) !important;
       }
+
+      transition: transform 0.3s cubic-bezier(0.035, 1.250, 0.645, 0.935);
+      transform: translateY(0);
+
+      &.hide {
+        transform: translateY(calc(-1 * var(--navbar-height)));
+      }
     }
 
     @include mq($until: desktop) {
