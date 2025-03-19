@@ -1,20 +1,53 @@
-import { Menu } from '@/lib/menu';
+'use client';
+
+import 'swiper/css';
+import 'swiper/css/autoplay';
 import s from './Footer.module.scss';
-import Link from 'next/link';
-import { apiQuery } from 'next-dato-utils/api';
+import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper } from 'swiper';
+import { useRef, useState } from 'react';
+import Content from '@components/content/Content';
 
 type Props = {
 	footer: FooterQuery['footer'];
 };
 
-export default async function Footer({ footer }: Props) {
+export default function Footer({ footer }: Props) {
+	const swiperRef = useRef<Swiper | null>(null);
+	const [index, setIndex] = useState(0);
+
 	return (
 		<>
 			<footer className={s.footer} data-lenis-snap={true}>
-				<nav>
-					<h2>VI KOMMER. VI STANNAR. VI SKAPAR. TILLSAMMANS.</h2>
-					<h3>Vem är du?</h3>
-				</nav>
+				<SwiperReact
+					id={`testimonials`}
+					className={s.swiper}
+					wrapperClass={s.slideWrap}
+					loop={true}
+					modules={[Autoplay]}
+					autoplay={{ delay: 4000, pauseOnMouseEnter: false }}
+					slidesPerView={1}
+					initialSlide={index}
+					onSlideChange={({ realIndex }) => setIndex(realIndex)}
+					onSwiper={(swiper) => (swiperRef.current = swiper)}
+				>
+					{footer.quotes.map((item, idx) => (
+						<SwiperSlide
+							key={idx}
+							onClick={() => swiperRef.current?.slideNext()}
+							className={s.slide}
+						>
+							<div>
+								<h2>
+									<Content content={item.text} />
+								</h2>
+								<h3>{item.by}</h3>
+							</div>
+						</SwiperSlide>
+					))}
+				</SwiperReact>
+
 				<div className={s.copyright}>
 					<span className={s.text}>© Stockmark AB Kungsgatan 9, Stockholm</span>
 					<span className={s.about}>

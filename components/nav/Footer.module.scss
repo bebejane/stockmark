@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   background-color: var(--black);
   padding: var(--outer-margin);
   height: 100vh;
@@ -11,14 +10,36 @@
     color: var(--white);
   }
 
-  nav {
+  .swiper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    flex: 1 1 auto;
+    justify-content: center;
     width: 100%;
+    max-width: 100%;
+
+    .slideWrap {
+      align-items: center;
+
+
+      .slide {
+        width: 100%;
+
+        >div {
+          padding: 10rem;
+
+          h2 {
+            font-size: 1rem;
+          }
+        }
+
+      }
+
+    }
+
+
   }
+
 
   .copyright {
     display: flex;
