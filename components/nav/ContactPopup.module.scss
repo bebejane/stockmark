@@ -3,8 +3,10 @@
   position: fixed;
   top: 0;
   right: 0;
-  margin: calc(var(--outer-margin) /4);
+  margin: calc(var(--outer-margin));
+  margin-right: calc(var(--outer-margin) - 1rem);
   background-color: var(--black);
+  border-radius: 10px;
   color: var(--white);
   padding: 1rem;
   margin-top: 1rem;
