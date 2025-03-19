@@ -12,6 +12,14 @@
         margin-bottom: 1rem;
 
         p {
+          &:before {
+            content: "A";
+            font-family: "StockmarkSymbol";
+            font-size: 2.2rem;
+            margin-left: -2.3rem;
+            padding-right: 1rem;
+          }
+
           grid-column: 2 / 7; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
           padding-right: var(--space-small);
         }
