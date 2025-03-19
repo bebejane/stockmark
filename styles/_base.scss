@@ -15,11 +15,9 @@
 	--body-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 	--headline-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 
-	@include mediaqueries.mq($from: tablet) {
-	}
+	@include mediaqueries.mq($from: tablet) {}
 
-	@include mediaqueries.mq($until: tablet) {
-	}
+	@include mediaqueries.mq($until: tablet) {}
 }
 
 body {
@@ -77,6 +75,8 @@ a {
 
 article {
 	padding-top: var(--navbar-height);
+	padding-left: var(--outer-margin);
+	padding-right: var(--outer-margin);
 }
 
 article p a {
@@ -98,12 +98,10 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mediaqueries.mq($from: tablet) {
-	}
+	@include mediaqueries.mq($from: tablet) {}
 
 	&.back {
-		@include mediaqueries.mq($from: tablet) {
-		}
+		@include mediaqueries.mq($from: tablet) {}
 	}
 }
 
@@ -113,13 +111,11 @@ figcaption {
 	margin-bottom: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
-select {
-}
+select {}
 
 select {
 	-webkit-appearance: none;
@@ -130,6 +126,11 @@ select {
 	background-position-x: calc(100% - 1em);
 	background-position-y: center;
 	color: var(--black);
+}
+
+.right {
+	justify-content: flex-end;
+	text-align: right;
 }
 
 .page-error {

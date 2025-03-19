@@ -17,7 +17,7 @@ export default function Content({ id, content, styles, blocks, className }: Prop
 			blocks={{ ...Blocks, ...blocks }}
 			className={className}
 			styles={{
-				right: 'header-right',
+				right: 'right',
 				...styles,
 			}}
 			content={content}

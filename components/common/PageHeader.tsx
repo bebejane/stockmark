@@ -5,6 +5,7 @@ import cn from 'classnames';
 import React, { useRef, useEffect } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Content from '@/components/content/Content';
 
 export type PageHeaderProps = {
 	content: any;
@@ -16,9 +17,7 @@ export default function PageHeader({ content }: PageHeaderProps) {
 
 	return (
 		<header className={s.header}>
-			<h1>Vi är Stockmark.</h1>
-			<h1 className={s.right}>Investerare med</h1>
-			<h1>entreprenörsbakgrund.</h1>
+			<Content content={content} />
 		</header>
 	);
 }
