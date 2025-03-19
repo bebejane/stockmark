@@ -7,6 +7,11 @@ query About {
 			links
 			value
 		}
+		text {
+			blocks
+			links
+			value
+		}
 		headlinePeople
 		headlinePrinciples
 		images {
@@ -16,6 +21,9 @@ query About {
 			... on PrincipleItemRecord {
 				...PrincipleFragment
 			}
+		}
+		people {
+			...ContactFragment
 		}
 	}
 }
