@@ -6,14 +6,33 @@
   padding-bottom: var(--space-bigger);
 
   h1 {
+    display: block;
     width: 100%;
     flex: 1 1 auto;
+    overflow: hidden;
+
     &:first-of-type {
       padding-top: var(--space-big);
     }
 
     &.right {
       text-align: right;
+    }
+
+    span {
+      display: inline-block;
+      transform: translateY(100%);
+      animation: reveal 2s cubic-bezier(0.035, 1.250, 0.645, 0.935) forwards;
+
+      @keyframes reveal {
+        from {
+          transform: translateY(100%);
+        }
+
+        to {
+          transform: translateY(0);
+        }
+      }
     }
   }
 }
