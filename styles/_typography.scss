@@ -80,21 +80,13 @@ p.intro,
   }
 }
 
-.small,
-.small p,
-footer,
-footer nav,
-figcaption,
-.caption label {
-}
-
-nav,
-.mid,
-button,
-.mid input,
-.mid select {
+nav {
   font-family: var(--headline-font);
   font-size: 0.85rem;
+}
+
+.small {
+  font-size: 0.8rem;
 }
 
 strong,

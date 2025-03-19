@@ -5,6 +5,7 @@ import { Image } from 'react-datocms';
 import { PortfolioDocument } from '@/graphql';
 import PageHeader from '@components/common/PageHeader';
 import Content from '@components/content/Content';
+import classNames from '@node_modules/classnames';
 
 export default async function Home() {
 	const { portfolioHeadline, allCompanies, draftUrl } = await apiQuery<
@@ -24,7 +25,7 @@ export default async function Home() {
 									{company.image && (
 										<figure>
 											<Image data={company.image?.responsiveImage} />
-											<div className={s.text}>
+											<div className={classNames(s.text, "small")}>
 												<Content content={company.text} />
 											</div>
 										</figure>
