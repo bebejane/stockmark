@@ -9,6 +9,9 @@
   align-items: center;
   height: var(--navbar-height);
   padding: var(--outer-margin);
+  padding-top: var(--space-small);
+  padding-bottom: var(--space-small);
+
   z-index: var(--z-navbar);
 
   .logo {
@@ -16,7 +19,6 @@
   }
 
   &.inverted {
-
     a,
     a:hover {
       color: var(--white);
@@ -27,11 +29,7 @@
         filter: invert(1);
       }
     }
-
   }
-
-
-
 
   ul {
     display: flex;
@@ -39,9 +37,7 @@
     list-style: none;
     flex: 1 1 auto;
 
-
     li {
-
       cursor: pointer;
       padding-right: 1.5rem;
       position: relative;
@@ -50,7 +46,7 @@
         padding-right: 0;
       }
 
-      &.active>* {
+      &.active > * {
         //color: var(--blue) !important;
       }
     }
@@ -117,7 +113,7 @@
   }
 
   ul {
-    li.active>a {
+    li.active > a {
       color: var(--blue-light) !important;
     }
   }

@@ -4,14 +4,15 @@
   align-items: flex-start;
   width: 100%;
 
-
   h1 {
     width: 100%;
     flex: 1 1 auto;
+    &:first-of-type {
+      padding-top: var(--space-big);
+    }
 
     &.right {
       text-align: right;
     }
   }
-
 }

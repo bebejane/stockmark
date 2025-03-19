@@ -5,19 +5,24 @@
 	--black: #161616;
 	--white: #fcfcfc;
 	--red: #bf0000;
-	--outer-margin: 2rem;
-	--navbar-height: calc(1em + calc(2 * var(--outer-margin)));
+	--outer-margin: 4rem;
+	--navbar-height: calc(1em + calc(2 * var(--space-small)));
 	--background: var(--white);
 	--foreground: var(--black);
 
 	--z-navbar: 1000;
 
+	--space-big: 6rem;
+	--space-small: 2rem;
+
 	--body-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 	--headline-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 
-	@include mediaqueries.mq($from: tablet) {}
+	@include mediaqueries.mq($from: tablet) {
+	}
 
-	@include mediaqueries.mq($until: tablet) {}
+	@include mediaqueries.mq($until: tablet) {
+	}
 }
 
 body {
@@ -98,10 +103,12 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mediaqueries.mq($from: tablet) {}
+	@include mediaqueries.mq($from: tablet) {
+	}
 
 	&.back {
-		@include mediaqueries.mq($from: tablet) {}
+		@include mediaqueries.mq($from: tablet) {
+		}
 	}
 }
 
@@ -111,11 +118,13 @@ figcaption {
 	margin-bottom: 1em;
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;
