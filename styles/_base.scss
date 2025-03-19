@@ -21,12 +21,14 @@
 
 	--body-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 	--headline-font: "Stockmark", Arial, Helvetica, Sans-Serif;
-	--line-height: 1.25;
+	--line-height: 1.3;
 
-	@include mediaqueries.mq($from: tablet) {}
+	@include mediaqueries.mq($from: tablet) {
+	}
 
 	@include mediaqueries.mq($until: tablet) {
 		--outer-margin: 1.2rem;
+		--space-small: 1rem;
 	}
 }
 
@@ -89,13 +91,15 @@ article {
 	padding-right: var(--outer-margin);
 }
 
-article p a {
-	text-decoration: underline 1px !important;
+article a {
+	text-decoration: underline 1px transparent !important;
 	text-underline-offset: 0.15em;
-	text-decoration-thickness: 1px;
+	text-decoration-thickness: 1px var(--blue);
+	color: var(--blue);
 
 	&:hover {
-		color: var(--beige-dark);
+		text-decoration: underline 1px !important;
+		text-underline-offset: 0.15em;
 	}
 }
 
@@ -127,10 +131,12 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mediaqueries.mq($from: tablet) {}
+	@include mediaqueries.mq($from: tablet) {
+	}
 
 	&.back {
-		@include mediaqueries.mq($from: tablet) {}
+		@include mediaqueries.mq($from: tablet) {
+		}
 	}
 }
 
@@ -140,11 +146,13 @@ figcaption {
 	margin-bottom: 1em;
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;

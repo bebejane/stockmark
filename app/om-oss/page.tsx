@@ -17,7 +17,7 @@ export default async function Home() {
 			<article className={s.page}>
 				<PageHeader content={about.headline} />
 				<section className={cn(s.about, "grid")}>
-					<AboutGallery images={about.images as FileField[]} />
+					<AboutGallery className={s.gallery} images={about.images as FileField[]} />
 					<div className={s.text}>
 						<Content content={about.text} />
 						<Link href={'/manifest'}>Läs mer i vårat manifest</Link>

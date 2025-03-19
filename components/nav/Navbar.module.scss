@@ -19,13 +19,12 @@
 
     img {
       @include mq($until: desktop) {
-        height: 1.2rem;
+        height: 1.15rem;
       }
     }
   }
 
   &.inverted {
-
     a,
     a:hover {
       color: var(--white);
@@ -49,11 +48,19 @@
       padding-right: 1.5rem;
       position: relative;
 
+      & > * {
+        transition: color 0.3s ease-in-out;
+      }
+
+      &:hover > * {
+        color: var(--blue) !important;
+      }
+
       &:last-child {
         padding-right: 0;
       }
 
-      &.active>* {
+      &.active > * {
         color: var(--blue) !important;
       }
     }
@@ -120,7 +127,7 @@
   }
 
   ul {
-    li.active>a {
+    li.active > a {
       color: var(--blue-light) !important;
     }
   }

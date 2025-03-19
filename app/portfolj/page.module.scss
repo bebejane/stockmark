@@ -6,8 +6,13 @@
 
     li {
       list-style: none;
-      grid-column: span 4;
       margin-bottom: 1rem;
+      grid-column: span 6;
+
+      @include mq($from: desktop) {
+        grid-column: span 4;
+      }
+
       &:hover {
         span {
           transform: translateY(0);
