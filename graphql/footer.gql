@@ -1,0 +1,14 @@
+query Footer {
+	footer {
+		id
+		quotes {
+			id
+			by
+			text {
+				blocks
+				links
+				value
+			}
+		}
+	}
+}

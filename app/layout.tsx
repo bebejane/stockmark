@@ -1,7 +1,7 @@
 import '@styles/index.scss';
 import s from './layout.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllContactsDocument, GlobalDocument } from '@graphql';
+import { AllContactsDocument, FooterDocument, GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import Navbar from '../components/nav/Navbar';
@@ -18,6 +18,7 @@ export default async function RootLayout({ children }: LayoutProps) {
 	const { allContacts } = await apiQuery<AllContactsQuery, AllContactsQueryVariables>(
 		AllContactsDocument
 	);
+	const { footer } = await apiQuery<FooterQuery, FooterQueryVariables>(FooterDocument);
 
 	return (
 		<>
@@ -25,7 +26,7 @@ export default async function RootLayout({ children }: LayoutProps) {
 				<body id='root'>
 					<Navbar menu={menu} allContacts={allContacts} />
 					<main className={s.main}>{children}</main>
-					<Footer />
+					<Footer footer={footer} />
 				</body>
 			</html>
 		</>

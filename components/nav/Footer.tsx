@@ -3,7 +3,11 @@ import s from './Footer.module.scss';
 import Link from 'next/link';
 import { apiQuery } from 'next-dato-utils/api';
 
-export default async function Footer({}: {}) {
+type Props = {
+	footer: FooterQuery['footer'];
+};
+
+export default async function Footer({ footer }: Props) {
 	return (
 		<>
 			<footer className={s.footer} data-lenis-snap={true}>
