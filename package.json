@@ -24,6 +24,7 @@
     "@types/is-integer": "^1.0.2",
     "classnames": "^2.5.1",
     "date-fns": "^2.30.0",
+    "datocms-structured-text-to-html-string": "^4.1.2",
     "datocms-structured-text-utils": "^4.0.1",
     "dotenv": "^16.4.7",
     "framer-motion": "^12.4.5",

@@ -4,7 +4,6 @@ import { DraftMode } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import { PortfolioDocument } from '@/graphql';
 import PageHeader from '@components/common/PageHeader';
-import Content from '@components/content/Content';
 
 export default async function Home() {
 	const { portfolioHeadline, allCompanies, draftUrl } = await apiQuery<
