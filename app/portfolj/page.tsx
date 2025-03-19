@@ -16,7 +16,7 @@ export default async function Home() {
 			<article className={s.page}>
 				<PageHeader content={portfolioHeadline.headline} />
 				<section className={s.companies}>
-					<ul>
+					<ul className="grid">
 						{allCompanies.map((company, i) => (
 							<li key={i}>
 								<a href={company.url} target='_blank' rel='noreferrer'>
@@ -25,7 +25,7 @@ export default async function Home() {
 											<Image data={company.image?.responsiveImage} />
 										</figure>
 									)}
-									<h3>{company.name}</h3>
+									<h3>{company.name}<span>→</span></h3>
 								</a>
 							</li>
 						))}
