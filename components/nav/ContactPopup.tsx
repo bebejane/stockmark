@@ -29,12 +29,12 @@ export default function ContactPopup({ allContacts, show, onClose }: ContactPopu
 						<div className={s.name}>
 							{name}
 							<br />
-							<span className="small">{email}</span>
+							<span className="small"><a href={`mailto:${email}`}>{email}</a></span>
 						</div>
 						<div className={cn(s.phone, "small")}>{phone}</div>
 					</li>
 				))}
 			</ul>
-		</div>
+		</div >
 	);
 }

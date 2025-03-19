@@ -33,6 +33,9 @@
 
   a {
     color: var(--white);
+    &:hover {
+      color: var(--blue-light);
+    }
   }
 
   > p {
@@ -52,6 +55,10 @@
       align-items: flex-end;
       padding: 0;
       padding-bottom: 1em;
+
+      &:hover > * {
+        color: var(--white) !important;
+      }
 
       .name {
         flex: 1 1 auto;
