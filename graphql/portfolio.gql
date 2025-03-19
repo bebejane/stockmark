@@ -24,6 +24,6 @@ fragment CompanyFragment on CompanyRecord {
 		value
 	}
 	image {
-		...ImageFragment
+		...ImageSquareFragment
 	}
 }
