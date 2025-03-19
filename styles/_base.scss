@@ -22,6 +22,7 @@
 	}
 
 	@include mediaqueries.mq($until: tablet) {
+		--outer-margin: 1.2rem;
 	}
 }
 

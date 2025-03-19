@@ -16,6 +16,11 @@
 
   .logo {
     flex: 1 1 auto;
+    img {
+      @include mq($until: desktop) {
+        height: 1.2rem;
+      }
+    }
   }
 
   &.inverted {

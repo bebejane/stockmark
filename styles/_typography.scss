@@ -26,11 +26,14 @@ h5 {
 }
 
 h1 {
-  font-size: 5vw;
   padding-bottom: var(--space);
   line-height: 1.25;
   font-weight: normal;
   text-transform: uppercase;
+  font-size: 6vw;
+  @include mq($from: desktop) {
+    font-size: 5vw;
+  }
 }
 
 h2 {
