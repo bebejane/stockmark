@@ -7,44 +7,41 @@
   }
 
   .about {
-    display: flex;
-    flex-direction: row;
-
-    >div {
-      flex: 1 1 50%;
+    margin-bottom: var(--space-mid);
+    div:first-of-type {
+      grid-column: 2 / 6; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
+    }
+    .text {
+      grid-column: 7 / 12; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
     }
   }
 
   .principles {
     display: flex;
     flex-direction: column;
+    margin-top: var(--space-bigger);
 
     ul {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0;
-
       li {
-        display: flex;
-        flex-direction: row;
-        flex: 0 0 50%;
+        margin-bottom: var(--space-mid);
 
         .number {
-          font-size: 3rem;
+          grid-column: 1/ 2; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
           line-height: 1;
+          margin-top: -0.1em;
         }
 
         .content {
-          flex: 1 1 auto;
+          grid-column: 2/ 7; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
 
           h3 {
             margin: 0;
-            padding: 0;
           }
 
           p {
             margin: 0;
             padding: 0;
+            padding-right: var(--space-small);
           }
         }
       }
@@ -52,7 +49,8 @@
   }
 
   .people {
-
+    margin-top: var(--space-bigger);
+    margin-bottom: var(--space-big);
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -69,18 +67,14 @@
           line-height: 1;
         }
 
-        .content {
-          flex: 1 1 auto;
+        h3 {
+          margin-top: 1rem;
+          padding: 0;
+        }
 
-          h3 {
-            margin: 0;
-            padding: 0;
-          }
-
-          p {
-            margin: 0;
-            padding: 0;
-          }
+        p {
+          margin: 0;
+          padding: 0;
         }
       }
     }

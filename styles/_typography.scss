@@ -11,7 +11,7 @@ body {
   }
 
   @include mediaqueries.mq($from: wide) {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
@@ -25,7 +25,9 @@ h5 {
   }
 }
 
-h1 {
+h1,
+h2,
+.number {
   line-height: 1.25;
   font-weight: normal;
   text-transform: uppercase;
@@ -36,15 +38,16 @@ h1 {
 }
 
 h2 {
-  font-size: 0.75rem;
-  font-family: var(--headline-font);
+  padding-bottom: 1em;
 }
 
 h3 {
-  font-size: 0.85rem;
   font-family: var(--headline-font);
   margin-bottom: 0;
-  padding-bottom: 0;
+  font-weight: normal;
+  padding-bottom: 0.25em;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 p {
@@ -101,7 +104,6 @@ b {
 // För Article
 article {
   ul {
-    padding-left: 1em;
     list-style-type: square;
 
     p:last-of-type {
@@ -111,16 +113,6 @@ article {
     & li:last-child p {
       margin-bottom: 1em;
     }
-  }
-
-  p,
-  .intro,
-  h2,
-  .structured h3,
-  ul {
-    padding-left: var(--outer-margin);
-    padding-right: var(--outer-margin);
-    text-align: left;
   }
 
   .structured h3 {

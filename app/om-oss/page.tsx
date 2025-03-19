@@ -7,6 +7,7 @@ import { AboutDocument } from '@/graphql';
 import AboutGallery from './AboutGallery';
 import PageHeader from '@components/common/PageHeader';
 import Content from '@components/content/Content';
+import cn from '@node_modules/classnames';
 
 export default async function Home() {
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument);
@@ -15,7 +16,7 @@ export default async function Home() {
 		<>
 			<article className={s.page}>
 				<PageHeader content={about.headline} />
-				<section className={s.about}>
+				<section className={cn(s.about, "grid")}>
 					<AboutGallery images={about.images as FileField[]} />
 					<div className={s.text}>
 						<Content content={about.text} />
@@ -24,10 +25,10 @@ export default async function Home() {
 				</section>
 				<section className={s.principles}>
 					<h2>{about.headlinePrinciples}</h2>
-					<ul>
+					<ul className="grid-2">
 						{about.principles.map((principle, i) => (
-							<li key={i}>
-								<div className={s.number}>{i + 1}</div>
+							<li key={i} className="grid-6">
+								<div className={cn("number", s.number)}>{i + 1}</div>
 								<div className={s.content}>
 									<h3>{principle.title}</h3>
 									<Content content={principle.text} />
@@ -37,6 +38,7 @@ export default async function Home() {
 					</ul>
 				</section>
 				<section className={s.people}>
+					<h2>{about.headlinePeople}</h2>
 					<ul>
 						{about.people?.map((person, i) => (
 							<li key={i}>
