@@ -16,6 +16,7 @@
 
   .logo {
     flex: 1 1 auto;
+
     img {
       @include mq($until: desktop) {
         height: 1.2rem;
@@ -24,6 +25,7 @@
   }
 
   &.inverted {
+
     a,
     a:hover {
       color: var(--white);
@@ -51,8 +53,8 @@
         padding-right: 0;
       }
 
-      &.active > * {
-        //color: var(--blue) !important;
+      &.active>* {
+        color: var(--blue) !important;
       }
     }
 
@@ -118,7 +120,7 @@
   }
 
   ul {
-    li.active > a {
+    li.active>a {
       color: var(--blue-light) !important;
     }
   }
