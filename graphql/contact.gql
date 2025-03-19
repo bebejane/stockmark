@@ -4,6 +4,12 @@ query Contact {
 	}
 }
 
+query AllContacts {
+	allContacts {
+		...ContactFragment
+	}
+}
+
 fragment ContactFragment on ContactRecord {
 	id
 	email

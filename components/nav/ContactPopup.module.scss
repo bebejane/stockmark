@@ -1,0 +1,63 @@
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: calc(var(--outer-margin) /4);
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1rem;
+  margin-top: 1rem;
+
+  &.show {
+    display: block;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+
+    span {
+      flex: 1 1 100%;
+    }
+
+    button {
+      all: unset;
+      cursor: pointer;
+    }
+  }
+
+  a {
+    color: var(--white);
+  }
+
+  >p {
+    margin-top: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      padding: 0;
+
+      .name {
+        flex: 1 1 auto;
+        margin-right: 1rem;
+
+      }
+
+      .phone {
+        flex: 1 1;
+        text-align: right;
+        white-space: nowrap;
+      }
+    }
+  }
+}
