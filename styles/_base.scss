@@ -12,12 +12,14 @@
 
 	--z-navbar: 1000;
 
-	--body-font: Arial, Helvetica, Sans-Serif;
-	--headline-font: Arial, Helvetica, Sans-Serif;
+	--body-font: "Stockmark", Arial, Helvetica, Sans-Serif;
+	--headline-font: "Stockmark", Arial, Helvetica, Sans-Serif;
 
-	@include mediaqueries.mq($from: tablet) {}
+	@include mediaqueries.mq($from: tablet) {
+	}
 
-	@include mediaqueries.mq($until: tablet) {}
+	@include mediaqueries.mq($until: tablet) {
+	}
 }
 
 body {
@@ -71,7 +73,6 @@ main {
 a {
 	text-decoration: none;
 	color: var(--foreground);
-
 }
 
 article {
@@ -97,13 +98,13 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mediaqueries.mq($from: tablet) {}
-
-	&.back {
-
-		@include mediaqueries.mq($from: tablet) {}
+	@include mediaqueries.mq($from: tablet) {
 	}
 
+	&.back {
+		@include mediaqueries.mq($from: tablet) {
+		}
+	}
 }
 
 figcaption {
@@ -112,11 +113,13 @@ figcaption {
 	margin-bottom: 1em;
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
-select {}
+select {
+}
 
 select {
 	-webkit-appearance: none;

@@ -21,17 +21,16 @@ h3,
 h4,
 h5 {
   strong {
-    //font-weight: normal;
+    font-weight: normal;
   }
 }
 
 h1 {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 5vw;
   padding-bottom: var(--space);
   line-height: 1.25;
-  font-family: var(--headline-font);
-
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -70,7 +69,7 @@ p.intro,
     padding-right: 0.5em;
   }
 
-  >p {
+  > p {
     padding: 0;
   }
 }
@@ -80,7 +79,8 @@ p.intro,
 footer,
 footer nav,
 figcaption,
-.caption label {}
+.caption label {
+}
 
 nav,
 .mid,
@@ -129,10 +129,10 @@ article {
     padding-left: 0;
   }
 
-  p+h3,
-  ul+h3,
-  ul+h2,
-  p+h2 {
+  p + h3,
+  ul + h3,
+  ul + h2,
+  p + h2 {
     padding-top: 1rem;
   }
 
