@@ -3,13 +3,16 @@ import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import { AboutDocument } from '@/graphql';
+import PageHeader from '@components/common/PageHeader';
 
 export default async function Home() {
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument);
 
 	return (
 		<>
-			<article>Om oss</article>
+			<article>
+				<PageHeader content={about.headline} />
+			</article>
 			<DraftMode url={draftUrl} path={'/om-oss'} />
 		</>
 	);
