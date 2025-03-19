@@ -4,7 +4,7 @@ import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu } from '@/lib/menu';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import ContactPopup from '@components/nav/ContactPopup';
@@ -14,23 +14,31 @@ export type NavbarProps = {
 	allContacts: AllContactsQuery['allContacts'];
 };
 
+const invertTopRoutes = ['/', '/manifest'];
+
 export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
-	const invert = pathname === '/';
+	const nav = menu.filter(({ id }) => id !== 'contact');
+	const contact = menu.find(({ id }) => id === 'contact');
+	const [invert, setInvert] = useState(true);
 	const [selected, setSelected] = useState<string | null>(null);
 	const [showContact, setShowContact] = useState(false);
 	const { scrollY } = useScroll();
 	const [hide, setHide] = useState(false);
+	const canInvertTop = invertTopRoutes.includes(pathname);
 
 	useMotionValueEvent(scrollY, 'change', (latest) => {
+		const documentHeight = document.documentElement.scrollHeight;
+		const viewportHeight = window.innerHeight;
+		const triggerPoint = documentHeight - viewportHeight - 50;
 		setHide(latest > 50);
+		setInvert(latest >= triggerPoint || (canInvertTop && latest < viewportHeight));
 	});
 
-	const parent = menu.find(({ id }) => id === selected);
-	const sub = parent?.sub;
-	const nav = menu.filter(({ id }) => id !== 'contact');
-	const contact = menu.find(({ id }) => id === 'contact');
+	useEffect(() => {
+		setInvert(canInvertTop);
+	}, [pathname]);
 
 	return (
 		<>
@@ -63,7 +71,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 						className={cn(contact.slug === pathname && s.active)}
 						onClick={() => setShowContact(true)}
 					>
-						{contact.title}
+						<span>{contact.title}</span>
 					</li>
 					<ContactPopup
 						allContacts={allContacts}

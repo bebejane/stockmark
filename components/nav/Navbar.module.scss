@@ -10,13 +10,14 @@
   padding: var(--outer-margin);
   padding-top: var(--space-small);
   padding-bottom: var(--space-small);
-
   z-index: var(--z-navbar);
 
   .logo {
     flex: 1 1 auto;
 
     img {
+      transition: filter 0.3s ease-in-out;
+
       @include mq($until: desktop) {
         height: 1.15rem;
       }
@@ -26,7 +27,8 @@
   &.inverted {
 
     a,
-    a:hover {
+    a:hover,
+    span {
       color: var(--white);
     }
 
