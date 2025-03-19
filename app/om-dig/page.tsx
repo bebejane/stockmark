@@ -5,6 +5,7 @@ import { Image } from 'react-datocms';
 import { YouDocument } from '@/graphql';
 import PageHeader from '@components/common/PageHeader';
 import Content from '@components/content/Content';
+import classNames from '@node_modules/classnames';
 
 export default async function Home() {
 	const { you, draftUrl } = await apiQuery<YouQuery, YouQueryVariables>(YouDocument);
@@ -13,11 +14,11 @@ export default async function Home() {
 		<>
 			<article className={s.page}>
 				<PageHeader content={you.headline} />
-				<section>
+				<section className={s.text}>
 					<Content content={you.text} />
 				</section>
-				<section>
-					<h2>{you.inevestHeadline}</h2>
+				<section className={classNames(s.invest, "grid-2")}>
+					<h3>{you.inevestHeadline}</h3>
 					<Content content={you.investText} />
 				</section>
 			</article>

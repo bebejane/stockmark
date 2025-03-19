@@ -3,6 +3,9 @@
 
   .header {
     height: 100vh;
+    color: var(--white);
+    display: flex;
+    align-items: flex-end;
   }
 
   .video {
@@ -16,9 +19,9 @@
   }
 
   .content {
-    display: flex;
-    flex-direction: row;
-
+    margin-bottom: var(--space-big);
+    .intro {
+      grid-template-columns: 1/2;
+    }
   }
-
 }
