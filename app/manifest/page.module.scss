@@ -1,4 +1,24 @@
 .page {
-  display: block;
+  position: relative;
+
+  .header {
+    height: 100vh;
+  }
+
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+
+  }
 
 }

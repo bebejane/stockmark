@@ -2,6 +2,9 @@ query Manifest {
 	manifest {
 		id
 		title
+		video {
+			...VideoFragment
+		}
 		headline {
 			blocks
 			links

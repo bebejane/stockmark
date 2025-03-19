@@ -9,12 +9,10 @@ import Content from '@/components/content/Content';
 
 export type PageHeaderProps = {
 	content: any;
+	video?: FileField;
 };
 
-export default function PageHeader({ content }: PageHeaderProps) {
-	const ref = useRef<HTMLDivElement | null>(null);
-	const { innerHeight, innerWidth } = useWindowSize();
-
+export default function PageHeader({ content, video }: PageHeaderProps) {
 	return (
 		<header className={s.header}>
 			<Content content={content} />
