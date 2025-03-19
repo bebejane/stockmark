@@ -12,10 +12,8 @@ export type NavbarProps = {
 };
 
 export default function Navbar({ menu }: NavbarProps) {
-	const path = usePathname();
-	const qs = useSearchParams().toString();
-	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
-	const invert = path === '/';
+	const pathname = usePathname();
+	const invert = pathname === '/';
 	const [selected, setSelected] = useState<string | null>(null);
 
 	const parent = menu.find(({ id }) => id === selected);
