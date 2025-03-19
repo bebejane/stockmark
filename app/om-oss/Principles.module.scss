@@ -1,0 +1,44 @@
+.principles {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-bigger);
+
+  ul {
+    li {
+      margin-bottom: var(--space-mid);
+
+      .number {
+        grid-column: 1/ 2;
+        /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
+        line-height: 1;
+        margin-top: -0.07em;
+
+
+        .wrap {
+          overflow: hidden;
+
+          span {
+            display: inline-block;
+          }
+        }
+
+
+      }
+
+      .content {
+        grid-column: 2/ 7;
+        /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
+
+        h3 {
+          margin: 0;
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
+          padding-right: var(--space-small);
+        }
+      }
+    }
+  }
+}

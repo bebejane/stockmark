@@ -8,6 +8,8 @@ import AboutGallery from './AboutGallery';
 import PageHeader from '@components/common/PageHeader';
 import Content from '@components/content/Content';
 import cn from '@node_modules/classnames';
+import { motion } from 'framer-motion';
+import Principles from '@app/om-oss/Principles';
 
 export default async function Home() {
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument);
@@ -16,27 +18,14 @@ export default async function Home() {
 		<>
 			<article className={s.page}>
 				<PageHeader content={about.headline} />
-				<section className={cn(s.about, "grid")}>
-					<AboutGallery className={s.gallery} images={about.images as FileField[]} />
+				<section className={cn(s.about, 'grid')}>
+					<AboutGallery images={about.images as FileField[]} />
 					<div className={s.text}>
 						<Content content={about.text} />
 						<Link href={'/manifest'}>Läs mer i vårat manifest</Link>
 					</div>
 				</section>
-				<section className={s.principles}>
-					<h2>{about.headlinePrinciples}</h2>
-					<ul className="grid-2">
-						{about.principles.map((principle, i) => (
-							<li key={i} className="grid-6">
-								<div className={cn("number", s.number)}>{i + 1}</div>
-								<div className={s.content}>
-									<h3>{principle.title}</h3>
-									<Content content={principle.text} />
-								</div>
-							</li>
-						))}
-					</ul>
-				</section>
+				<Principles about={about} />
 				<section className={s.people}>
 					<h2>{about.headlinePeople}</h2>
 					<ul>
