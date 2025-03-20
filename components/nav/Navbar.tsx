@@ -18,6 +18,7 @@ const invertTopRoutes = ['/', '/manifest'];
 
 export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const ref = useRef<HTMLDivElement | null>(null);
+	const prevScroll = useRef<number | null>(null);
 	const pathname = usePathname();
 	const nav = menu.filter(({ id }) => id !== 'contact');
 	const contact = menu.find(({ id }) => id === 'contact');
@@ -32,7 +33,8 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 		const documentHeight = document.documentElement.scrollHeight;
 		const viewportHeight = window.innerHeight;
 		const triggerPoint = documentHeight - viewportHeight - 50;
-		setHide(latest > 50);
+		setHide(latest > 50 && prevScroll.current !== null && latest > prevScroll.current);
+		prevScroll.current = latest;
 		setInvert(latest >= triggerPoint || (canInvertTop && latest < viewportHeight));
 	});
 
