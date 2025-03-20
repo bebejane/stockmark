@@ -3,10 +3,12 @@
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import s from './Footer.module.scss';
+import cn from 'classnames';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import type { Swiper } from 'swiper';
 import { useRef, useState } from 'react';
+import { useInViewRef } from 'rooks';
 import Content from '@components/content/Content';
 
 type Props = {
@@ -16,10 +18,16 @@ type Props = {
 export default function Footer({ footer }: Props) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const [index, setIndex] = useState(0);
+	const [ref, inView] = useInViewRef({ threshold: 0.8 });
 
 	return (
 		<>
-			<footer className={s.footer} data-lenis-snap={true}>
+			<footer
+				id='footer'
+				className={cn(s.footer, inView && s.invert)}
+				data-lenis-snap={true}
+				ref={ref}
+			>
 				<SwiperReact
 					id={`testimonials`}
 					className={s.swiper}

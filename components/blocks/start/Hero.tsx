@@ -14,7 +14,7 @@ export type HeroProps = {
 const rows = [
 	['Kaffe.', 'Prata.', 'Mycket.'],
 	['Ofta.', 'Länge.', 'Tänka.'],
-	['Full gas.', 'Tillsammans.', 'Repetera.'],
+	['Full gas.', 'Tillsammans.'],
 ];
 const defaultBounds = {
 	top: 0,
@@ -72,7 +72,7 @@ export default function Hero({ video }: HeroProps) {
 			<div className={s.text} data-lenis-snap={true}>
 				{rows.map((cols, i) => (
 					<div key={i} className={s.row}>
-						<h2 key={i}>
+						<h1 key={i}>
 							{cols.map((col, j) => (
 								<React.Fragment key={j}>
 									<span key={j}>{col}</span>
@@ -81,7 +81,7 @@ export default function Hero({ video }: HeroProps) {
 									)}
 								</React.Fragment>
 							))}
-						</h2>
+						</h1>
 					</div>
 				))}
 			</div>
