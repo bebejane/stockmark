@@ -2,12 +2,8 @@
 
 import s from './Facts.module.scss';
 import cn from 'classnames';
-import { VideoPlayer } from 'next-dato-utils/components';
 import React, { useRef, useEffect } from 'react';
-import { useWindowSize } from 'rooks';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Content from '@components/content/Content';
-import Link from '@node_modules/next/link';
+import { useInView, useMotionValue, useSpring } from 'framer-motion';
 
 export type HeroProps = {
 	facts: StartQuery['start']['facts'];
@@ -15,24 +11,56 @@ export type HeroProps = {
 
 export default function Facts({ facts }: HeroProps) {
 	const ref = useRef<HTMLDivElement | null>(null);
-	const { innerHeight, innerWidth } = useWindowSize();
-	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-
-	React.useEffect(() => {
-		// hook into the onChange, store the current value as state.
-		//scrollYProgress.onChange((v) => console.log(v));
-	}, [scrollYProgress]); //make sur
 
 	return (
 		<section className={cn(s.facts)} ref={ref} data-lenis-snap={true}>
 			<ul className='grid'>
-				{facts.map((fact, index) => (
-					<li key={index}>
-						<h3 className='number'>{fact.number}</h3>
+				{facts.map((fact, i) => (
+					<li key={i}>
+						<Counter value={fact.number} className='number' />
 						<span>{fact.label}</span>
 					</li>
 				))}
 			</ul>
 		</section>
 	);
+}
+
+function Counter({
+	value: _value,
+	direction = 'up',
+	className,
+}: {
+	value: string;
+	direction?: 'up' | 'down';
+	className?: string;
+}) {
+	const isFloat = _value.includes('.') || _value.includes(',');
+	const value = isFloat ? parseFloat(_value.replace(',', '.')) : parseInt(_value);
+	const ref = useRef<HTMLHeadingElement>(null);
+	const motionValue = useMotionValue(direction === 'down' ? value : 0);
+	const springValue = useSpring(motionValue, {
+		damping: 50,
+		stiffness: 100,
+	});
+	const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+	useEffect(() => {
+		if (isInView) {
+			motionValue.set(direction === 'down' ? 0 : value);
+		}
+	}, [motionValue, isInView]);
+
+	useEffect(
+		() =>
+			springValue.on('change', (latest: number) => {
+				if (!ref.current) return;
+				ref.current.textContent = Intl.NumberFormat('en-US').format(
+					isFloat ? Math.round(latest * 10) / 10 : Math.ceil(latest)
+				);
+			}),
+		[springValue]
+	);
+
+	return <h3 className={className} ref={ref} />;
 }
