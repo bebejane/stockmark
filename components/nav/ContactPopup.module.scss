@@ -16,7 +16,8 @@
   opacity: 0;
   pointer-events: none;
   transform: translateX(calc(100% - var(--outer-margin) - var(--padding)));
-  transition: transform 0.3s ease-out, background-color 0.3s ease-in-out 0.3s, color 0.3s ease-in-out 0.3s;
+
+  transition: all 0.3s ease-out;
 
   .header {
     display: flex;
@@ -77,8 +78,6 @@
         }
       }
     }
-
-
   }
 
   &.show {
@@ -91,6 +90,5 @@
     a {
       color: var(--white);
     }
-
   }
 }

@@ -59,7 +59,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 								pathname.startsWith(slug) && s.active,
 								hide && s.hide
 							)}
-							style={{ animationDelay: `${(0.5 / nav.length) * (nav.length - i)}s` }}
+							style={{ transitionDelay: `${(0.1 / nav.length) * (nav.length - i)}s` }}
 							onMouseEnter={() => sub && setSelected(id)}
 						>
 							{sub ? <span>{title}</span> : <Link href={slug ?? href}>{title}</Link>}
