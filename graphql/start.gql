@@ -25,7 +25,15 @@ query Start {
 			value
 		}
 		summary {
-			blocks
+			blocks {
+				... on InlineVideoBlockRecord {
+					__typename
+					id
+					video {
+						...MediaFragment
+					}
+				}
+			}
 			links
 			value
 		}

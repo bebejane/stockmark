@@ -6,9 +6,12 @@ import React, { useRef, useEffect } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from '@node_modules/next/navigation';
+import Header, { extractHeaders } from '@components/common/Header';
 
 export type HeroProps = {
 	video: StartQuery['start']['video'];
+	headline: StartQuery['start']['headline'];
+	summary: StartQuery['start']['summary'];
 };
 
 const rows = [
@@ -29,7 +32,7 @@ const defaultBounds = {
 	y: 0,
 };
 
-export default function Hero({ video }: HeroProps) {
+export default function Hero({ video, headline, summary }: HeroProps) {
 	const [thumbBounds, setThumbBounds] = React.useState<DOMRect | any>(defaultBounds);
 	const pathname = usePathname();
 	const ref = useRef<HTMLDivElement | null>(null);
@@ -51,31 +54,31 @@ export default function Hero({ video }: HeroProps) {
 		updateBounds();
 	}, [innerHeight, innerWidth, pathname]);
 
-	React.useEffect(() => {
-		// hook into the onChange, store the current value as state.
-		//scrollYProgress.onChange((v) => console.log(v));
-	}, [scrollYProgress]); //make sur
-
+	const headers = extractHeaders(summary);
+	console.log(headers);
 	return (
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
-			<motion.video
-				suppressHydrationWarning={true}
-				initial={false}
-				className={s.video}
-				style={{ top, left, width, height }}
-				src={video.video?.mp4high}
-				autoPlay={true}
-				muted={true}
-				loop={true}
-				playsInline={true}
-				disablePictureInPicture={true}
-				poster={`${thumbnailUrl}?time=0`}
-			/>
+			<div className={s.header}>
+				<motion.video
+					suppressHydrationWarning={true}
+					initial={false}
+					className={s.video}
+					style={{ top, left, width, height }}
+					src={video.video?.mp4high}
+					autoPlay={true}
+					muted={true}
+					loop={true}
+					playsInline={true}
+					disablePictureInPicture={true}
+					poster={`${thumbnailUrl}?time=0`}
+				/>
+				<Header content={headline} margins={true} />
+			</div>
 			<div className={s.text} data-lenis-snap={true}>
-				{rows.map((row, i) => (
+				{headers.map((row, i) => (
 					<div key={i} className={s.row}>
 						<h1 key={i}>
-							{row.split(' ').map((col, j) => (
+							{row.text.split(' ').map((col, j) => (
 								<React.Fragment key={j}>
 									{col === '#' ? (
 										<img ref={thumbnailRef} src={thumbnailUrl} onLoad={updateBounds} />

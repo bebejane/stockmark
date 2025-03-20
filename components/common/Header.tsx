@@ -5,7 +5,7 @@ import cn from 'classnames';
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { render, renderNodeRule } from 'datocms-structured-text-to-html-string';
-import { isHeading } from 'datocms-structured-text-utils';
+import { isHeading, isInlineBlock } from 'datocms-structured-text-utils';
 import RevealHeader from '@components/common/RevealHeader';
 
 export type HeaderProps = {
@@ -15,15 +15,7 @@ export type HeaderProps = {
 };
 
 export default function Header({ content, margins }: HeaderProps) {
-	const headers = [];
-	render(content, {
-		customNodeRules: [
-			renderNodeRule(isHeading, ({ adapter: { renderNode }, node, children, key }) => {
-				headers.push({ text: children, className: node.style });
-				return renderNode(`h${node.level + 1}`, { key, className: 'right' }, children);
-			}),
-		],
-	});
+	const headers = extractHeaders(content);
 
 	return (
 		<header className={cn(s.header, margins && s.margins)}>
@@ -34,4 +26,22 @@ export default function Header({ content, margins }: HeaderProps) {
 			))}
 		</header>
 	);
+}
+
+export function extractHeaders(content: any): { text: string; className: string }[] {
+	const headers = [];
+	render(content, {
+		customNodeRules: [
+			renderNodeRule(isHeading, ({ adapter: { renderNode }, node, children, key }) => {
+				headers.push({ text: children.join(''), className: node.style });
+				return renderNode(`h${node.level + 1}`, { key, className: 'right' }, children);
+			}),
+			renderNodeRule(isInlineBlock, ({ adapter: { renderNode }, node, children, key }) => {
+				//headers.push({ text: children, className: node.style });
+
+				return '#';
+			}),
+		],
+	});
+	return headers;
 }

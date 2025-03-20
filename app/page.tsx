@@ -11,7 +11,7 @@ export default async function Home() {
 
 	return (
 		<>
-			<Hero video={start?.video as FileField} />
+			<Hero video={start.video} headline={start.headline} summary={start.summary} />
 			<IntroText intro={start.textIntro} text={start.text} />
 			<Facts facts={start.facts} />
 			<Portfolio portfolio={start.portfolio} />

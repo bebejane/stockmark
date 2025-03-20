@@ -2,15 +2,26 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  //align-items: center;
 
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  .header {
     height: 100vh;
-    object-fit: cover;
+    color: var(--white);
+    display: flex;
+    align-items: flex-end;
+
+    @include mq($until: desktop) {
+      height: var(--mobilHeight);
+    }
+
+    .video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
   }
 
   .text {
