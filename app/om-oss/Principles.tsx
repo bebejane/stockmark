@@ -20,15 +20,15 @@ export default function Principles({ about }: Props) {
 							<div className={s.wrap}>
 								<motion.span
 									whileInView='visible'
-									viewport={{ once: true }}
+									viewport={{ once: false }}
 									variants={{
 										hidden: { y: '100%' },
 										visible: {
 											y: '0%',
 											transition: {
-												delay: 0.15 * i,
+												delay: 0.1 * i,
 												type: 'spring',
-												stiffness: 100,
+												stiffness: 50,
 												mass: 0.3,
 											},
 										},

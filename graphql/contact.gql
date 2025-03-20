@@ -5,7 +5,7 @@ query Contact {
 }
 
 query AllContacts {
-	allContacts {
+	allContacts(first: 100) {
 		...ContactFragment
 	}
 }
