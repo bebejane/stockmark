@@ -12,9 +12,11 @@ export type HeroProps = {
 };
 
 const rows = [
-	['Kaffe.', 'Prata.', 'Mycket.'],
-	['Ofta.', 'Länge.', 'Tänka.'],
-	['Full gas.', 'Tillsammans.'],
+	'STOCKMARK BYGGER',
+	'LÅNGSIKTIGA RELATIONER',
+	'GENOM ÄKTA #',
+	'ENTREPRENÖRSKAP',
+	'OCH AKTIVT ÄGARSKAP',
 ];
 const defaultBounds = {
 	top: 0,
@@ -70,14 +72,15 @@ export default function Hero({ video }: HeroProps) {
 				poster={`${thumbnailUrl}?time=0`}
 			/>
 			<div className={s.text} data-lenis-snap={true}>
-				{rows.map((cols, i) => (
+				{rows.map((row, i) => (
 					<div key={i} className={s.row}>
 						<h1 key={i}>
-							{cols.map((col, j) => (
+							{row.split(' ').map((col, j) => (
 								<React.Fragment key={j}>
-									<span key={j}>{col}</span>
-									{i === 1 && j === 1 && (
+									{col === '#' ? (
 										<img ref={thumbnailRef} src={thumbnailUrl} onLoad={updateBounds} />
+									) : (
+										<span key={j}>{col}</span>
 									)}
 								</React.Fragment>
 							))}

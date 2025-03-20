@@ -1,20 +1,44 @@
 .portfolio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-  .swiper {
+  .header {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 100%;
+    padding-left: var(--outer-margin);
+    padding-right: var(--outer-margin);
+    margin-bottom: var(--space-small);
 
-    .slideWrap {
+    h3 {
+      flex: 1 1 auto;
+    }
+  }
+
+  .gallery {
+    position: relative;
+    overflow-x: scroll;
+    height: 30vh;
+
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
       align-items: center;
+      list-style: none;
 
-      .slide {
+
+      li {
+        flex: 0 0 25%;
+        height: 100%;
         position: relative;
         margin-bottom: 1rem;
         margin-right: 1rem;
+
 
         a {
           color: var(--black);
