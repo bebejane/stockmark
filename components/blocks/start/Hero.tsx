@@ -8,7 +8,7 @@ import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export type HeroProps = {
-	video: FileField;
+	video: StartQuery['start']['video'];
 };
 
 const rows = [
@@ -56,7 +56,6 @@ export default function Hero({ video }: HeroProps) {
 				initial={false}
 				className={s.video}
 				style={{ top, left, width, height }}
-				//@ts-ignore
 				src={video.video?.mp4high}
 				autoPlay={true}
 				muted={true}

@@ -3,7 +3,7 @@ import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import { PortfolioDocument } from '@/graphql';
-import PageHeader from '@components/common/PageHeader';
+import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
 
@@ -16,7 +16,7 @@ export default async function Home() {
 	return (
 		<>
 			<article className={s.page}>
-				<PageHeader content={portfolioHeadline.headline} />
+				<Header content={portfolioHeadline.headline} />
 				<section className={s.companies}>
 					<ul className='grid'>
 						{allCompanies.map((company, i) => (
@@ -25,7 +25,7 @@ export default async function Home() {
 									{company.image && (
 										<figure>
 											<Image data={company.image?.responsiveImage} />
-											<div className={classNames(s.text, "small")}>
+											<div className={classNames(s.text, 'small')}>
 												<Content content={company.text} />
 											</div>
 										</figure>

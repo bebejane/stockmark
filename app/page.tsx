@@ -1,19 +1,24 @@
-import s from './page.module.scss';
-import Link from 'next/link';
 import { apiQuery } from 'next-dato-utils/api';
-import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
-import { Image } from 'react-datocms';
+import { DraftMode } from 'next-dato-utils/components';
 import Hero from '@components/blocks/start/Hero';
-import Header from '@components/blocks/start/Header';
-import Blank from '../components/blocks/start/Blank';
 import { StartDocument } from '@/graphql';
+import Header from '@components/common/Header';
+import IntroText from '@components/blocks/start/IntroText';
+import Facts from '@components/blocks/start/Facts';
+import Portfolio from '@components/blocks/start/Portfolio';
 
 export default async function Home() {
-	const { start } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument);
+	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument);
+
 	return (
 		<>
 			<Hero video={start?.video as FileField} />
-			<Header />
+			<Header content={start.headline} margins={true} />
+			<Header content={start.summary} margins={true} />
+			<IntroText intro={start.textIntro} text={start.text} />
+			<Facts facts={start.facts} />
+			<Portfolio portfolio={start.portfolio} />
+			<DraftMode url={draftUrl} path='/' />
 		</>
 	);
 }

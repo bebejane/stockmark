@@ -1,20 +1,19 @@
 'use client';
 
-import s from './PageHeader.module.scss';
+import s from './Header.module.scss';
 import cn from 'classnames';
 import React, { useRef, useEffect } from 'react';
-import { useWindowSize } from 'rooks';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Content from '@/components/content/Content';
+import { motion } from 'framer-motion';
 import { render, renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { isHeading } from 'datocms-structured-text-utils';
 
-export type PageHeaderProps = {
+export type HeaderProps = {
 	content: any;
 	video?: FileField;
+	margins?: boolean;
 };
 
-export default function PageHeader({ content, video }: PageHeaderProps) {
+export default function Header({ content, margins }: HeaderProps) {
 	const headers = [];
 	render(content, {
 		customNodeRules: [
@@ -26,10 +25,28 @@ export default function PageHeader({ content, video }: PageHeaderProps) {
 	});
 
 	return (
-		<header className={s.header}>
+		<header className={cn(s.header, margins && s.margins)}>
 			{headers.map(({ text, className }, i) => (
 				<h1 key={i} className={className}>
-					<span style={{ animationDelay: `${i * 0.4}s` }}>{text}</span>
+					<motion.span
+						initial='hidden'
+						whileInView='visible'
+						viewport={{ once: true }}
+						variants={{
+							hidden: { y: '100%' },
+							visible: {
+								y: '0%',
+								transition: {
+									delay: 0.2 * i,
+									type: 'spring',
+									stiffness: 50,
+									mass: 0.5,
+								},
+							},
+						}}
+					>
+						{text}
+					</motion.span>
 				</h1>
 			))}
 		</header>

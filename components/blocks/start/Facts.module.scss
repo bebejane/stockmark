@@ -1,0 +1,14 @@
+.facts {
+  padding: var(--outer-margin);
+
+  ul {
+    display: grid;
+    list-style: none;
+    width: 100%;
+
+    li {
+      grid-column: span 3;
+    }
+  }
+
+}
