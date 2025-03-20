@@ -6,6 +6,7 @@ import React, { useRef, useEffect } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from '@node_modules/next/navigation';
+import { sleep } from 'next-dato-utils/utils';
 import Header, { extractHeaders } from '@components/common/Header';
 
 export type HeroProps = {
@@ -46,16 +47,18 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const width = useTransform(scrollYProgress, [0, 1], [innerWidth, thumbBounds.width]);
 	const height = useTransform(scrollYProgress, [0, 1], [innerHeight, thumbBounds.height]);
 
-	function updateBounds() {
+	async function updateBounds() {
+		await sleep(100);
 		const bounds = thumbnailRef.current?.getBoundingClientRect();
 		setThumbBounds(bounds ?? null);
 	}
+
 	useEffect(() => {
 		updateBounds();
 	}, [innerHeight, innerWidth, pathname]);
 
 	const headers = extractHeaders(summary);
-	console.log(headers);
+
 	return (
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
 			<div className={s.header}>
@@ -80,7 +83,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 						<h1 key={i}>
 							{row.text.split(' ').map((col, j) => (
 								<React.Fragment key={j}>
-									{col === '#' ? (
+									{col === '###' ? (
 										<img ref={thumbnailRef} src={thumbnailUrl} onLoad={updateBounds} />
 									) : (
 										<span key={j}>{col}</span>

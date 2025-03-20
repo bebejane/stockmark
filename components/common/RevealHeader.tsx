@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { exit } from 'process';
 
 export type RevealHeaderProps = {
 	children: string;
@@ -10,16 +11,19 @@ export type RevealHeaderProps = {
 };
 
 export default function RevealHeader({ children, size = 1, className, delay }: RevealHeaderProps) {
-	const Header = `h${size}` as keyof JSX.IntrinsicElements;
+	const Header = `h${size}` as React.ElementType;
 
 	return (
 		<Header className={className} style={{ overflow: 'hidden', padding: 0 }}>
 			<motion.span
 				initial='hidden'
 				whileInView='visible'
+				exit={'exit'}
 				viewport={{ once: true }}
+				style={{ display: 'inline-block' }}
 				variants={{
 					hidden: { y: '100%' },
+					exit: { x: '-100%', y: '0%' },
 					visible: {
 						y: '0%',
 						transition: {
@@ -30,7 +34,6 @@ export default function RevealHeader({ children, size = 1, className, delay }: R
 						},
 					},
 				}}
-				style={{ display: 'inline-block' }}
 			>
 				{children}
 			</motion.span>

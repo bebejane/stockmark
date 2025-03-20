@@ -39,10 +39,7 @@ function Counter({
 	const value = isFloat ? parseFloat(_value.replace(',', '.')) : parseInt(_value);
 	const ref = useRef<HTMLHeadingElement>(null);
 	const motionValue = useMotionValue(direction === 'down' ? value : 0);
-	const springValue = useSpring(motionValue, {
-		damping: 50,
-		stiffness: 100,
-	});
+	const springValue = useSpring(motionValue, { damping: 50, stiffness: 100 });
 	const isInView = useInView(ref, { once: true, margin: '-100px' });
 
 	useEffect(() => {
@@ -55,9 +52,9 @@ function Counter({
 		() =>
 			springValue.on('change', (latest: number) => {
 				if (!ref.current) return;
-				ref.current.textContent = Intl.NumberFormat('en-US').format(
-					isFloat ? Math.round(latest * 10) / 10 : Math.ceil(latest)
-				);
+				ref.current.textContent = isFloat
+					? (Math.round(latest * 10) / 10).toFixed(1).replace('.', ',')
+					: Math.ceil(latest).toFixed(0);
 			}),
 		[springValue]
 	);

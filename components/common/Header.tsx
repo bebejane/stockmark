@@ -2,8 +2,6 @@
 
 import s from './Header.module.scss';
 import cn from 'classnames';
-import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { render, renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { isHeading, isInlineBlock } from 'datocms-structured-text-utils';
 import RevealHeader from '@components/common/RevealHeader';
@@ -39,7 +37,7 @@ export function extractHeaders(content: any): { text: string; className: string 
 			renderNodeRule(isInlineBlock, ({ adapter: { renderNode }, node, children, key }) => {
 				//headers.push({ text: children, className: node.style });
 
-				return '#';
+				return '###';
 			}),
 		],
 	});
