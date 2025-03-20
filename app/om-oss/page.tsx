@@ -5,7 +5,7 @@ import { Image } from 'react-datocms';
 import Link from 'next/link';
 import { AboutDocument } from '@/graphql';
 import AboutGallery from './AboutGallery';
-import PageHeader from '@components/common/PageHeader';
+import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import cn from '@node_modules/classnames';
 import { motion } from 'framer-motion';
@@ -17,7 +17,7 @@ export default async function Home() {
 	return (
 		<>
 			<article className={s.page}>
-				<PageHeader content={about.headline} />
+				<Header content={about.headline} />
 				<section className={cn(s.about, 'grid')}>
 					<AboutGallery images={about.images as FileField[]} />
 					<div className={s.text}>

@@ -4,5 +4,41 @@ query Start {
 		video {
 			...MediaFragment
 		}
+		facts {
+			id
+			label
+			number
+		}
+		headline {
+			blocks
+			links
+			value
+		}
+		text {
+			blocks
+			links
+			value
+		}
+		textIntro {
+			blocks
+			links
+			value
+		}
+		summary {
+			blocks
+			links
+			value
+		}
+		portfolio {
+			...CompanyFragment
+		}
+	}
+	portfolioHeadline {
+		id
+		headline {
+			blocks
+			links
+			value
+		}
 	}
 }

@@ -2,12 +2,24 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--black);
+  background-color: var(--white);
+  color: var(--black);
   padding: var(--outer-margin);
   height: 100vh;
+  transition: all 0.8s ease-in-out;
 
   * {
+    transition: all 0.8s ease-in-out;
+    color: var(--black);
+  }
+
+  &.invert {
+    background-color: var(--black);
     color: var(--white);
+
+    * {
+      color: var(--white);
+    }
   }
 
   .swiper {
@@ -21,7 +33,6 @@
     .slideWrap {
       align-items: center;
 
-
       .slide {
         width: 100%;
 
@@ -32,14 +43,9 @@
             font-size: 1rem;
           }
         }
-
       }
-
     }
-
-
   }
-
 
   .copyright {
     display: flex;

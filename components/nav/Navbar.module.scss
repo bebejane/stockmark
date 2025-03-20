@@ -55,7 +55,7 @@
       position: relative;
       opacity: 1;
       transform: translateY(0%);
-      transition: transform 0.3s ease-in-out, opacity 0.2s ease-out;
+      transition: all 0.5s ease-in-out;
 
       &>* {
         transition: color 0.3s ease-in-out;
@@ -74,7 +74,7 @@
       }
 
       &.hide {
-        transform: translateY(calc(-1 * var(--navbar-height)/2));
+        transform: translateY(calc(-1 * 3em));
         opacity: 0;
       }
     }

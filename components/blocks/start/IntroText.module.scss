@@ -1,0 +1,13 @@
+.introText {
+  padding: var(--outer-margin);
+
+  .intro {
+    grid-column: 1 / span 4;
+    text-transform: uppercase;
+  }
+
+  .text {
+    grid-column: 6 / span 5;
+  }
+
+}

@@ -3,7 +3,7 @@ import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import { ManifestDocument } from '@/graphql';
-import PageHeader from '@components/common/PageHeader';
+import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
 
@@ -16,10 +16,10 @@ export default async function Home() {
 		<>
 			<article className={s.page}>
 				<div className={s.header}>
-					<PageHeader content={manifest.headline} />
+					<Header content={manifest.headline} />
 					<VideoPlayer data={manifest.video} className={s.video} />
 				</div>
-				<section className={classNames(s.content, "grid-2")}>
+				<section className={classNames(s.content, 'grid-2')}>
 					<div className={s.intro}>
 						<Content content={manifest.intro} />
 					</div>
