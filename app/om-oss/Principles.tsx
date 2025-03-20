@@ -4,6 +4,7 @@ import s from './Principles.module.scss';
 import cn from 'classnames';
 import Content from '@components/content/Content';
 import { motion, stagger } from 'framer-motion';
+import RevealHeader from '@components/common/RevealHeader';
 
 export type Props = {
 	about: AboutQuery['about'];
@@ -12,7 +13,7 @@ export type Props = {
 export default function Principles({ about }: Props) {
 	return (
 		<section className={s.principles}>
-			<h2>{about.headlinePrinciples}</h2>
+			<RevealHeader size={2}>{about.headlinePrinciples}</RevealHeader>
 			<ul className='grid-2'>
 				{about.principles.map((principle, i) => (
 					<li key={i} className='grid-6'>

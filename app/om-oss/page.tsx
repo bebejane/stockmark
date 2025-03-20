@@ -8,10 +8,10 @@ import AboutGallery from './AboutGallery';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import cn from '@node_modules/classnames';
-import { motion } from 'framer-motion';
 import Principles from '@app/om-oss/Principles';
+import RevealHeader from '@components/common/RevealHeader';
 
-export default async function Home() {
+export default async function About() {
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument);
 
 	return (
@@ -27,7 +27,7 @@ export default async function Home() {
 				</section>
 				<Principles about={about} />
 				<section className={s.people}>
-					<h2>{about.headlinePeople}</h2>
+					<RevealHeader size={2}>{about.headlinePeople}</RevealHeader>
 					<ul>
 						{about.people?.map((person, i) => (
 							<li key={i}>
