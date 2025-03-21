@@ -2,7 +2,7 @@
 
 import s from './Hero.module.scss';
 import cn from 'classnames';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from '@node_modules/next/navigation';
@@ -30,7 +30,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const [thumbBounds, setThumbBounds] = React.useState<DOMRect | any>(defaultBounds);
 	const pathname = usePathname();
 	const ref = useRef<HTMLDivElement | null>(null);
-	const thumbnailUrl = video.video?.thumbnailUrl;
+	const thumbnailUrl = video.video.thumbnailUrl;
 	const thumbnailRef = useRef<HTMLImageElement | null>(null);
 	const { innerHeight, innerWidth } = useWindowSize();
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
@@ -42,7 +42,6 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const opacity = useTransform(scrollYProgress, [0, 0.1], ['1', '0']);
 
 	async function updateBounds() {
-		await sleep(100);
 		const bounds = thumbnailRef.current?.getBoundingClientRect();
 		setThumbBounds(bounds ?? null);
 	}
@@ -50,6 +49,10 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	useEffect(() => {
 		updateBounds();
 	}, [innerHeight, innerWidth, pathname]);
+
+	useLayoutEffect(() => {
+		updateBounds();
+	}, []);
 
 	const headers = extractHeaders(summary);
 
@@ -78,7 +81,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 							{row.text.split(' ').map((col, j) => (
 								<React.Fragment key={j}>
 									{col === '###' ? (
-										<img ref={thumbnailRef} src={thumbnailUrl} onLoad={updateBounds} />
+										<div className={s.thumb} ref={thumbnailRef} />
 									) : (
 										<span key={j}>{col}</span>
 									)}

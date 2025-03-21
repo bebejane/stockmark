@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: var(--space-bigger);
+  margin-top: var(--space-bigger);
   margin-bottom: var(--space-big);
 
   .header {
@@ -18,11 +18,11 @@
   }
 
   .gallery {
-    --gallery-height: 40vh;
+    --gallery-height: 30vh;
     position: relative;
     overflow: visible;
     overflow-x: scroll;
-    height: calc(var(--gallery-height) + 2rem);
+    height: calc(var(--gallery-height) + 3em);
 
     ul {
       position: absolute;
@@ -108,8 +108,8 @@
           display: flex;
           justify-content: space-between;
           overflow: hidden;
-          max-height: 1em;
-          margin-top: 1rem;
+          height: 2em;
+          margin-top: 1em;
 
           span {
             display: inline-block;

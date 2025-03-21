@@ -48,14 +48,17 @@
       }
 
       span,
-      img {
+      .thumb {
         margin-right: 0.2em;
       }
 
-      img {
-        max-height: 0.8em;
+      .thumb {
+        display: inline-block;
+        height: 0.8em;
+        aspect-ratio: 16/9;
         opacity: 0;
       }
     }
+
   }
 }
