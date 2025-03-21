@@ -46,6 +46,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const left = useTransform(scrollYProgress, [0, 1], [0, thumbBounds.left]);
 	const width = useTransform(scrollYProgress, [0, 1], [innerWidth, thumbBounds.width]);
 	const height = useTransform(scrollYProgress, [0, 1], [innerHeight, thumbBounds.height]);
+	const opacity = useTransform(scrollYProgress, [0, 0.1], ['1', '0']);
 
 	async function updateBounds() {
 		await sleep(100);
@@ -75,7 +76,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 					disablePictureInPicture={true}
 					poster={`${thumbnailUrl}?time=0`}
 				/>
-				<Header content={headline} margins={true} />
+				<Header content={headline} margins={true} style={{ opacity }} />
 			</div>
 			<div className={s.text} data-lenis-snap={true}>
 				{headers.map((row, i) => (
