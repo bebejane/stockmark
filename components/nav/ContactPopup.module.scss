@@ -9,7 +9,9 @@
   margin-right: calc(var(--outer-margin) - var(--padding));
   border-radius: 10px;
   padding: var(--padding);
-  margin-top: 1rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  margin-top: 1.5rem;
   background-color: var(--black);
   color: var(--white);
 
@@ -42,10 +44,6 @@
       &:hover {
         color: var(--blue-light);
       }
-    }
-
-    > p {
-      margin-top: 1rem;
     }
 
     ul {

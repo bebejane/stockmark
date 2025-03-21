@@ -22,7 +22,7 @@ export default async function About() {
 					<AboutGallery images={about.images as FileField[]} />
 					<div className={s.text}>
 						<Content content={about.text} />
-						<Link href={'/manifest'}>Läs mer i vårat manifest</Link>
+						<Link href={'/manifest'}>Läs mer i vårat manifest →</Link>
 					</div>
 				</section>
 				<Principles about={about} />
