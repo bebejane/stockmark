@@ -1,5 +1,6 @@
 .page {
   .text {
+    padding-bottom: var(--space-big);
     ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -9,7 +10,7 @@
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-column-gap: var(--space-small);
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
 
         p {
           &:before {

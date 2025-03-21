@@ -1,5 +1,6 @@
 .facts {
   padding: var(--outer-margin);
+  margin-bottom: var(--space-bigger);
 
   ul {
     display: grid;
@@ -10,5 +11,4 @@
       grid-column: span 3;
     }
   }
-
 }

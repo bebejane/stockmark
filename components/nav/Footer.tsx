@@ -47,17 +47,17 @@ export default function Footer({ footer }: Props) {
 							className={s.slide}
 						>
 							<div>
-								<h2>
+								<h3>
 									<Content content={item.text} />
-								</h2>
-								<h3>{item.by}</h3>
+								</h3>
+								<h4>{item.by}</h4>
 							</div>
 						</SwiperSlide>
 					))}
 				</SwiperReact>
 
 				<div className={s.copyright}>
-					<span className={s.text}>© Stockmark AB Kungsgatan 9, Stockholm</span>
+					<span className={cn(s.text, "small")}>© Stockmark AB Kungsgatan 9, Stockholm</span>
 					<span className={s.about}>
 						<img src='/images/logo.svg' alt='Logo' />
 					</span>

@@ -1,4 +1,7 @@
 .page {
   display: block;
 
+  header {
+    padding-bottom: var(--space-small) !important;
+  }
 }

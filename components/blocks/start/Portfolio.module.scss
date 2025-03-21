@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  padding-top: var(--space-bigger);
+  margin-bottom: var(--space-big);
 
   .header {
     display: flex;
@@ -31,14 +33,12 @@
       align-items: center;
       list-style: none;
 
-
       li {
         flex: 0 0 25%;
         height: 100%;
         position: relative;
         margin-bottom: 1rem;
         margin-right: 1rem;
-
 
         a {
           color: var(--black);
@@ -95,8 +95,6 @@
             }
           }
         }
-
-
 
         figure:hover {
           .text {

@@ -4,6 +4,7 @@
   align-items: flex-start;
   width: 100%;
   padding-bottom: var(--space-bigger);
+  padding-top: var(--space-big);
   z-index: 10;
 
   h1 {
@@ -29,5 +30,4 @@
     padding-left: var(--outer-margin);
     padding-right: var(--outer-margin);
   }
-
 }

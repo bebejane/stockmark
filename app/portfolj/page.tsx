@@ -30,10 +30,10 @@ export default async function Home() {
 											</div>
 										</figure>
 									)}
-									<h3>
+									<h4>
 										{company.name}
 										<span>→</span>
-									</h3>
+									</h4>
 								</a>
 							</li>
 						))}
