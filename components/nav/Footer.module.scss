@@ -58,6 +58,10 @@
     width: calc(100% - 2 * var(--outer-margin));
     display: flex;
 
+    img {
+      height: 1.1rem;
+    }
+
     .about {
       display: flex;
       justify-content: flex-end;

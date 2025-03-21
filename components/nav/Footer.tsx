@@ -59,7 +59,7 @@ export default function Footer({ footer }: Props) {
 				<div className={s.copyright}>
 					<span className={cn(s.text, "small")}>© Stockmark AB Kungsgatan 9, Stockholm</span>
 					<span className={s.about}>
-						<img src='/images/logo.svg' alt='Logo' />
+						<img src='/images/symbol.svg' alt='Logo' />
 					</span>
 				</div>
 			</footer>
