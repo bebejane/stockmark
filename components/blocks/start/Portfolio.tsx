@@ -41,10 +41,7 @@ export default function Portfolio({ portfolio }: HeroProps) {
 									</div>
 								</figure>
 							)}
-							<h3>
-								{name}
-								<span>→</span>
-							</h3>
+							<h3>{name}</h3>
 						</li>
 					))}
 				</motion.ul>

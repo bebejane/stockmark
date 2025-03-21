@@ -4,7 +4,7 @@ fragment ImageSquareFragment on FileFieldInterface {
 	mimeType
 	url
 	title
-	responsiveImage(imgixParams: { ar: "4:4", fit: crop, w: 800, h: 800, auto: format }) {
+	responsiveImage(imgixParams: { ar: "4:3", fit: crop, w: 800, h: 800, auto: format }) {
 		...ResponsiveImageFragment
 	}
 }
