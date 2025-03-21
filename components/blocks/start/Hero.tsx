@@ -15,13 +15,6 @@ export type HeroProps = {
 	summary: StartQuery['start']['summary'];
 };
 
-const rows = [
-	'STOCKMARK BYGGER',
-	'LÅNGSIKTIGA RELATIONER',
-	'GENOM ÄKTA #',
-	'ENTREPRENÖRSKAP',
-	'OCH AKTIVT ÄGARSKAP',
-];
 const defaultBounds = {
 	top: 0,
 	left: 0,

@@ -1,6 +1,7 @@
 .page {
   .text {
     padding-bottom: var(--space-big);
+
     ul {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -21,18 +22,26 @@
             padding-right: 1rem;
           }
 
-          grid-column: 2 / 7; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
+          grid-column: 2 / 7;
+          /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
           padding-right: var(--space-small);
         }
       }
     }
   }
+
   .invest {
     margin-top: var(--space-bigger);
     margin-bottom: var(--space-big);
+
     h3 {
       margin-bottom: var(--space-mid);
-      grid-column: 1 / 3; /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
+      grid-column: 1 / 3;
     }
+
+    .counter {
+      display: inline;
+    }
+
   }
 }

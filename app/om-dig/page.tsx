@@ -1,11 +1,12 @@
 import s from './page.module.scss';
+import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { Image } from 'react-datocms';
 import { YouDocument } from '@/graphql';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
+import Counter from '@app/om-dig/Counter';
 
 export default async function Home() {
 	const { you, draftUrl } = await apiQuery<YouQuery, YouQueryVariables>(YouDocument);
@@ -19,7 +20,12 @@ export default async function Home() {
 				</section>
 				<section className={classNames(s.invest, 'grid-2')}>
 					<h3>{you.inevestHeadline}</h3>
-					<Content content={you.investText} />
+					<div className={cn(s.counter, 'number')}>
+						<Counter value={'95'} unit={'%'} direction={'up'} /> BRANCH
+					</div>
+					<div className={cn(s.counter, 'number')}>
+						<Counter value={'5'} unit={'%'} direction={'up'} className={cn(s.counter)} /> TEAM
+					</div>
 				</section>
 			</article>
 			<DraftMode url={draftUrl} path={'/om-dig'} />

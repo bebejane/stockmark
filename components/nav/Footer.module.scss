@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
-  color: var(--black);
+  //background-color: var(--white);
+  //color: var(--black);
   padding: var(--outer-margin);
   height: 100vh;
   transition: all 0.8s ease-in-out;
@@ -14,7 +14,7 @@
   }
 
   &.invert {
-    background-color: var(--black);
+    //background-color: var(--black);
     color: var(--white);
 
     * {

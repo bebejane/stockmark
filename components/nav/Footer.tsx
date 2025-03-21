@@ -7,9 +7,10 @@ import cn from 'classnames';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import type { Swiper } from 'swiper';
-import { useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import { useInViewRef } from 'rooks';
 import Content from '@components/content/Content';
+import Link from 'next/link';
 
 type Props = {
 	footer: FooterQuery['footer'];
@@ -18,7 +19,11 @@ type Props = {
 export default function Footer({ footer }: Props) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const [index, setIndex] = useState(0);
-	const [ref, inView] = useInViewRef({ threshold: 0.8 });
+	const [ref, inView] = useInViewRef({ threshold: 0.2 });
+
+	useEffect(() => {
+		document.body.classList.toggle('invert', inView);
+	}, [inView]);
 
 	return (
 		<>
@@ -57,9 +62,11 @@ export default function Footer({ footer }: Props) {
 				</SwiperReact>
 
 				<div className={s.copyright}>
-					<span className={cn(s.text, "small")}>© Stockmark AB Kungsgatan 9, Stockholm</span>
+					<span className={cn(s.text, 'small')}>© Stockmark AB Kungsgatan 9, Stockholm</span>
 					<span className={s.about}>
-						<img src='/images/symbol.svg' alt='Logo' />
+						<Link href='/'>
+							<img src='/images/symbol.svg' alt='Logo' />
+						</Link>
 					</span>
 				</div>
 			</footer>
