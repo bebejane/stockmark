@@ -1,12 +1,10 @@
 'use client';
 
 import s from './Hero.module.scss';
-import cn from 'classnames';
 import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from '@node_modules/next/navigation';
-import { sleep } from 'next-dato-utils/utils';
 import Header, { extractHeaders } from '@components/common/Header';
 
 export type HeroProps = {
@@ -33,37 +31,40 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const thumbnailUrl = video.video.thumbnailUrl;
 	const thumbnailRef = useRef<HTMLImageElement | null>(null);
 	const { innerHeight, innerWidth } = useWindowSize();
-	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ['start start', 'end end'],
+	});
+
+	async function updateBounds() {
+		window.scrollTo(0, 0);
+		const bounds = thumbnailRef.current?.getBoundingClientRect();
+		setThumbBounds(bounds ?? null);
+		console.log(bounds.top);
+	}
+
+	useLayoutEffect(() => {
+		updateBounds();
+	}, []);
+
+	useEffect(() => {
+		updateBounds();
+	}, [pathname, innerHeight, innerWidth]);
 
 	const top = useTransform(scrollYProgress, [0, 1], [0, thumbBounds.top]);
 	const left = useTransform(scrollYProgress, [0, 1], [0, thumbBounds.left]);
 	const width = useTransform(scrollYProgress, [0, 1], [innerWidth, thumbBounds.width]);
 	const height = useTransform(scrollYProgress, [0, 1], [innerHeight, thumbBounds.height]);
 	const opacity = useTransform(scrollYProgress, [0, 0.1], ['1', '0']);
-
-	async function updateBounds() {
-		const bounds = thumbnailRef.current?.getBoundingClientRect();
-		setThumbBounds(bounds ?? null);
-	}
-
-	useEffect(() => {
-		updateBounds();
-	}, [innerHeight, innerWidth, pathname]);
-
-	useLayoutEffect(() => {
-		updateBounds();
-	}, []);
-
 	const headers = extractHeaders(summary);
 
 	return (
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
 			<div className={s.header}>
 				<motion.video
-					suppressHydrationWarning={true}
 					initial={false}
 					className={s.video}
-					style={{ top, left, width, height }}
+					style={thumbBounds.top > 0 ? { top, left, width, height } : undefined}
 					src={video.video?.mp4high}
 					autoPlay={true}
 					muted={true}

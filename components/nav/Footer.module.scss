@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  //background-color: var(--white);
-  //color: var(--black);
+  justify-content: center;
+  align-items: center;
   padding: var(--outer-margin);
   height: 100vh;
   transition: all 0.8s ease-in-out;
@@ -39,9 +39,11 @@
 
       .slide {
         width: 100%;
+        cursor: pointer;
 
-        > div {
-          padding: 10rem;
+        >div {
+          padding-left: 10rem;
+          padding-right: 10rem;
 
           h3 {
             font-size: 1.6rem;
