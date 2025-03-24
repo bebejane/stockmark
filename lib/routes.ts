@@ -19,6 +19,34 @@ const routes: Routes = {
     typeName: "StartRecord",
     path: async (item) => '/'
   },
+  "about": {
+    typeName: "AboutRecord",
+    path: async (item) => '/om-oss'
+  },
+  "company": {
+    typeName: "CompanyRecord",
+    path: async (item) => '/'
+  },
+  "contact": {
+    typeName: "ContactRecord",
+    path: async (item) => '/kontakt'
+  },
+  "footer": {
+    typeName: "FooterRecord",
+    path: async (item) => '/'
+  },
+  "manifest": {
+    typeName: "ManifestRecord",
+    path: async (item) => '/manifest'
+  },
+  "portfolio_headline": {
+    typeName: "PortfolioHeadlineRecord",
+    path: async (item) => '/portfolj'
+  },
+  "you": {
+    typeName: "YouRecord",
+    path: async (item) => '/om-dig'
+  }
 }
 
 export const buildRoute = async (model: string, item?: any): Promise<string> => {
