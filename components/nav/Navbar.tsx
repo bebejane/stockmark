@@ -70,7 +70,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 				</ul>
 				<ul className={s.contact}>
 					<li
-						className={cn(contact.slug === pathname && s.active)}
+						className={cn(contact.slug === pathname && s.active, showContact && s.hidden)}
 						onClick={() => setShowContact(true)}
 					>
 						<span>{contact.title}</span>

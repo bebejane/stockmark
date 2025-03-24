@@ -14,12 +14,11 @@
   margin-top: 1.5rem;
   background-color: var(--black);
   color: var(--white);
-
   opacity: 0;
   pointer-events: none;
   transform: translateX(calc(100% - var(--outer-margin) - var(--padding)));
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   .header {
     display: flex;
@@ -59,7 +58,7 @@
         padding: 0;
         padding-bottom: 1em;
 
-        &:hover > * {
+        &:hover>* {
           color: var(--white) !important;
         }
 

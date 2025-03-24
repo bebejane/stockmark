@@ -22,7 +22,6 @@ export default function Template({ children }) {
 				document.querySelectorAll<HTMLDivElement>('[data-lenis-snap="true"]')
 			);
 			sections.forEach((section) => {
-				console.log(section.getBoundingClientRect().top);
 				snap.add(section.getBoundingClientRect().top);
 			});
 		}

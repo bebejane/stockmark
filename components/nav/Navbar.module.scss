@@ -26,6 +26,7 @@
   }
 
   &.inverted {
+
     a,
     a:hover,
     span {
@@ -57,11 +58,11 @@
       transform: translateY(0%);
       transition: all 0.5s ease-in-out;
 
-      & > * {
+      &>* {
         transition: color 0.3s ease-in-out;
       }
 
-      &:hover > * {
+      &:hover>* {
         color: var(--blue) !important;
       }
 
@@ -69,7 +70,7 @@
         padding-right: 0;
       }
 
-      &.active > * {
+      &.active>* {
         color: var(--blue) !important;
       }
 
@@ -115,8 +116,14 @@
   align-items: center;
   justify-content: flex-end;
   flex: 0 0 var(--margin);
+  user-select: none;
 
   a:hover {
     color: var(--blue);
   }
+
+  li.hidden {
+    opacity: 0;
+  }
+
 }

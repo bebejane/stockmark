@@ -1,5 +1,9 @@
+'use client';
+
+import { useRef } from 'react';
 import s from './ContactPopup.module.scss';
 import cn from 'classnames';
+import { useOutsideClick } from 'rooks';
 
 export type ContactPopupProps = {
 	show: boolean;
@@ -8,8 +12,11 @@ export type ContactPopupProps = {
 };
 
 export default function ContactPopup({ allContacts, show, onClose }: ContactPopupProps) {
+	const ref = useRef<HTMLDivElement | null>(null);
+	useOutsideClick(ref, onClose);
+
 	return (
-		<div className={cn(s.popup, show && s.show)}>
+		<div className={cn(s.popup, show && s.show)} ref={ref}>
 			<div className={s.header}>
 				<span>Kontakt</span>
 				<button onClick={onClose}>Stäng</button>
