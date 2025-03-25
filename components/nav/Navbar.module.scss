@@ -115,6 +115,7 @@
 }
 
 .contact {
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -126,17 +127,18 @@
     color: var(--blue);
   }
 
-  li.hidden {
-    opacity: 0;
+  transition: transform 0.3s ease-out;
+
+  li.thecontact.hidden {
+    transform: translateX(calc(3em));
   }
 }
 
 .locale {
-  transition: margin-right 0.3s ease-out, opacity 0.3s ease-out;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
   &.hidden {
-    margin-right: -3em;
+    transform: translateX(calc(3em));
     opacity: 0;
   }
-
 }

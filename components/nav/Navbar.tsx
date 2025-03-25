@@ -48,7 +48,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 		const scrolledAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
 		setHide(!scrolledUp);
 		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
-		setHideLocale(y > margin);
+		setHideLocale(y > margin * 2);
 		prevScroll.current = y;
 	});
 
@@ -111,7 +111,11 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 				</ul>
 				<ul className={s.contact}>
 					<li
-						className={cn(isCurrentPathname(contact.slug) && s.active, showContact && s.hidden)}
+						className={cn(
+							s.thecontact,
+							hideLocale && s.hidden,
+							isCurrentPathname(contact.slug) && s.active
+						)}
 						onClick={() => setShowContact(true)}
 					>
 						<span>{contact.title}</span>
