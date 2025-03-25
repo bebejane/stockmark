@@ -25,7 +25,12 @@ export default function IntroText({ text, intro }: HeroProps) {
 	}, [scrollYProgress]); //make sur
 
 	return (
-		<section className={cn(s.introText, 'grid')} ref={ref} data-lenis-snap={true}>
+		<section
+			className={cn(s.introText, 'grid')}
+			ref={ref}
+			data-lenis-snap={true}
+			data-invert-section={false}
+		>
 			<div className={s.intro}>
 				<Content content={intro} />
 			</div>

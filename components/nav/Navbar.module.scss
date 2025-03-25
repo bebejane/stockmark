@@ -63,7 +63,7 @@
       transition: all 0.5s ease-in-out;
 
       &>* {
-        transition: color 0.3s ease-in-out;
+        transition: color 0.5s ease-in-out;
       }
 
       &:hover>* {
@@ -79,7 +79,7 @@
       }
 
       &.hide {
-        transform: translateY(calc(-1 * 3em));
+        transform: translateY(calc(-1 * 3em)) rotate(-3deg);
         opacity: 0;
       }
     }
@@ -129,4 +129,14 @@
   li.hidden {
     opacity: 0;
   }
+}
+
+.locale {
+  transition: margin-right 0.3s ease-out, opacity 0.3s ease-out;
+
+  &.hidden {
+    margin-right: -3em;
+    opacity: 0;
+  }
+
 }
