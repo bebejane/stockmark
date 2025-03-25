@@ -6,10 +6,18 @@ import { YouDocument } from '@/graphql';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
-import Counter from '@app/om-dig/Counter';
+import Counter from '@app/[locale]/om-dig/Counter';
 
-export default async function Home() {
-	const { you, draftUrl } = await apiQuery<YouQuery, YouQueryVariables>(YouDocument);
+export type PageProps = {
+	children: React.ReactNode;
+	params: LocaleParams['params'];
+};
+
+export default async function Home({ params }: PageProps) {
+	const { locale } = await params;
+	const { you, draftUrl } = await apiQuery<YouQuery, YouQueryVariables>(YouDocument, {
+		variables: { locale },
+	});
 
 	return (
 		<>

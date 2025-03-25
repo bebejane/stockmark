@@ -1,5 +1,5 @@
-query You {
-	you {
+query You($locale: SiteLocale) {
+	you(locale: $locale) {
 		id
 		title
 		headline {

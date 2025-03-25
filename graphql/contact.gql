@@ -1,11 +1,11 @@
-query Contact {
-	contact {
+query Contact($locale: SiteLocale) {
+	contact(locale: $locale) {
 		...ContactFragment
 	}
 }
 
-query AllContacts {
-	allContacts(first: 100) {
+query AllContacts($locale: SiteLocale) {
+	allContacts(first: 100, locale: $locale) {
 		...ContactFragment
 	}
 }

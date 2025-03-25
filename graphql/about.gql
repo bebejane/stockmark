@@ -1,5 +1,5 @@
-query About {
-	about {
+query About($locale: SiteLocale) {
+	about(locale: $locale) {
 		id
 		title
 		headline {

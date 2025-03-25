@@ -10,7 +10,7 @@ export type MenuItem = {
 
 export type Menu = MenuItem[]
 
-export const buildMenu = async (): Promise<Menu> => {
+export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
 
   const menu: Menu = [{
     id: 'about',

@@ -1,5 +1,5 @@
-query Manifest {
-	manifest {
+query Manifest($locale: SiteLocale) {
+	manifest(locale: $locale) {
 		id
 		title
 		video {

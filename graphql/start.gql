@@ -1,5 +1,5 @@
-query Start {
-	start {
+query Start($locale: SiteLocale) {
+	start(locale: $locale) {
 		id
 		video {
 			...MediaFragment
@@ -42,7 +42,7 @@ query Start {
 			...CompanyFragment
 		}
 	}
-	portfolioHeadline {
+	portfolioHeadline(locale: $locale) {
 		id
 		headline {
 			blocks

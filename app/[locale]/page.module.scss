@@ -1,14 +1,7 @@
-.start {
-  header {
-    @include mq($from: desktop) {
-      padding: var(--outer-margin);
-    }
-  }
+.page {
+  display: block;
 
-  .image {
-    width: auto;
-    height: 50vh;
-    object-fit: contain;
-    display: block;
+  header {
+    padding-bottom: var(--space-small) !important;
   }
 }

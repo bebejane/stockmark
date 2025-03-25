@@ -8,11 +8,19 @@ import AboutGallery from './AboutGallery';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import cn from '@node_modules/classnames';
-import Principles from '@app/om-oss/Principles';
+import Principles from '@app/[locale]/om-oss/Principles';
 import RevealHeader from '@components/common/RevealHeader';
 
-export default async function About() {
-	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument);
+export type PageProps = {
+	children: React.ReactNode;
+	params: LocaleParams['params'];
+};
+
+export default async function About({ params }: PageProps) {
+	const { locale } = await params;
+	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+		variables: { locale },
+	});
 
 	return (
 		<>

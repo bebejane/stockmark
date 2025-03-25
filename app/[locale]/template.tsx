@@ -3,9 +3,8 @@ import 'lenis/dist/lenis.css';
 import Lenis from 'lenis';
 //@ts-ignore
 import Snap from 'lenis/snap';
-
 import { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function Template({ children }) {
 	const ref = useRef(null);

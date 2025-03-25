@@ -7,11 +7,19 @@ import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
 
-export default async function Home() {
+export type PageProps = {
+	children: React.ReactNode;
+	params: LocaleParams['params'];
+};
+
+export default async function Home({ params }: PageProps) {
+	const { locale } = await params;
 	const { portfolioHeadline, allCompanies, draftUrl } = await apiQuery<
 		PortfolioQuery,
 		PortfolioQueryVariables
-	>(PortfolioDocument);
+	>(PortfolioDocument, {
+		variables: { locale },
+	});
 
 	return (
 		<>

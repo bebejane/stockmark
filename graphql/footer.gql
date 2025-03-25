@@ -1,5 +1,5 @@
-query Footer {
-	footer {
+query Footer($locale: SiteLocale) {
+	footer(locale: $locale) {
 		id
 		quotes {
 			id

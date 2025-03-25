@@ -1,15 +1,15 @@
-query Portfolio($first: IntType = 100, $skip: IntType = 0) {
-	portfolioHeadline {
+query Portfolio($first: IntType = 100, $skip: IntType = 0, $locale: SiteLocale) {
+	portfolioHeadline(locale: $locale) {
 		headline {
 			blocks
 			links
 			value
 		}
 	}
-	allCompanies(first: $first, skip: $skip) {
+	allCompanies(first: $first, skip: $skip, locale: $locale) {
 		...CompanyFragment
 	}
-	_allCompaniesMeta {
+	_allCompaniesMeta(locale: $locale) {
 		count
 	}
 }
