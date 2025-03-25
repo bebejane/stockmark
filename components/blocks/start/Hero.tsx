@@ -56,7 +56,6 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const opacity = useTransform(scrollYProgress, [0, 0.1], ['1', '0']);
 	const headers = extractHeaders(summary);
 
-	console.log('bounds', thumbBounds);
 	return (
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
 			<div className={s.header}>

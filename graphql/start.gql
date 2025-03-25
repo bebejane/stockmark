@@ -25,7 +25,10 @@ query Start {
 			value
 		}
 		summary {
-			blocks {
+			blocks
+			links
+			value
+			inlineBlocks {
 				... on InlineVideoBlockRecord {
 					__typename
 					id
@@ -34,8 +37,6 @@ query Start {
 					}
 				}
 			}
-			links
-			value
 		}
 		portfolio {
 			...CompanyFragment
