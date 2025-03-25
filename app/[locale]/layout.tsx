@@ -2,6 +2,7 @@ import '@styles/index.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { AllContactsDocument, FooterDocument, GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
@@ -36,13 +37,30 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 	return (
 		<>
 			<html lang='en'>
-				<body id='root' lang={locale}>
+				<body lang={locale}>
 					<Navbar menu={menu} allContacts={allContacts} />
-					<main>{children}</main>
+					<main>
+						<Body locale={locale}>{children}</Body>
+					</main>
 					<Footer footer={footer} />
 				</body>
 			</html>
 		</>
+	);
+}
+
+export type BodyProps = {
+	children: React.ReactNode;
+	locale?: string;
+};
+
+function Body({ children, locale }: BodyProps) {
+	const messages = useMessages();
+
+	return (
+		<NextIntlClientProvider locale={locale} messages={messages}>
+			{children}
+		</NextIntlClientProvider>
 	);
 }
 
