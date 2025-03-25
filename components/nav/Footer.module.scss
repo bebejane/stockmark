@@ -14,7 +14,6 @@
   }
 
   &.invert {
-    //background-color: var(--black);
     color: var(--white);
 
     * {
@@ -44,16 +43,16 @@
         >div {
           --padding: 10rem;
 
-          @include mq($until: desktop) {
-            --padding: var(--outer-margin);
-          }
-
           padding-left: var(--padding);
           padding-right: var(--padding);
 
           h3 {
             font-size: 1.6rem;
             text-transform: none;
+          }
+
+          @include mq($until: desktop) {
+            --padding: var(--outer-margin);
           }
         }
       }

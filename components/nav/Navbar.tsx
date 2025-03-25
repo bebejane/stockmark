@@ -24,8 +24,8 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const pathname = usePathname();
 	const [showContact, setShowContact] = useState(false);
 	const [invert, setInvert] = useState(true);
+	const [hide, setHide] = useState(true);
 	const { scrollY } = useScroll();
-	const [hide, setHide] = useState(false);
 
 	const isCurrentPathname = (slug: string) => {
 		return slug === pathname || `/${locale}${slug}` === pathname;
@@ -53,6 +53,10 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	useEffect(() => {
 		setInvert(canInvertTop);
 	}, [pathname]);
+
+	useEffect(() => {
+		setHide(false);
+	}, []);
 
 	return (
 		<>
