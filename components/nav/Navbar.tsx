@@ -2,8 +2,8 @@
 
 import s from './Navbar.module.scss';
 import cn from 'classnames';
-import { usePathname, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Link } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu } from '@/lib/menu';
 import { useMotionValueEvent, useScroll } from 'framer-motion';

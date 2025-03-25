@@ -10,7 +10,7 @@ import type { Swiper } from 'swiper';
 import { use, useEffect, useRef, useState } from 'react';
 import { useInViewRef } from 'rooks';
 import Content from '@components/content/Content';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 type Props = {
 	footer: FooterQuery['footer'];

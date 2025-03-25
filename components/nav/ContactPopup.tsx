@@ -32,8 +32,8 @@ export default function ContactPopup({ allContacts, show, onClose }: ContactPopu
 					<a href='mailto:info@stockmark.se'>info@stockmark.se</a>
 				</p>
 				<ul>
-					{allContacts?.map(({ name, email, phone, portrait }) => (
-						<li key={name}>
+					{allContacts?.map(({ name, email, phone, portrait }, i) => (
+						<li key={i}>
 							<div className={s.name}>
 								{name}
 								<br />

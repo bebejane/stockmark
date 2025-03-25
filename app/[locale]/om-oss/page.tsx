@@ -2,7 +2,7 @@ import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { AboutDocument } from '@/graphql';
 import AboutGallery from './AboutGallery';
 import Header from '@components/common/Header';

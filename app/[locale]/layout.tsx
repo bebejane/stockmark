@@ -38,11 +38,11 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 		<>
 			<html lang='en'>
 				<body lang={locale}>
-					<Navbar menu={menu} allContacts={allContacts} />
-					<main>
-						<Body locale={locale}>{children}</Body>
-					</main>
-					<Footer footer={footer} />
+					<Body locale={locale}>
+						<Navbar menu={menu} allContacts={allContacts} />
+						<main>{children}</main>
+						<Footer footer={footer} />
+					</Body>
 				</body>
 			</html>
 		</>

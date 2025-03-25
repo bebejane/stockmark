@@ -7,7 +7,7 @@ import React, { useRef, useEffect } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Content from '@components/content/Content';
-import Link from '@node_modules/next/link';
+import { Link } from '@/i18n/routing';
 
 export type HeroProps = {
 	intro: StartQuery['start']['textIntro'];
