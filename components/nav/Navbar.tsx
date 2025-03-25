@@ -15,7 +15,7 @@ export type NavbarProps = {
 	allContacts: AllContactsQuery['allContacts'];
 };
 
-const invertTopRoutes = ['/', '/manifest'];
+export const invertTopRoutes = ['/', '/manifest'];
 
 export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const locale = useLocale();
@@ -38,13 +38,16 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const nav = menu.filter(({ id }) => id !== 'contact');
 	const contact = menu.find(({ id }) => id === 'contact');
 
-	useMotionValueEvent(scrollY, 'change', (latest) => {
+	useMotionValueEvent(scrollY, 'change', (y) => {
 		const documentHeight = document.documentElement.scrollHeight;
 		const viewportHeight = window.innerHeight;
-		const triggerPoint = documentHeight - viewportHeight - 50;
-		setHide(latest > 50 && prevScroll.current !== null && latest > prevScroll.current);
-		setInvert(latest >= triggerPoint || (canInvertTop && latest < viewportHeight));
-		prevScroll.current = latest;
+		const margin = 50;
+		const scrolledDown = y >= documentHeight - viewportHeight - margin;
+		const scrolledUp = y < prevScroll.current;
+		const scrolledAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
+		setHide(!scrolledUp);
+		setInvert(scrolledDown || scrolledAtTop || y <= margin);
+		prevScroll.current = y;
 	});
 
 	useEffect(() => {

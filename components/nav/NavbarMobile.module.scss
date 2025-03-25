@@ -42,6 +42,21 @@
     }
   }
 
+  &.inverted {
+
+    a,
+    a:hover,
+    span {
+      color: var(--white);
+    }
+
+    .logo {
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+
   @include mq($from: desktop) {
     display: none;
   }
