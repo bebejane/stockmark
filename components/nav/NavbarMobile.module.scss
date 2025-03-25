@@ -32,7 +32,6 @@
       all: unset;
       color: var(--white);
     }
-
   }
 
   &.open {
@@ -79,24 +78,32 @@
     flex: 1 1 auto;
     padding-top: 10rem;
     list-style: none;
+    padding-left: var(--outer-margin);
 
-    >li {
+    > li {
       line-height: 1;
       margin: 0;
+      padding-bottom: 1em;
+
+      &:not(last-child) {
+        font-size: 1.5rem;
+      }
+
       cursor: pointer;
 
       &.active {
         color: var(--blue-light);
 
-        >a {
+        > a {
           color: var(--blue-light);
         }
       }
     }
 
     .contact {
-
       .content {
+        font-size: 1rem;
+
         color: var(--white) !important;
         height: 0;
         overflow: hidden;
@@ -104,13 +111,17 @@
 
         ul {
           list-style: none;
+          li {
+            padding-bottom: 1em;
+            line-height: var(--line-height);
+          }
         }
 
         p {
-          margin: 0;
+          margin-top: 1em;
+          margin-bottom: 1em;
         }
       }
-
     }
   }
 
