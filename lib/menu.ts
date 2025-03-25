@@ -16,19 +16,19 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
   const menu: Menu = [{
     id: 'about',
     title: locale === 'en' ? 'About us' : 'Om oss',
-    slug: routing.pathnames['/om-oss'][locale],
+    slug: '/om-oss',
   }, {
     id: 'about-you',
     title: locale === 'en' ? 'You' : 'Om dig',
-    slug: routing.pathnames['/om-dig'][locale],
+    slug: '/om-dig',
   }, {
     id: 'manifest',
     title: 'Manifest',
-    slug: routing.pathnames['/manifest'][locale],
+    slug: '/manifest',
   }, {
     id: 'portfolio',
     title: locale === 'en' ? 'Portfolio' : 'Portfölj',
-    slug: routing.pathnames['/portfolj'][locale],
+    slug: '/portfolj',
   }, {
     id: 'contact',
     title: locale === 'en' ? 'Contact' : 'Kontakt',

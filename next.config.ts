@@ -18,11 +18,6 @@ const nextConfig: NextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	logging: {
-		fetches: {
-			fullUrl: true,
-		},
-	},
 	async headers() {
 		return [
 			{

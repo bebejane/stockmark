@@ -2,7 +2,7 @@ import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
-import { Link } from '@/i18n/routing';
+import { Link, routing } from '@/i18n/routing';
 import { AboutDocument } from '@/graphql';
 import AboutGallery from './AboutGallery';
 import Header from '@components/common/Header';
@@ -53,4 +53,8 @@ export default async function About({ params }: PageProps) {
 			<DraftMode url={draftUrl} path={'/om-oss'} />
 		</>
 	);
+}
+
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }));
 }

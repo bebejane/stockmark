@@ -2,7 +2,17 @@
 	"menu": {
 		"read-more": {
 			"en": "Read more",
-			"se": "Läs mer"
+			"sv": "Läs mer"
+		}
+	},
+	"Contact": {
+		"title": {
+			"en": "Contact",
+			"sv": "Kontakt"
+		},
+		"close": {
+			"en": "Close",
+			"sv": "Stäng"
 		}
 	}
 }
