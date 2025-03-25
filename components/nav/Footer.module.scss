@@ -42,8 +42,14 @@
         cursor: pointer;
 
         >div {
-          padding-left: 10rem;
-          padding-right: 10rem;
+          --padding: 10rem;
+
+          @include mq($until: desktop) {
+            --padding: var(--outer-margin);
+          }
+
+          padding-left: var(--padding);
+          padding-right: var(--padding);
 
           h3 {
             font-size: 1.6rem;
