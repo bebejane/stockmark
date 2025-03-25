@@ -5,7 +5,11 @@
 
   ul {
     li {
-      margin-bottom: var(--space-mid);
+      margin-bottom: 2rem;
+
+      @include mq($from: desktop) {
+        margin-bottom: var(--space-mid);
+      }
 
       .number {
         grid-column: 1/ 2;
