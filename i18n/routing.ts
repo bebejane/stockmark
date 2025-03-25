@@ -11,19 +11,13 @@ export const routing = defineRouting({
   pathnames: {
     '/': '/',
     '/om-oss': {
-      sv: '/om-oss',
       en: '/about',
     },
     '/om-dig': {
-      sv: '/om-dig',
       en: '/you',
     },
-    '/manifest': {
-      sv: '/om-oss',
-      en: '/about',
-    },
+    '/manifest': '/manifest',
     '/portfolj': {
-      sv: '/portfolj',
       en: '/portfolio',
     }
   }
