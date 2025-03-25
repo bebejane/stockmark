@@ -54,7 +54,7 @@
 
     .logo {
       img {
-        filter: invert(1);
+        filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(28%) hue-rotate(107deg) brightness(105%) contrast(104%);
       }
     }
   }

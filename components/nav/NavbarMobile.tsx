@@ -78,7 +78,12 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 							className={cn(selected === id && s.active)}
 							onClick={() => setSelected(selected === id ? null : id)}
 						>
-							<Link href={slug}>{title}</Link>
+							<Link
+								//@ts-ignore
+								href={slug}
+							>
+								{title}
+							</Link>
 						</li>
 					))}
 					<li
