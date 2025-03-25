@@ -6,10 +6,20 @@ import { ManifestDocument } from '@/graphql';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
+import { setRequestLocale } from 'next-intl/server';
 
-export default async function Home() {
+export type PageProps = {
+	children: React.ReactNode;
+	params: LocaleParams['params'];
+};
+
+export default async function Manifest({ params }: PageProps) {
+	const { locale } = await params;
+	setRequestLocale(locale);
+
 	const { manifest, draftUrl } = await apiQuery<ManifestQuery, ManifestQueryVariables>(
-		ManifestDocument
+		ManifestDocument,
+		{ variables: { locale } }
 	);
 
 	return (

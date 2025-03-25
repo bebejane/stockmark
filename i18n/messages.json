@@ -1,8 +1,8 @@
 {
-  "General": {
-    "read-more": {
-      "en": "Read more",
-      "se": "Läs mer"
-    }
-  }
+	"menu": {
+		"read-more": {
+			"en": "Read more",
+			"se": "Läs mer"
+		}
+	}
 }

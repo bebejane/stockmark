@@ -7,6 +7,7 @@ import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
 import Counter from '@app/[locale]/om-dig/Counter';
+import { setRequestLocale } from 'next-intl/server';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -15,6 +16,8 @@ export type PageProps = {
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
+	setRequestLocale(locale);
+
 	const { you, draftUrl } = await apiQuery<YouQuery, YouQueryVariables>(YouDocument, {
 		variables: { locale },
 	});

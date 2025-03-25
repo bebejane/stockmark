@@ -1,3 +1,4 @@
+import { routing } from '@/i18n/routing'
 
 export type MenuItem = {
   id: string,
@@ -14,23 +15,23 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
 
   const menu: Menu = [{
     id: 'about',
-    title: 'Om oss',
-    slug: '/om-oss',
+    title: locale === 'en' ? 'About us' : 'Om oss',
+    slug: routing.pathnames['/om-oss'][locale],
   }, {
     id: 'about-you',
-    title: 'Om dig',
-    slug: '/om-dig',
+    title: locale === 'en' ? 'You' : 'Om dig',
+    slug: routing.pathnames['/om-dig'][locale],
   }, {
     id: 'manifest',
     title: 'Manifest',
-    slug: '/manifest',
+    slug: routing.pathnames['/manifest'][locale],
   }, {
     id: 'portfolio',
-    title: 'Portfölj',
-    slug: '/portfolj',
+    title: locale === 'en' ? 'Portfolio' : 'Portfölj',
+    slug: routing.pathnames['/portfolj'][locale],
   }, {
     id: 'contact',
-    title: 'Kontakt',
+    title: locale === 'en' ? 'Contact' : 'Kontakt',
   }]
   return menu
 }

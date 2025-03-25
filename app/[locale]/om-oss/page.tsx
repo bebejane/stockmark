@@ -8,8 +8,9 @@ import AboutGallery from './AboutGallery';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import cn from '@node_modules/classnames';
-import Principles from '@app/[locale]/om-oss/Principles';
+import Principles from './Principles';
 import RevealHeader from '@components/common/RevealHeader';
+import { setRequestLocale } from 'next-intl/server';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -18,6 +19,8 @@ export type PageProps = {
 
 export default async function About({ params }: PageProps) {
 	const { locale } = await params;
+	setRequestLocale(locale);
+
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
 		variables: { locale },
 	});
