@@ -1,8 +1,8 @@
 .popup {
   --padding: 1rem;
+  position: fixed;
   display: flex;
   flex-direction: column;
-  position: fixed;
   top: 0;
   right: 0;
   margin: calc(var(--outer-margin));
@@ -15,9 +15,9 @@
   background-color: var(--black);
   color: var(--white);
   opacity: 0;
+  z-index: var(--z-popup);
   pointer-events: none;
   transform: translateX(calc(100% - var(--outer-margin) - var(--padding)));
-
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   .header {

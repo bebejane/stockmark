@@ -82,11 +82,6 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 					))}
 				</ul>
 				<ul className={s.contact}>
-					<li>
-						<Link href={`/`} locale={locale === 'en' ? 'sv' : 'en'}>
-							<span>{locale === 'en' ? 'SV' : 'EN'}</span>
-						</Link>
-					</li>
 					<li
 						className={cn(isCurrentPathname(contact.slug) && s.active, showContact && s.hidden)}
 						onClick={() => setShowContact(true)}
@@ -98,6 +93,11 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 						show={showContact}
 						onClose={() => setShowContact(false)}
 					/>
+					<li>
+						<Link href={`/`} locale={locale === 'en' ? 'sv' : 'en'}>
+							<span>{locale === 'en' ? 'SV' : 'EN'}</span>
+						</Link>
+					</li>
 				</ul>
 			</nav>
 		</>

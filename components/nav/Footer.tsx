@@ -19,7 +19,7 @@ type Props = {
 export default function Footer({ footer }: Props) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const [index, setIndex] = useState(0);
-	const [ref, inView] = useInViewRef({ threshold: 0.2 });
+	const [ref, inView] = useInViewRef({ threshold: 0.4 });
 
 	useEffect(() => {
 		document.body.classList.toggle('invert', inView);
