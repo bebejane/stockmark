@@ -37,11 +37,11 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 		<>
 			<html lang='en'>
 				<body lang={locale}>
-					<Body locale={locale}>
+					<NextIntlClientProvider locale={locale}>
 						<Navbar menu={menu} allContacts={allContacts} />
 						<main>{children}</main>
 						<Footer footer={footer} />
-					</Body>
+					</NextIntlClientProvider>
 				</body>
 			</html>
 		</>
