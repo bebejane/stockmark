@@ -22,8 +22,8 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const prevScroll = useRef<number | null>(null);
 	const pathname = usePathname();
-	const [invert, setInvert] = useState(true);
 	const [showContact, setShowContact] = useState(false);
+	const [invert, setInvert] = useState(true);
 	const { scrollY } = useScroll();
 	const [hide, setHide] = useState(false);
 
