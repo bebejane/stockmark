@@ -46,7 +46,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 		const scrolledUp = y < prevScroll.current;
 		const scrolledAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
 		setHide(!scrolledUp);
-		setInvert(scrolledDown || scrolledAtTop || y <= margin);
+		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
 		prevScroll.current = y;
 	});
 
@@ -63,7 +63,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 			<nav className={cn(s.navbar, invert && s.inverted)} ref={ref}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
-						<img src='/images/logo.svg' alt='Logo' />
+						<img src={`/images/logo.svg`} alt='Logo' />
 					</Link>
 				</figure>
 
