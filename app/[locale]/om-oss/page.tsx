@@ -39,7 +39,7 @@ export default async function About({ params }: PageProps) {
 				<Principles about={about} />
 				<section className={s.people}>
 					<RevealHeader size={2}>{about.headlinePeople}</RevealHeader>
-					<ul>
+					<ul className="grid">
 						{about.people?.map((person, i) => (
 							<li key={i}>
 								<Image data={person.portrait.responsiveImage} />

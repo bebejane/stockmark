@@ -20,13 +20,12 @@
       height: 1rem;
 
       @include mq($until: desktop) {
-        height: 1.15rem;
+        height: 1.05rem;
       }
     }
   }
 
   &.inverted {
-
     a,
     a:hover,
     span {
@@ -58,11 +57,11 @@
       transform: translateY(0%);
       transition: all 0.5s ease-in-out;
 
-      &>* {
+      & > * {
         transition: color 0.3s ease-in-out;
       }
 
-      &:hover>* {
+      &:hover > * {
         color: var(--blue) !important;
       }
 
@@ -70,7 +69,7 @@
         padding-right: 0;
       }
 
-      &.active>* {
+      &.active > * {
         color: var(--blue) !important;
       }
 
@@ -125,5 +124,4 @@
   li.hidden {
     opacity: 0;
   }
-
 }
