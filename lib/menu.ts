@@ -36,11 +36,7 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
   return menu
 }
 
-export const getSelectedMenuItem = (menu: Menu, pathname: string, qs: string): MenuItem | null => {
-  const fullPath = `${pathname}${qs ? `?${qs.toString()}` : ""}`;
-  const selectedSubFromPathname = menu
-    .map(({ sub }) => sub)
-    .flat()
-    .find(({ slug }) => fullPath === slug)?.id;
+export const getSelectedMenuItem = (menu: Menu, pathname: string): MenuItem | null => {
+  const selectedSubFromPathname = menu.find(({ slug }) => pathname === slug)?.id;
   return menu.find(({ sub }) => sub?.find(({ id }) => id === selectedSubFromPathname)) ?? null;
 }

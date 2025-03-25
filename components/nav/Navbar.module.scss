@@ -12,6 +12,10 @@
   padding-bottom: var(--space-small);
   z-index: var(--z-navbar);
 
+  @include mq($until: desktop) {
+    display: none;
+  }
+
   .logo {
     flex: 1 1 auto;
 

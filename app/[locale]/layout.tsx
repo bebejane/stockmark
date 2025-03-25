@@ -10,6 +10,7 @@ import Navbar from '@/components/nav/Navbar';
 import { buildMenu } from '@/lib/menu';
 import Footer from '@/components/nav/Footer';
 import { notFound } from 'next/navigation';
+import NavbarMobile from '@components/nav/NavbarMobile';
 
 export type RootLayoutProps = {
 	children: React.ReactNode;
@@ -38,7 +39,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 			<html lang='en'>
 				<body lang={locale}>
 					<NextIntlClientProvider locale={locale}>
-						<Navbar menu={menu} allContacts={allContacts} locale={locale} />
+						<Navbar menu={menu} allContacts={allContacts} />
+						<NavbarMobile menu={menu} allContacts={allContacts} />
 						<main>{children}</main>
 						<Footer footer={footer} />
 					</NextIntlClientProvider>

@@ -14,7 +14,8 @@
 	--background: var(--white);
 	--foreground: var(--black);
 
-	--z-navbar: 1000;
+	--z-navbar: 100;
+	--z-hamburger: 200;
 
 	--space-big: 6rem;
 	--space-bigger: 8rem;
@@ -31,6 +32,7 @@
 	@include mediaqueries.mq($until: tablet) {
 		--outer-margin: 1.2rem;
 		--space-small: 1rem;
+		--navbar-height: 48px;
 	}
 }
 

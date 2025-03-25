@@ -3,8 +3,7 @@
 import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { useLocale } from 'next-intl';
-import { usePathname } from '@/i18n/routing';
-import { Link } from '@/i18n/routing';
+import { usePathname, Link } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu } from '@/lib/menu';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
@@ -14,7 +13,6 @@ import { locales } from '@/i18n/routing';
 export type NavbarProps = {
 	menu: Menu;
 	allContacts: AllContactsQuery['allContacts'];
-	locale: SiteLocale;
 };
 
 const invertTopRoutes = ['/', '/manifest'];
@@ -30,7 +28,6 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const [hide, setHide] = useState(false);
 
 	const isCurrentPathname = (slug: string) => {
-		console.log(pathname, slug);
 		return slug === pathname || `/${locale}${slug}` === pathname;
 	};
 
