@@ -7,6 +7,10 @@
   margin-top: var(--space-big);
   z-index: 10;
 
+  &.midSpace {
+    padding-bottom: var(--space-mid);
+  }
+
   h1 {
     display: block;
     width: 100%;

@@ -72,7 +72,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 					disablePictureInPicture={true}
 					poster={`${thumbnailUrl}?time=0`}
 				/>
-				<Header content={headline} margins={true} style={{ opacity }} />
+				<Header content={headline} margins={true} style={{ opacity }} midSpace={true} />
 			</div>
 			<div className={s.text} data-lenis-snap={true}>
 				{headers.map((row, i) => (

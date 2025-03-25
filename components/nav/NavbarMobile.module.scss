@@ -6,6 +6,8 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
   height: var(--navbar-height);
   padding: var(--outer-margin);
   margin-bottom: var(--space);
@@ -70,6 +72,7 @@
   flex-direction: column;
   height: 100dvh;
   width: 100%;
+  overflow-y: scroll;
   background-color: var(--black);
   padding: var(--outer-margin);
   color: var(--white);
@@ -95,7 +98,7 @@
     list-style: none;
     padding-left: var(--outer-margin);
 
-    > li {
+    >li {
       line-height: 1;
       margin: 0;
       padding-bottom: 1em;
@@ -109,7 +112,7 @@
       &.active {
         color: var(--blue-light);
 
-        > a {
+        >a {
           color: var(--blue-light);
         }
       }
@@ -126,6 +129,7 @@
 
         ul {
           list-style: none;
+
           li {
             padding-bottom: 1em;
             line-height: var(--line-height);
