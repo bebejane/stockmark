@@ -36,6 +36,10 @@
     padding-left: var(--outer-margin);
     padding-right: var(--outer-margin);
 
+    h1 {
+      margin-bottom: -0.15em;
+    }
+
     .row {
       display: flex;
       flex-direction: column;
@@ -60,6 +64,5 @@
         opacity: 0;
       }
     }
-
   }
 }

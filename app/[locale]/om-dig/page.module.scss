@@ -3,9 +3,11 @@
     padding-bottom: var(--space-big);
 
     ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-column-gap: var(--space-small);
+      @include mq($from: desktop) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: var(--space-small);
+      }
 
       li {
         display: grid;
@@ -42,6 +44,5 @@
     .counter {
       display: inline;
     }
-
   }
 }
