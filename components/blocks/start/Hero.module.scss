@@ -40,22 +40,20 @@
       margin-top: 100vh;
     }
 
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 100%;
+      width: 100%;
 
-    h1 {
-      margin-bottom: -0.15em;
+      &:nth-child(even) {
+        align-items: flex-end;
+      }
 
-
-      .row {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        max-width: 100%;
-        width: 100%;
-
-        &:nth-child(even) {
-          align-items: flex-end;
-        }
+      h1 {
+        margin-bottom: -0.15em;
 
         span,
         .thumb {
@@ -64,7 +62,7 @@
 
         .thumb {
           display: inline-block;
-          height: 0.8em;
+          min-height: 0.8em;
           aspect-ratio: 4/4;
           opacity: 0;
         }

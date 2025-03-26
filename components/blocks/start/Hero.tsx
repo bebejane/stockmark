@@ -81,7 +81,9 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 							{row.text.split(' ').map((col, j) => (
 								<React.Fragment key={j}>
 									{col === '###' ? (
-										<div className={s.thumb} ref={thumbnailRef} />
+										<span>
+											<div className={s.thumb} ref={thumbnailRef} />
+										</span>
 									) : (
 										<span key={j}>{col}</span>
 									)}
