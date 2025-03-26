@@ -46,7 +46,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 		const scrolledDown = y >= documentHeight - viewportHeight - margin;
 		const scrolledUp = y < prevScroll.current;
 		const scrolledAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
-		setHide(!scrolledUp);
+		setHide(!scrolledUp && y > margin);
 		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
 		setHideLocale(y > margin);
 		prevScroll.current = y;
