@@ -41,11 +41,6 @@
         cursor: pointer;
 
         > div {
-          @include mq($from: desktop) {
-            padding-left: 10rem;
-            padding-right: 10rem;
-          }
-        >div {
           --padding: 10rem;
 
           padding-left: var(--padding);
