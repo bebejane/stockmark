@@ -61,17 +61,18 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	}, []);
 
 	useEffect(() => {
-		return;
 		const sections = document.querySelectorAll('[data-invert-section]');
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && entry.target.getAttribute('data-invert-section') === 'true') {
-						setInvert(true);
-					} else if (entry.isIntersecting) setInvert(false);
+						console.log('invert', entry.target);
+					} else if (entry.isIntersecting) {
+						console.log('intersectiong', entry.target);
+					}
 				});
 			},
-			{ rootMargin: '0px 0px 0px 0px', threshold: 0 }
+			{ rootMargin: '0px -10% 0px 60%', threshold: 1 }
 		);
 		sections.forEach((section) => observer.observe(section));
 		return () => {

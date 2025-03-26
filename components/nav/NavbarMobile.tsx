@@ -16,6 +16,8 @@ export type NavbarMobileProps = {
 	allContacts: AllContactsQuery['allContacts'];
 };
 
+const transitionDelay = 0.2;
+
 export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 	const pathname = usePathname();
 	const locale = useLocale();
@@ -53,6 +55,8 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 		updateInvert(0);
 	}, [pathname]);
 
+	let count = 0;
+
 	return (
 		<>
 			<div className={cn(s.topbar, open && s.open, invert && s.inverted)}>
@@ -72,11 +76,12 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 			</div>
 			<nav className={cn(s.navbarMobile, open && s.open)}>
 				<ul className={s.menu}>
-					{nav.map(({ id, title, slug }) => (
+					{nav.map(({ id, title, slug }, i) => (
 						<li
 							key={id}
 							className={cn(selected === id && s.active)}
 							onClick={() => setSelected(selected === id ? null : id)}
+							style={{ transitionDelay: `${transitionDelay + count++ * 0.1}s` }}
 						>
 							<Link
 								//@ts-ignore
@@ -88,6 +93,7 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 					))}
 					<li
 						className={cn(s.contact, selected === contact.id && s.active)}
+						style={{ transitionDelay: `${transitionDelay + count++ * 0.1}s` }}
 						onClick={() => {
 							setSelected(
 								selected === contact.id
@@ -130,7 +136,10 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 							</ul>
 						</div>
 					</li>
-					<li onClick={() => setSelected(null)}>
+					<li
+						onClick={() => setSelected(null)}
+						style={{ transitionDelay: `${transitionDelay + count++ * 0.1}s` }}
+					>
 						<Link href={`/`} locale={locale === 'en' ? 'sv' : 'en'}>
 							<span>{locale === 'en' ? 'SV' : 'EN'}</span>
 						</Link>
