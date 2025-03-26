@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { VideoPlayer } from 'next-dato-utils/components';
 import React, { useRef, useEffect } from 'react';
 import { useWindowSize } from 'rooks';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import Content from '@components/content/Content';
 import { Link } from '@/i18n/routing';
 
@@ -16,13 +16,19 @@ export type HeroProps = {
 
 export default function IntroText({ text, intro }: HeroProps) {
 	const ref = useRef<HTMLDivElement | null>(null);
-	const { innerHeight, innerWidth } = useWindowSize();
-	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+	const paragraphs = useRef<HTMLDivElement[] | null>(null);
+	const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] });
 
-	React.useEffect(() => {
-		// hook into the onChange, store the current value as state.
-		//scrollYProgress.onChange((v) => console.log(v));
-	}, [scrollYProgress]); //make sur
+	useMotionValueEvent(scrollYProgress, 'change', (ratio) => {
+		paragraphs.current = paragraphs.current
+			? paragraphs.current
+			: Array.from(document.querySelectorAll(`.${s.text} > p`));
+
+		paragraphs.current.forEach((p, i) => {
+			const isActive = ratio - 0.15 > i / paragraphs.current.length;
+			p.classList.toggle(s.active, isActive);
+		});
+	});
 
 	return (
 		<section
@@ -36,7 +42,9 @@ export default function IntroText({ text, intro }: HeroProps) {
 			</div>
 			<div className={s.text}>
 				<Content content={text} />
-				<Link href={'/manifest'}>Läs mer</Link>
+				<p>
+					<Link href={'/manifest'}>Läs mer</Link>
+				</p>
 			</div>
 		</section>
 	);
