@@ -1,7 +1,6 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
-import { Image } from 'react-datocms';
 import { ManifestDocument } from '@/graphql';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
@@ -26,7 +25,7 @@ export default async function Manifest({ params }: PageProps) {
 		<>
 			<article className={s.page}>
 				<div className={s.header}>
-					<Header content={manifest.headline} />
+					<Header content={manifest.headline} midSpace={true} />
 					<VideoPlayer data={manifest.video} className={s.video} />
 				</div>
 				<section className={classNames(s.content, 'grid-2')}>

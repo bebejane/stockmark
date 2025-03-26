@@ -15,17 +15,18 @@ export type NavbarProps = {
 	allContacts: AllContactsQuery['allContacts'];
 };
 
-const invertTopRoutes = ['/', '/manifest'];
+export const invertTopRoutes = ['/', '/manifest'];
 
 export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const locale = useLocale();
 	const ref = useRef<HTMLDivElement | null>(null);
 	const prevScroll = useRef<number | null>(null);
 	const pathname = usePathname();
-	const [invert, setInvert] = useState(true);
 	const [showContact, setShowContact] = useState(false);
+	const [invert, setInvert] = useState(true);
+	const [hide, setHide] = useState(true);
+	const [hideLocale, setHideLocale] = useState(false);
 	const { scrollY } = useScroll();
-	const [hide, setHide] = useState(false);
 
 	const isCurrentPathname = (slug: string) => {
 		return slug === pathname || `/${locale}${slug}` === pathname;
@@ -38,17 +39,44 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const nav = menu.filter(({ id }) => id !== 'contact');
 	const contact = menu.find(({ id }) => id === 'contact');
 
-	useMotionValueEvent(scrollY, 'change', (latest) => {
+	useMotionValueEvent(scrollY, 'change', (y) => {
 		const documentHeight = document.documentElement.scrollHeight;
 		const viewportHeight = window.innerHeight;
-		const triggerPoint = documentHeight - viewportHeight - 50;
-		setHide(latest > 50 && prevScroll.current !== null && latest > prevScroll.current);
-		setInvert(latest >= triggerPoint || (canInvertTop && latest < viewportHeight));
-		prevScroll.current = latest;
+		const margin = 50;
+		const scrolledDown = y >= documentHeight - viewportHeight - margin;
+		const scrolledUp = y < prevScroll.current;
+		const scrolledAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
+		setHide(!scrolledUp);
+		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
+		setHideLocale(y > margin);
+		prevScroll.current = y;
 	});
 
 	useEffect(() => {
 		setInvert(canInvertTop);
+	}, [pathname]);
+
+	useEffect(() => {
+		setHide(false);
+	}, []);
+
+	useEffect(() => {
+		return;
+		const sections = document.querySelectorAll('[data-invert-section]');
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting && entry.target.getAttribute('data-invert-section') === 'true') {
+						setInvert(true);
+					} else if (entry.isIntersecting) setInvert(false);
+				});
+			},
+			{ rootMargin: '0px 0px 0px 0px', threshold: 0 }
+		);
+		sections.forEach((section) => observer.observe(section));
+		return () => {
+			sections.forEach((section) => observer.unobserve(section));
+		};
 	}, [pathname]);
 
 	return (
@@ -56,7 +84,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 			<nav className={cn(s.navbar, invert && s.inverted)} ref={ref}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
-						<img src='/images/logo.svg' alt='Logo' />
+						<img src={`/images/logo.svg`} alt='Logo' />
 					</Link>
 				</figure>
 
@@ -70,7 +98,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 								isCurrentPathname(slug) && s.active,
 								hide && s.hide
 							)}
-							style={{ transitionDelay: `${(0.1 / nav.length) * (nav.length - i)}s` }}
+							style={{ transitionDelay: `${(0.2 / nav.length) * (nav.length - i)}s` }}
 						>
 							{sub ? (
 								<span>{title}</span>
@@ -83,7 +111,11 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 				</ul>
 				<ul className={s.contact}>
 					<li
-						className={cn(isCurrentPathname(contact.slug) && s.active, showContact && s.hidden)}
+						className={cn(
+							s.thecontact,
+							hideLocale && s.hidden,
+							isCurrentPathname(contact.slug) && s.active
+						)}
 						onClick={() => setShowContact(true)}
 					>
 						<span>{contact.title}</span>
@@ -93,9 +125,9 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 						show={showContact}
 						onClose={() => setShowContact(false)}
 					/>
-					<li>
+					<li className={cn(s.locale, hideLocale && s.hidden)}>
 						<Link href={`/`} locale={locale === 'en' ? 'sv' : 'en'}>
-							<span>{locale === 'en' ? 'SV' : 'EN'}</span>
+							<span>{locale === 'en' ? 'Sv' : 'En'}</span>
 						</Link>
 					</li>
 				</ul>

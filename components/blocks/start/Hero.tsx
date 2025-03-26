@@ -58,7 +58,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 
 	return (
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
-			<div className={s.header}>
+			<div className={s.header} data-invert-section={true}>
 				<motion.video
 					layout={true}
 					initial={true}
@@ -72,9 +72,9 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 					disablePictureInPicture={true}
 					poster={`${thumbnailUrl}?time=0`}
 				/>
-				<Header content={headline} margins={true} style={{ opacity }} />
+				<Header content={headline} margins={true} style={{ opacity }} midSpace={true} />
 			</div>
-			<div className={s.text} data-lenis-snap={true}>
+			<div className={s.text} data-lenis-snap={true} data-invert-section={false}>
 				{headers.map((row, i) => (
 					<div key={i} className={s.row}>
 						<h1 key={i}>

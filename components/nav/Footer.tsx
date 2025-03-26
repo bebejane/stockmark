@@ -31,6 +31,7 @@ export default function Footer({ footer }: Props) {
 				id='footer'
 				className={cn(s.footer, inView && s.invert)}
 				data-lenis-snap={true}
+				data-invert-section={true}
 				ref={ref}
 			>
 				<SwiperReact

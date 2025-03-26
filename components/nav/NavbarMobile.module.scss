@@ -6,6 +6,8 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
   height: var(--navbar-height);
   padding: var(--outer-margin);
   margin-bottom: var(--space);
@@ -42,6 +44,21 @@
     }
   }
 
+  &.inverted {
+
+    a,
+    a:hover,
+    span {
+      color: var(--white);
+    }
+
+    .logo {
+      img {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(28%) hue-rotate(107deg) brightness(105%) contrast(104%);
+      }
+    }
+  }
+
   @include mq($from: desktop) {
     display: none;
   }
@@ -55,6 +72,7 @@
   flex-direction: column;
   height: 100dvh;
   width: 100%;
+  overflow-y: scroll;
   background-color: var(--black);
   padding: var(--outer-margin);
   color: var(--white);
@@ -80,7 +98,7 @@
     list-style: none;
     padding-left: var(--outer-margin);
 
-    > li {
+    >li {
       line-height: 1;
       margin: 0;
       padding-bottom: 1em;
@@ -94,7 +112,7 @@
       &.active {
         color: var(--blue-light);
 
-        > a {
+        >a {
           color: var(--blue-light);
         }
       }
@@ -103,7 +121,6 @@
     .contact {
       .content {
         font-size: 1rem;
-
         color: var(--white) !important;
         height: 0;
         overflow: hidden;
@@ -111,6 +128,7 @@
 
         ul {
           list-style: none;
+
           li {
             padding-bottom: 1em;
             line-height: var(--line-height);

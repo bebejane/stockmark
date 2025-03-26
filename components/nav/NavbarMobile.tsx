@@ -3,11 +3,13 @@
 import s from './NavbarMobile.module.scss';
 import cn from 'classnames';
 import { useLocale } from 'next-intl';
-import { usePathname } from '@/i18n/routing';
+import { locales, usePathname } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu, getSelectedMenuItem } from '@/lib/menu';
 import Hamburger from 'hamburger-react';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { invertTopRoutes } from '@components/nav/Navbar';
 
 export type NavbarMobileProps = {
 	menu: Menu;
@@ -18,6 +20,10 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 	const pathname = usePathname();
 	const locale = useLocale();
 	const contactContentRef = useRef<HTMLDivElement>(null);
+	const prevScroll = useRef<number | null>(null);
+	const [invert, setInvert] = useState(true);
+	const { scrollY } = useScroll();
+
 	const [selected, setSelected] = useState<string | null>(
 		getSelectedMenuItem(menu, pathname)?.id ?? null
 	);
@@ -25,13 +31,31 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 	const nav = menu.filter(({ id }) => id !== 'contact');
 	const contact = menu.find(({ id }) => id === 'contact');
 
+	const canInvertTop = invertTopRoutes.some(
+		(route) => route === pathname || locales.some((locale) => `/${locale}${route}` === pathname)
+	);
+
+	function updateInvert(y: number) {
+		const documentHeight = document.documentElement.scrollHeight;
+		const viewportHeight = window.innerHeight;
+		const margin = 50;
+		const scrolledDown = y >= documentHeight - viewportHeight - margin;
+		const scrolledUp = y < prevScroll.current;
+		const scrolledAtTop = canInvertTop && y > margin && !scrolledUp;
+		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
+		prevScroll.current = y;
+	}
+
+	useMotionValueEvent(scrollY, 'change', updateInvert);
+
 	useEffect(() => {
 		setOpen(false);
+		updateInvert(0);
 	}, [pathname]);
 
 	return (
 		<>
-			<div className={cn(s.topbar, open && s.open)}>
+			<div className={cn(s.topbar, open && s.open, invert && s.inverted)}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
 						<img src={'/images/logo.svg'} alt='Logo' />
@@ -40,7 +64,7 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 				<div className={s.hamburger}>
 					<Hamburger
 						toggled={open}
-						color={open ? 'white' : 'black'}
+						color={open || invert ? 'white' : 'black'}
 						size={20}
 						onToggle={(state) => setOpen(state)}
 					/>
@@ -54,7 +78,12 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 							className={cn(selected === id && s.active)}
 							onClick={() => setSelected(selected === id ? null : id)}
 						>
-							<Link href={slug}>{title}</Link>
+							<Link
+								//@ts-ignore
+								href={slug}
+							>
+								{title}
+							</Link>
 						</li>
 					))}
 					<li

@@ -13,7 +13,7 @@ export default function Facts({ facts }: HeroProps) {
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	return (
-		<section className={cn(s.facts)} ref={ref} data-lenis-snap={true}>
+		<section className={cn(s.facts)} ref={ref} data-lenis-snap={true} data-invert-section={false}>
 			<ul className='grid'>
 				{facts.map((fact, i) => (
 					<li key={i}>

@@ -39,7 +39,7 @@
 
     .logo {
       img {
-        filter: invert(1);
+        filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(28%) hue-rotate(107deg) brightness(105%) contrast(104%);
       }
     }
   }
@@ -63,7 +63,7 @@
       transition: all 0.5s ease-in-out;
 
       &>* {
-        transition: color 0.3s ease-in-out;
+        transition: color 0.5s ease-in-out;
       }
 
       &:hover>* {
@@ -79,7 +79,7 @@
       }
 
       &.hide {
-        transform: translateY(calc(-1 * 3em));
+        transform: translateY(calc(-1 * 3em)) rotate(-3deg);
         opacity: 0;
       }
     }
@@ -115,6 +115,7 @@
 }
 
 .contact {
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -126,7 +127,18 @@
     color: var(--blue);
   }
 
-  li.hidden {
+  transition: transform 0.3s ease-out;
+
+  li.thecontact.hidden {
+    transform: translateX(calc(3em));
+  }
+}
+
+.locale {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+
+  &.hidden {
+    transform: translateX(calc(3em));
     opacity: 0;
   }
 }

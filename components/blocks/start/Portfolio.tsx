@@ -19,7 +19,12 @@ export default function Portfolio({ portfolio }: HeroProps) {
 	const left = useTransform(scrollYProgress, [1, 0], ['-100vw', '0vw']);
 
 	return (
-		<section className={cn(s.portfolio)} ref={ref} data-lenis-snap={true}>
+		<section
+			className={cn(s.portfolio)}
+			ref={ref}
+			data-lenis-snap={true}
+			data-invert-section={false}
+		>
 			<div className={s.header}>
 				<h3>i vår portfölj</h3>
 				<Link href={'/portfolj'}>Visa alla</Link>

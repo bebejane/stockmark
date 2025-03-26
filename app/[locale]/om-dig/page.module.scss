@@ -41,8 +41,8 @@
       grid-column: 1 / 3;
     }
 
-    .counter {
-      display: inline;
+    .wrap {
+      overflow: hidden;
     }
   }
 }
