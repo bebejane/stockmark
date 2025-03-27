@@ -5,8 +5,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { sleep } from 'next-dato-utils/utils';
 import Header, { extractHeaders } from '@components/common/Header';
+import useIsDesktop from '@lib/useIsDesktop';
 
 export type HeroProps = {
 	video: StartQuery['start']['video'];
@@ -15,6 +15,7 @@ export type HeroProps = {
 };
 
 export default function Hero({ video, headline, summary }: HeroProps) {
+	const [sectionHeight, setSectionHeight] = React.useState<number | null>(null);
 	const [thumbBounds, setThumbBounds] = React.useState<DOMRect | any>(null);
 	const pathname = usePathname();
 	const ref = useRef<HTMLDivElement | null>(null);
@@ -23,15 +24,13 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const thumbnailRef = useRef<HTMLImageElement | null>(null);
 	const { innerHeight, innerWidth } = useWindowSize();
 	const [videoHeight, setVideoHeight] = useState(0);
-	const { scrollYProgress } = useScroll({
-		target: ref,
-		offset: ['start start', 'end end'],
-		layoutEffect: false,
-	});
+	const { scrollYProgress } = useScroll({ layoutEffect: false });
+	const isDesktop = useIsDesktop();
 
 	async function updateBounds() {
 		setVideoHeight(videoRef.current?.clientHeight);
-		await sleep(100);
+		const { height } = ref.current?.getBoundingClientRect();
+		setSectionHeight((height / document.body.scrollHeight) * (isDesktop ? 0.5 : 0.7));
 		const bounds = thumbnailRef.current?.getBoundingClientRect();
 		if (!bounds) return;
 		setThumbBounds({ ...bounds.toJSON(), top: bounds.top + window.scrollY });
@@ -39,13 +38,17 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 
 	useEffect(() => {
 		updateBounds();
-	}, [pathname, innerHeight, innerWidth]);
+	}, [pathname, isDesktop, innerHeight, innerWidth]);
 
-	const top = useTransform(scrollYProgress, [0, 1], [0, thumbBounds?.top]);
-	const left = useTransform(scrollYProgress, [0, 1], [0, thumbBounds?.left]);
-	const width = useTransform(scrollYProgress, [0, 1], [innerWidth, thumbBounds?.width]);
-	const height = useTransform(scrollYProgress, [0, 1], [videoHeight, thumbBounds?.height]);
-	const opacity = useTransform(scrollYProgress, [0, 0.1], ['1', '0']);
+	const top = useTransform(scrollYProgress, [0, sectionHeight], [0, thumbBounds?.top]);
+	const left = useTransform(scrollYProgress, [0, sectionHeight], [0, thumbBounds?.left]);
+	const width = useTransform(scrollYProgress, [0, sectionHeight], [innerWidth, thumbBounds?.width]);
+	const height = useTransform(
+		scrollYProgress,
+		[0, sectionHeight],
+		[videoHeight, thumbBounds?.height]
+	);
+	const opacity = useTransform(scrollYProgress, [0, sectionHeight * 0.1], ['1', '0']);
 	const headers = extractHeaders(summary);
 
 	return (

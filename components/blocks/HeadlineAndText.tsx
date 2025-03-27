@@ -28,7 +28,6 @@ export default function HeadlineAndText({ text, intro, link }: HeroProps) {
 			? paragraphs.current
 			: Array.from(document.querySelectorAll(`.${s.text} > p`));
 
-		console.log(paragraphs);
 		paragraphs.current.forEach((p, i) => {
 			const isActive = ratio > i / paragraphs.current.length;
 			p.style.transitionDelay = `${0.2 * i}s`;
@@ -51,9 +50,9 @@ export default function HeadlineAndText({ text, intro, link }: HeroProps) {
 				{link && (
 					<p>
 						<Link
-							locale={locale}
 							//@ts-ignore
 							href={link.href}
+							locale={locale}
 						>
 							{link.label}
 						</Link>
