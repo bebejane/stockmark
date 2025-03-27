@@ -40,7 +40,7 @@
         width: 100%;
         cursor: pointer;
 
-        > div {
+        >div {
           --padding: 10rem;
 
           padding-left: var(--padding);
@@ -56,6 +56,27 @@
           }
         }
       }
+    }
+  }
+
+  .arrow {
+    all: unset;
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    padding: 10px;
+    line-height: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+
+    &.left {
+      left: var(--outer-margin);
+    }
+
+    &.right {
+      right: var(--outer-margin);
+
     }
   }
 
