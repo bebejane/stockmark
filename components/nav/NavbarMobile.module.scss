@@ -45,7 +45,6 @@
   }
 
   &.inverted {
-
     a,
     a:hover,
     span {
@@ -54,7 +53,8 @@
 
     .logo {
       img {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(28%) hue-rotate(107deg) brightness(105%) contrast(104%);
+        filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(28%) hue-rotate(107deg) brightness(105%)
+          contrast(104%);
       }
     }
   }
@@ -81,8 +81,6 @@
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
 
-
-
   a {
     color: var(--white);
   }
@@ -96,15 +94,20 @@
     list-style: none;
     padding-left: var(--outer-margin);
 
-    >li {
+    > li {
       line-height: 1;
       margin: 0;
       padding-bottom: 1em;
-      transition: transform 1s cubic-bezier(.31, .98, 0, .99);
+      transition: transform 1s cubic-bezier(0.31, 0.98, 0, 0.99);
       transform: translateX(-50vw);
 
       &:not(last-child) {
         font-size: 1.5rem;
+      }
+
+      &:last-of-type {
+        font-size: 1rem;
+        padding-top: 2rem;
       }
 
       cursor: pointer;
@@ -112,7 +115,7 @@
       &.active {
         color: var(--blue-light);
 
-        >a {
+        > a {
           color: var(--blue-light);
         }
       }
@@ -146,7 +149,7 @@
   &.open {
     transform: translateX(0%);
 
-    ul>li {
+    ul > li {
       transform: translateX(0%);
     }
   }
