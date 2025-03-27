@@ -5,6 +5,7 @@ import Hero from '@components/blocks/start/Hero';
 import IntroText from '@components/blocks/start/IntroText';
 import Facts from '@components/blocks/start/Facts';
 import Portfolio from '@components/blocks/start/Portfolio';
+import HeadlineAndText from '@components/blocks/HeadlineAndText';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -20,7 +21,11 @@ export default async function Home({ params }: PageProps) {
 	return (
 		<>
 			<Hero video={start.video} headline={start.headline} summary={start.summary} />
-			<IntroText intro={start.textIntro} text={start.text} />
+			<HeadlineAndText
+				intro={start.textIntro}
+				text={start.text}
+				link={{ label: 'Läs mer', href: '/om-oss' }}
+			/>
 			<Facts facts={start.facts} />
 			<Portfolio portfolio={start.portfolio} />
 			<DraftMode url={draftUrl} path='/' />
