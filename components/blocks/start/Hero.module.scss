@@ -14,7 +14,7 @@
     align-items: flex-end;
 
     @include mq($until: desktop) {
-      height: var(--mobilHeight);
+      //height: var(--mobilHeight);
     }
 
     .video {
