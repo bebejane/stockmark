@@ -6,6 +6,7 @@ import Header from '@components/common/Header';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
 import { setRequestLocale } from 'next-intl/server';
+import HeadlineAndText from '@components/blocks/HeadlineAndText';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -28,14 +29,7 @@ export default async function Manifest({ params }: PageProps) {
 					<Header content={manifest.headline} midSpace={true} />
 					<VideoPlayer data={manifest.video} className={s.video} />
 				</div>
-				<section className={classNames(s.content, 'grid-2')}>
-					<div className={s.intro}>
-						<Content content={manifest.intro} />
-					</div>
-					<div className={s.text}>
-						<Content content={manifest.text} />
-					</div>
-				</section>
+				<HeadlineAndText intro={manifest.intro} text={manifest.text} />
 			</article>
 			<DraftMode url={draftUrl} path={'/manifest'} />
 		</>
