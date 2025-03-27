@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Content from '@components/content/Content';
 import Link from '@node_modules/next/link';
 import { Image } from 'react-datocms';
+import useIsDesktop from '@lib/useIsDesktop';
 
 export type HeroProps = {
 	portfolio: StartQuery['start']['portfolio'];
@@ -19,9 +20,10 @@ export default function Portfolio({ portfolio }: HeroProps) {
 		.concat(portfolio)
 		.concat(portfolio);
 
+	const isDesktop = useIsDesktop();
 	const ref = useRef<HTMLDivElement | null>(null);
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-	const left = useTransform(scrollYProgress, [1, 0], ['-100vw', '-50vw']);
+	const left = useTransform(scrollYProgress, [1, 0], ['-100vw', isDesktop ? '-50vw' : '-500vw']);
 
 	return (
 		<section
