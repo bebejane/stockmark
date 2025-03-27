@@ -1,15 +1,25 @@
 .container {
   padding: var(--outer-margin);
   margin-bottom: var(--space-bigger);
-  margin-top: var(--space-big);
+  @include mq($from: desktop) {
+    margin-top: var(--space-big);
+  }
 
   .intro {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 12;
+
+    @include mq($from: desktop) {
+      grid-column: 1 / span 5;
+    }
     text-transform: uppercase;
   }
 
   .text {
-    grid-column: 7 / span 5;
+    grid-column: 1 / span 12;
+
+    @include mq($from: desktop) {
+      grid-column: 7 / span 5;
+    }
 
     p {
       opacity: 0;
