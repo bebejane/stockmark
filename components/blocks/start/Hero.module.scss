@@ -1,72 +1,75 @@
 .hero {
+  --video-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: var(--video-height);
   padding-bottom: var(--space-big);
+
+  @include mq($until: desktop) {
+    --video-height: 60vh;
+  }
 
   .header {
     position: relative;
-    height: 100vh;
+    height: var(--video-height);
     width: 100vw;
     color: var(--white);
     display: flex;
     align-items: flex-end;
-
-    @include mq($until: desktop) {
-      //height: var(--mobilHeight);
-    }
 
     .video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100vh;
+      height: var(--video-height);
       object-fit: cover;
     }
+
+  }
+}
+
+.text {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 30vh;
+  padding-left: var(--outer-margin);
+  padding-right: var(--outer-margin);
+
+  @include mq($until: desktop) {
+    margin-top: 10vh;
   }
 
-  .text {
+  .row {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    max-width: 100%;
     width: 100%;
-    margin-top: 30vh;
-    padding-left: var(--outer-margin);
-    padding-right: var(--outer-margin);
 
-    @include mq($until: desktop) {
-      margin-top: 100vh;
+    &:nth-child(even) {
+      align-items: flex-end;
     }
 
-    .row {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      max-width: 100%;
-      width: 100%;
+    h1 {
+      margin-bottom: -0.15em;
 
-      &:nth-child(even) {
-        align-items: flex-end;
+      span {
+        margin-right: 0.2em;
       }
 
-      h1 {
-        margin-bottom: -0.15em;
-
-        span {
-          margin-right: 0.2em;
-        }
-
-        .thumb {
-          display: inline-block;
-          min-height: 0.74em;
-          height: 0.74em;
-          aspect-ratio: 4/3;
-          opacity: 0;
-        }
+      .thumb {
+        display: inline-block;
+        min-height: 0.74em;
+        height: 0.74em;
+        aspect-ratio: 4/3;
+        opacity: 0;
       }
     }
   }

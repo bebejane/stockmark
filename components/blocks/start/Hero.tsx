@@ -1,7 +1,7 @@
 'use client';
 
 import s from './Hero.module.scss';
-import React, { useRef, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -14,24 +14,15 @@ export type HeroProps = {
 	summary: StartQuery['start']['summary'];
 };
 
-const defaultBounds = {
-	top: 0,
-	left: 0,
-	width: 0,
-	height: 0,
-	bottom: 0,
-	right: 0,
-	x: 0,
-	y: 0,
-};
-
 export default function Hero({ video, headline, summary }: HeroProps) {
 	const [thumbBounds, setThumbBounds] = React.useState<DOMRect | any>(null);
 	const pathname = usePathname();
 	const ref = useRef<HTMLDivElement | null>(null);
+	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const thumbnailUrl = video.video.thumbnailUrl;
 	const thumbnailRef = useRef<HTMLImageElement | null>(null);
 	const { innerHeight, innerWidth } = useWindowSize();
+	const [videoHeight, setVideoHeight] = useState(0);
 	const { scrollYProgress } = useScroll({
 		target: ref,
 		offset: ['start start', 'end end'],
@@ -39,6 +30,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	});
 
 	async function updateBounds() {
+		setVideoHeight(videoRef.current?.clientHeight);
 		await sleep(100);
 		const bounds = thumbnailRef.current?.getBoundingClientRect();
 		if (!bounds) return;
@@ -52,7 +44,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const top = useTransform(scrollYProgress, [0, 1], [0, thumbBounds?.top]);
 	const left = useTransform(scrollYProgress, [0, 1], [0, thumbBounds?.left]);
 	const width = useTransform(scrollYProgress, [0, 1], [innerWidth, thumbBounds?.width]);
-	const height = useTransform(scrollYProgress, [0, 1], [innerHeight, thumbBounds?.height]);
+	const height = useTransform(scrollYProgress, [0, 1], [videoHeight, thumbBounds?.height]);
 	const opacity = useTransform(scrollYProgress, [0, 0.1], ['1', '0']);
 	const headers = extractHeaders(summary);
 
@@ -60,6 +52,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
 			<div className={s.header} data-invert-section={true}>
 				<motion.video
+					ref={videoRef}
 					layout={true}
 					initial={true}
 					className={s.video}
