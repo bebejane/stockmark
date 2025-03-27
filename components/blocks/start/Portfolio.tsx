@@ -13,10 +13,15 @@ export type HeroProps = {
 };
 
 export default function Portfolio({ portfolio }: HeroProps) {
-	const projects = portfolio.concat(portfolio).concat(portfolio);
+	const projects = portfolio
+		.concat(portfolio)
+		.concat(portfolio)
+		.concat(portfolio)
+		.concat(portfolio);
+
 	const ref = useRef<HTMLDivElement | null>(null);
-	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'start end'] });
-	const left = useTransform(scrollYProgress, [1, 0], ['-100vw', '0vw']);
+	const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+	const left = useTransform(scrollYProgress, [1, 0], ['-100vw', '-50vw']);
 
 	return (
 		<section

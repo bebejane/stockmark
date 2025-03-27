@@ -25,7 +25,7 @@ export default function IntroText({ text, intro }: HeroProps) {
 			: Array.from(document.querySelectorAll(`.${s.text} > p`));
 
 		paragraphs.current.forEach((p, i) => {
-			const isActive = ratio - 0.15 > i / paragraphs.current.length;
+			const isActive = ratio - 0.3 > i / paragraphs.current.length;
 			p.classList.toggle(s.active, isActive);
 		});
 	});
