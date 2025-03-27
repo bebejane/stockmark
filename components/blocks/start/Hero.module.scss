@@ -55,14 +55,14 @@
       h1 {
         margin-bottom: -0.15em;
 
-        span,
-        .thumb {
+        span {
           margin-right: 0.2em;
         }
 
         .thumb {
           display: inline-block;
-          min-height: 0.8em;
+          min-height: 0.74em;
+          height: 0.74em;
           aspect-ratio: 4/4;
           opacity: 0;
         }

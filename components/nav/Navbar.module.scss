@@ -79,7 +79,7 @@
       }
 
       &.hide {
-        transform: translateY(calc(-1 * 3em)) rotate(-3deg);
+        transform: translateY(calc(-1 * 3em));
         opacity: 0;
       }
     }
@@ -130,7 +130,7 @@
   transition: transform 0.3s ease-out;
 
   li.thecontact.hidden {
-    transform: translateX(calc(3em));
+    transform: translateX(3em);
   }
 }
 
@@ -138,7 +138,7 @@
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 
   &.hidden {
-    transform: translateX(calc(3em));
+    transform: translateX(3em);
     opacity: 0;
   }
 }
