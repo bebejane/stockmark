@@ -62,6 +62,13 @@ export default function Footer({ footer }: Props) {
 					))}
 				</SwiperReact>
 
+				<button className={cn(s.arrow, s.left)} onClick={() => swiperRef.current?.slidePrev()}>
+					‹
+				</button>
+				<button className={cn(s.arrow, s.right)} onClick={() => swiperRef.current?.slideNext()}>
+					›
+				</button>
+
 				<div className={s.copyright}>
 					<span className={cn(s.text, 'small')}>© Stockmark AB Kungsgatan 9, Stockholm</span>
 					<span className={s.about}>

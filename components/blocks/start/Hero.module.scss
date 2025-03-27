@@ -32,12 +32,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 100vh;
+    margin-top: 30vh;
     padding-left: var(--outer-margin);
     padding-right: var(--outer-margin);
 
-    h1 {
-      margin-bottom: -0.15em;
+    @include mq($until: desktop) {
+      margin-top: 100vh;
     }
 
     .row {
@@ -52,16 +52,20 @@
         align-items: flex-end;
       }
 
-      span,
-      .thumb {
-        margin-right: 0.2em;
-      }
+      h1 {
+        margin-bottom: -0.15em;
 
-      .thumb {
-        display: inline-block;
-        height: 0.8em;
-        aspect-ratio: 4/4;
-        opacity: 0;
+        span,
+        .thumb {
+          margin-right: 0.2em;
+        }
+
+        .thumb {
+          display: inline-block;
+          min-height: 0.8em;
+          aspect-ratio: 4/4;
+          opacity: 0;
+        }
       }
     }
   }
