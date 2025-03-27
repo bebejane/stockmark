@@ -41,7 +41,7 @@ export default function Portfolio({ portfolio }: HeroProps) {
 									</div>
 								</figure>
 							)}
-							<h3>{name}</h3>
+							<h4>{name}</h4>
 						</li>
 					))}
 				</motion.ul>
