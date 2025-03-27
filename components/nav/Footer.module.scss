@@ -40,19 +40,22 @@
         width: 100%;
         cursor: pointer;
 
-        >div {
+        > div {
           --padding: 10rem;
 
           padding-left: var(--padding);
           padding-right: var(--padding);
 
           h3 {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             text-transform: none;
+            @include mq($from: desktop) {
+              font-size: 1.6rem;
+            }
           }
 
           @include mq($until: desktop) {
-            --padding: var(--outer-margin);
+            --padding: calc(3 * var(--outer-margin));
           }
         }
       }
@@ -76,7 +79,6 @@
 
     &.right {
       right: var(--outer-margin);
-
     }
   }
 
