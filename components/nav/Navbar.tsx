@@ -40,14 +40,20 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 	const contact = menu.find(({ id }) => id === 'contact');
 
 	useMotionValueEvent(scrollY, 'change', (y) => {
+		const isHome = pathname === '/';
 		const documentHeight = document.documentElement.scrollHeight;
 		const viewportHeight = window.innerHeight;
-		const margin = 50;
-		const scrolledDown = y >= documentHeight - viewportHeight - margin;
+		const margin = ref.current.getBoundingClientRect().height;
+		const scrolledToFooter = y >= documentHeight - viewportHeight - margin;
 		const scrolledUp = y < prevScroll.current;
-		const scrolledAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
+		const scrolledUpAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
+		const scrolledBeforeMargin = y <= margin && canInvertTop;
+		const scrolledBelowMargin = y > margin && canInvertTop && isHome && y <= viewportHeight;
+
+		setInvert(
+			(scrolledToFooter || scrolledUpAtTop || scrolledBeforeMargin) && !scrolledBelowMargin
+		);
 		setHide(!scrolledUp && y > margin);
-		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
 		setHideLocale(y > margin);
 		prevScroll.current = y;
 	});

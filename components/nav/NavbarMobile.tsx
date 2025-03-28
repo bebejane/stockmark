@@ -21,6 +21,7 @@ const transitionDelay = 0.2;
 export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 	const pathname = usePathname();
 	const locale = useLocale();
+	const ref = useRef<HTMLDivElement>(null);
 	const contactContentRef = useRef<HTMLDivElement>(null);
 	const prevScroll = useRef<number | null>(null);
 	const [invert, setInvert] = useState(true);
@@ -38,13 +39,18 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 	);
 
 	function updateInvert(y: number) {
+		const isHome = pathname === '/';
 		const documentHeight = document.documentElement.scrollHeight;
 		const viewportHeight = window.innerHeight;
-		const margin = 50;
-		const scrolledDown = y >= documentHeight - viewportHeight - margin;
+		const margin = ref.current.getBoundingClientRect().height;
+		const scrolledToFooter = y >= documentHeight - viewportHeight - margin;
 		const scrolledUp = y < prevScroll.current;
-		const scrolledAtTop = canInvertTop && y > margin && !scrolledUp;
-		setInvert(scrolledDown || scrolledAtTop || (y <= margin && canInvertTop));
+		const scrolledUpAtTop = canInvertTop && y < viewportHeight && y > margin && !scrolledUp;
+		const scrolledBeforeMargin = y <= margin && canInvertTop;
+		const scrolledBelowMargin = y > margin && canInvertTop && isHome && y <= viewportHeight;
+		setInvert(
+			(scrolledToFooter || scrolledUpAtTop || scrolledBeforeMargin) && !scrolledBelowMargin
+		);
 		prevScroll.current = y;
 	}
 
@@ -59,7 +65,7 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 
 	return (
 		<>
-			<div className={cn(s.topbar, open && s.open, invert && s.inverted)}>
+			<div className={cn(s.topbar, open && s.open, invert && s.inverted)} ref={ref}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
 						<img src={'/images/logo.svg'} alt='Logo' />

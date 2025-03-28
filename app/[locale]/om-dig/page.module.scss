@@ -18,6 +18,10 @@
         margin-bottom: 0.5rem;
 
         p {
+          grid-column: 2 / 7;
+          /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
+          padding-right: var(--space-small);
+
           &:before {
             content: "A";
             font-family: "StockmarkSymbol";
@@ -32,9 +36,7 @@
             }
           }
 
-          grid-column: 2 / 7;
-          /* Börjar vid kolumn 1 och slutar vid kolumn 3 */
-          padding-right: var(--space-small);
+
         }
       }
     }
@@ -43,6 +45,7 @@
   .invest {
     margin-top: var(--space-bigger);
     margin-bottom: var(--space-big);
+
     @include mq($until: desktop) {
       display: flex;
       flex-wrap: wrap;
@@ -59,7 +62,7 @@
     }
 
     @include mq($until: desktop) {
-      & > div {
+      &>div {
         width: 50%;
 
         &:last-child {
