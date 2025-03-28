@@ -1,6 +1,8 @@
 .facts {
   padding: var(--outer-margin);
-  margin-bottom: var(--space-bigger);
+  @include mq($from: desktop) {
+    margin-bottom: var(--space-bigger);
+  }
 
   ul {
     display: grid;
@@ -9,6 +11,10 @@
 
     li {
       grid-column: span 3;
+    }
+
+    span {
+      font-size: 0.8rem;
     }
   }
 }

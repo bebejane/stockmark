@@ -1,5 +1,7 @@
 .container {
-  padding: var(--outer-margin);
+  @include mq($from: desktop) {
+    padding: var(--outer-margin);
+  }
   margin-bottom: var(--space-bigger);
   @include mq($from: desktop) {
     margin-top: var(--space-big);

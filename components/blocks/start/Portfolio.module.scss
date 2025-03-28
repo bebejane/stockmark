@@ -22,7 +22,12 @@
   }
 
   .gallery {
-    --gallery-height: 30vh;
+    --gallery-height: 20vh;
+
+    @include mq($from: desktop) {
+      --gallery-height: 30vh;
+    }
+
     position: relative;
     overflow: visible;
     overflow-x: scroll;
