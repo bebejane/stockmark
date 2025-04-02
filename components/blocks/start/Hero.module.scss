@@ -60,6 +60,10 @@
 
       span {
         margin-right: 0.2em;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
 
       .thumb {

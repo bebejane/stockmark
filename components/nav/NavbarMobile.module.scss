@@ -10,6 +10,7 @@
   overflow-y: scroll;
   height: var(--navbar-height);
   padding: var(--outer-margin);
+  padding-top: calc(1.2 * var(--outer-margin));
   margin-bottom: var(--space);
   z-index: var(--z-hamburger);
 
@@ -28,7 +29,7 @@
     display: flex;
     justify-content: flex-end;
     flex: 0 0 auto;
-    margin-right: -20px;
+    margin-right: -12px;
 
     button {
       all: unset;
@@ -90,7 +91,7 @@
     flex-direction: column;
     list-style: none;
     flex: 1 1 auto;
-    padding-top: 10rem;
+    padding-top: 8rem;
     list-style: none;
     padding-left: var(--outer-margin);
 

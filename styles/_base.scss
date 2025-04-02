@@ -31,7 +31,7 @@
 	}
 
 	@include mediaqueries.mq($until: tablet) {
-		--outer-margin: 2rem;
+		--outer-margin: 1.8rem;
 		--space-small: 1rem;
 		--navbar-height: 48px;
 	}

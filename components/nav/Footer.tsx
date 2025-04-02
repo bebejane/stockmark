@@ -40,7 +40,7 @@ export default function Footer({ footer }: Props) {
 					wrapperClass={s.slideWrap}
 					loop={true}
 					modules={[Autoplay]}
-					autoplay={{ delay: 4000, pauseOnMouseEnter: false }}
+					autoplay={{ delay: 8000, pauseOnMouseEnter: false }}
 					slidesPerView={1}
 					initialSlide={index}
 					onSlideChange={({ realIndex }) => setIndex(realIndex)}
