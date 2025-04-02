@@ -103,8 +103,10 @@
         }
 
         figure:hover {
-          .text {
-            display: flex;
+          @include mq($from: desktop) {
+            .text {
+              display: flex;
+            }
           }
         }
 
@@ -129,5 +131,4 @@
       --gallery-height: 30vh;
     }
   }
-
 }

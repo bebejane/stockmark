@@ -55,7 +55,7 @@ export default function HeadlineAndText({ text, intro, link, margins }: HeroProp
 							href={link.href}
 							locale={locale}
 						>
-							{link.label}
+							{link.label}  →
 						</Link>
 					</p>
 				)}

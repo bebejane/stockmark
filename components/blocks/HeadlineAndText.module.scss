@@ -16,7 +16,6 @@
     @include mq($from: desktop) {
       grid-column: 1 / span 5;
     }
-
   }
 
   .text {
@@ -38,6 +37,12 @@
       &.active {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    a {
+      &:hover {
+        color: var(--blue);
       }
     }
   }

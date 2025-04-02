@@ -37,7 +37,7 @@ export default function Portfolio({ portfolio }: HeroProps) {
 		>
 			<div className={s.header}>
 				<h3>{t('in-our-portfolio')}</h3>
-				<Link href={'/portfolj'}>{t('showall')} →</Link>
+				<Link href={'/portfolj'}>{t('showall')}</Link>
 			</div>
 			<div className={s.gallery}>
 				<motion.ul style={{ left }} initial={false}>

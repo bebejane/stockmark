@@ -99,11 +99,12 @@ article a {
 	text-decoration: underline 1px transparent !important;
 	text-underline-offset: 0.15em;
 	text-decoration-thickness: 1px var(--blue);
-	color: var(--blue);
+	color: var(--black);
 
 	&:hover {
-		text-decoration: underline 1px !important;
+		text-decoration: none !important;
 		text-underline-offset: 0.15em;
+		color: var(--blue);
 	}
 }
 
