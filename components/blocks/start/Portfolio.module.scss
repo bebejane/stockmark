@@ -23,12 +23,10 @@
 
   .gallery {
     --gallery-height: 20vh;
-
-
-
     position: relative;
     overflow: visible;
     overflow-x: scroll;
+    scrollbar-width: none;
     height: calc(var(--gallery-height) + 3em);
 
     ul {
