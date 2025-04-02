@@ -21,15 +21,18 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const pathname = usePathname();
 	const ref = useRef<HTMLDivElement | null>(null);
 	const videoRef = useRef<HTMLVideoElement | null>(null);
+	const headerRef = useRef<HTMLDivElement | null>(null);
 	const thumbnailUrl = video.video.thumbnailUrl;
 	const thumbnailRef = useRef<HTMLImageElement | null>(null);
-	const { innerHeight, innerWidth } = useWindowSize();
+	const { innerHeight, innerWidth, outerHeight, outerWidth } = useWindowSize();
 	const [videoHeight, setVideoHeight] = useState(0);
 	const { scrollYProgress } = useScroll({ layoutEffect: false });
 	const isDesktop = useIsDesktop();
 
 	async function updateBounds() {
+		console.log('bounds');
 		const { height } = ref.current?.getBoundingClientRect();
+		setVideoHeight(headerRef.current?.clientHeight);
 		setSectionHeight((height / document.body.scrollHeight) * (isDesktop ? 0.5 : 0.7));
 		const bounds = thumbnailRef.current?.getBoundingClientRect();
 		if (!bounds) return;
@@ -39,11 +42,6 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	useEffect(() => {
 		updateBounds();
 	}, [pathname, isDesktop, innerHeight, innerWidth]);
-
-	useEffect(() => {
-		if (!videoRef.current) return;
-		setVideoHeight(videoRef.current?.clientHeight);
-	}, []);
 
 	const top = useTransform(scrollYProgress, [0, sectionHeight], [0, thumbBounds?.top]);
 	const left = useTransform(scrollYProgress, [0, sectionHeight], [0, thumbBounds?.left]);
@@ -58,7 +56,7 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 
 	return (
 		<section className={s.hero} ref={ref} data-lenis-snap={true}>
-			<div className={s.header} data-invert-section={true}>
+			<div className={s.header} data-invert-section={true} ref={headerRef}>
 				<motion.video
 					ref={videoRef}
 					layout={true}
