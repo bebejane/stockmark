@@ -2,10 +2,9 @@
 
 import s from './Header.module.scss';
 import cn from 'classnames';
-import { render, renderNodeRule } from 'datocms-structured-text-to-html-string';
-import { isHeading, isInlineBlock } from 'datocms-structured-text-utils';
 import RevealHeader from '@components/common/RevealHeader';
 import { motion, MotionStyle } from 'framer-motion';
+import { extractHeaders } from '@lib/utils';
 
 export type HeaderProps = {
 	content: any;
@@ -30,21 +29,4 @@ export default function Header({ content, margins, style, midSpace }: HeaderProp
 			))}
 		</motion.header>
 	);
-}
-
-export function extractHeaders(content: any): { text: string; className: string }[] {
-	const headers = [];
-	render(content, {
-		customNodeRules: [
-			renderNodeRule(isHeading, ({ adapter: { renderNode }, node, children, key }) => {
-				headers.push({ text: children.join(''), className: node.style });
-				return renderNode(`h${node.level + 1}`, { key, className: 'right' }, children);
-			}),
-			renderNodeRule(isInlineBlock, ({ adapter: { renderNode }, node, children, key }) => {
-				// Replace with video thumbnail
-				return '###';
-			}),
-		],
-	});
-	return headers;
 }

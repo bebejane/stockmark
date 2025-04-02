@@ -4,10 +4,10 @@ import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { YouDocument } from '@/graphql';
 import Header from '@components/common/Header';
+import { extractHeaders } from '@lib/utils';
 import Content from '@components/content/Content';
 import classNames from '@node_modules/classnames';
 import { setRequestLocale } from 'next-intl/server';
-import { motion } from 'framer-motion';
 import RevealInvest from './RevealInvest';
 
 export type PageProps = {
@@ -23,6 +23,8 @@ export default async function You({ params }: PageProps) {
 		variables: { locale },
 	});
 
+	const headers = extractHeaders(you.investText);
+
 	return (
 		<>
 			<article className={s.page}>
@@ -32,16 +34,13 @@ export default async function You({ params }: PageProps) {
 				</section>
 				<section className={classNames(s.invest, 'grid-2')}>
 					<h3>{you.inevestHeadline}</h3>
-					<div className={cn('number')}>
-						<div className={s.wrap}>
-							<RevealInvest delay={0}>95% BRANCH</RevealInvest>
+					{headers.map(({ text, className }, i) => (
+						<div className={cn('number', className)} key={i}>
+							<div className={s.wrap}>
+								<RevealInvest delay={0.2 * i}>{text}</RevealInvest>
+							</div>
 						</div>
-					</div>
-					<div className={cn('number')}>
-						<div className={s.wrap}>
-							<RevealInvest delay={0.2}>5% TEAM</RevealInvest>
-						</div>
-					</div>
+					))}
 				</section>
 			</article>
 			<DraftMode url={draftUrl} path={'/om-dig'} />

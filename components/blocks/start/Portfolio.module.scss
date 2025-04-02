@@ -24,9 +24,7 @@
   .gallery {
     --gallery-height: 20vh;
 
-    @include mq($from: desktop) {
-      --gallery-height: 30vh;
-    }
+
 
     position: relative;
     overflow: visible;
@@ -128,5 +126,10 @@
         }
       }
     }
+
+    @include mq($from: desktop) {
+      --gallery-height: 30vh;
+    }
   }
+
 }

@@ -53,7 +53,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 		setInvert(
 			(scrolledToFooter || scrolledUpAtTop || scrolledBeforeMargin) && !scrolledBelowMargin
 		);
-		setHide(!scrolledUp && y > margin);
+		setHide(!scrolledUp && y > margin && !scrolledToFooter);
 		setHideLocale(y > margin);
 		prevScroll.current = y;
 	});
