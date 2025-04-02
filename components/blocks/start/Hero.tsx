@@ -29,7 +29,6 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	const isDesktop = useIsDesktop();
 
 	async function updateBounds() {
-		setVideoHeight(videoRef.current?.clientHeight);
 		const { height } = ref.current?.getBoundingClientRect();
 		setSectionHeight((height / document.body.scrollHeight) * (isDesktop ? 0.5 : 0.7));
 		const bounds = thumbnailRef.current?.getBoundingClientRect();
@@ -40,6 +39,11 @@ export default function Hero({ video, headline, summary }: HeroProps) {
 	useEffect(() => {
 		updateBounds();
 	}, [pathname, isDesktop, innerHeight, innerWidth]);
+
+	useEffect(() => {
+		if (!videoRef.current) return;
+		setVideoHeight(videoRef.current?.clientHeight);
+	}, []);
 
 	const top = useTransform(scrollYProgress, [0, sectionHeight], [0, thumbBounds?.top]);
 	const left = useTransform(scrollYProgress, [0, sectionHeight], [0, thumbBounds?.left]);
