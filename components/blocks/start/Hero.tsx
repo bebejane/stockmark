@@ -5,7 +5,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useWindowSize } from 'rooks';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import Header, { extractHeaders } from '@components/common/Header';
+import Header from '@components/common/Header';
+import { extractHeaders } from '@lib/utils';
 import useIsDesktop from '@lib/useIsDesktop';
 
 export type HeroProps = {

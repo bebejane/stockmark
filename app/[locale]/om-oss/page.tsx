@@ -10,7 +10,8 @@ import Content from '@components/content/Content';
 import cn from '@node_modules/classnames';
 import Principles from './Principles';
 import RevealHeader from '@components/common/RevealHeader';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -21,6 +22,7 @@ export default async function About({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
+	const t = await getTranslations('About');
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
 		variables: { locale },
 	});
@@ -33,13 +35,13 @@ export default async function About({ params }: PageProps) {
 					<AboutGallery images={about.images as FileField[]} />
 					<div className={s.text}>
 						<Content content={about.text} />
-						<Link href={'/manifest'}>Läs mer i vårat manifest →</Link>
+						<Link href={'/manifest'}>{t('readmore')} →</Link>
 					</div>
 				</section>
 				<Principles about={about} />
 				<section className={s.people}>
 					<RevealHeader size={2}>{about.headlinePeople}</RevealHeader>
-					<ul className="grid">
+					<ul className='grid'>
 						{about.people?.map((person, i) => (
 							<li key={i}>
 								<Image data={person.portrait.responsiveImage} />

@@ -14,5 +14,11 @@
 			"en": "Close",
 			"sv": "Stäng"
 		}
+	},
+	"About": {
+		"readmore": {
+			"en": "Read more in our manifest",
+			"sv": "Läs mer i vårat manifest"
+		}
 	}
 }
