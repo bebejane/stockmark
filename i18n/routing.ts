@@ -19,6 +19,9 @@ export const routing = defineRouting({
     '/manifest': '/manifest',
     '/portfolj': {
       en: '/portfolio',
+    },
+    '/kontakt': {
+      en: '/contact',
     }
   }
 });
