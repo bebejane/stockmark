@@ -5,6 +5,20 @@
 			"sv": "Läs mer"
 		}
 	},
+	"Start": {
+		"readmore": {
+			"en": "Read more",
+			"sv": "Läs mer"
+		},
+		"in-our-portfolio": {
+			"en": "In our portfolio",
+			"sv": "I vår portofölj"
+		},
+		"showall": {
+			"en": "Show all",
+			"sv": "Visa alla"
+		}
+	},
 	"Contact": {
 		"title": {
 			"en": "Contact",

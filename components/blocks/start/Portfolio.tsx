@@ -8,12 +8,15 @@ import Content from '@components/content/Content';
 import Link from '@node_modules/next/link';
 import { Image } from 'react-datocms';
 import useIsDesktop from '@lib/useIsDesktop';
+import { useTranslations } from 'next-intl';
 
 export type HeroProps = {
 	portfolio: StartQuery['start']['portfolio'];
 };
 
 export default function Portfolio({ portfolio }: HeroProps) {
+	const t = useTranslations('Start');
+
 	const projects = portfolio
 		.concat(portfolio)
 		.concat(portfolio)
@@ -33,8 +36,8 @@ export default function Portfolio({ portfolio }: HeroProps) {
 			data-invert-section={false}
 		>
 			<div className={s.header}>
-				<h3>i vår portfölj</h3>
-				<Link href={'/portfolj'}>Visa alla</Link>
+				<h3>{t('in-our-portfolio')}</h3>
+				<Link href={'/portfolj'}>{t('showall')} →</Link>
 			</div>
 			<div className={s.gallery}>
 				<motion.ul style={{ left }} initial={false}>

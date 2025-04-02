@@ -5,6 +5,7 @@ import Hero from '@components/blocks/start/Hero';
 import Facts from '@components/blocks/start/Facts';
 import Portfolio from '@components/blocks/start/Portfolio';
 import HeadlineAndText from '@components/blocks/HeadlineAndText';
+import { getTranslations } from 'next-intl/server';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -16,6 +17,7 @@ export default async function Home({ params }: PageProps) {
 	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
 		variables: { locale },
 	});
+	const t = await getTranslations('Start');
 
 	return (
 		<>
@@ -23,7 +25,8 @@ export default async function Home({ params }: PageProps) {
 			<HeadlineAndText
 				intro={start.textIntro}
 				text={start.text}
-				link={{ label: 'Läs mer', href: '/om-oss' }}
+				margins={true}
+				link={{ label: t('readmore'), href: '/om-oss' }}
 			/>
 			<Facts facts={start.facts} />
 			<Portfolio portfolio={start.portfolio} />

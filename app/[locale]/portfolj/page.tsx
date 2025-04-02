@@ -5,7 +5,7 @@ import { Image } from 'react-datocms';
 import { PortfolioDocument } from '@/graphql';
 import Header from '@components/common/Header';
 import Content from '@components/content/Content';
-import classNames from '@node_modules/classnames';
+import cn from '@node_modules/classnames';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -33,7 +33,7 @@ export default async function Home({ params }: PageProps) {
 									{company.image && (
 										<figure>
 											<Image data={company.image?.responsiveImage} />
-											<div className={classNames(s.text, 'small')}>
+											<div className={cn(s.text, 'small')}>
 												<Content content={company.text} />
 											</div>
 										</figure>

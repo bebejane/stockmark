@@ -15,9 +15,10 @@ export type HeroProps = {
 		label: string;
 		href: string;
 	};
+	margins?: boolean;
 };
 
-export default function HeadlineAndText({ text, intro, link }: HeroProps) {
+export default function HeadlineAndText({ text, intro, link, margins }: HeroProps) {
 	const locale = useLocale();
 	const ref = useRef<HTMLDivElement | null>(null);
 	const paragraphs = useRef<HTMLDivElement[] | null>(null);
@@ -37,7 +38,7 @@ export default function HeadlineAndText({ text, intro, link }: HeroProps) {
 
 	return (
 		<section
-			className={cn(s.container, 'grid')}
+			className={cn(s.container, 'grid', margins && s.margins)}
 			ref={ref}
 			data-lenis-snap={true}
 			data-invert-section={false}
