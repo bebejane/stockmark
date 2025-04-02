@@ -52,8 +52,7 @@ const routes: Routes = {
 
 export const buildRoute = async (model: string, item?: any, locale?: string): Promise<string> => {
   if (!routes[model]) throw new Error(`Invalid model: ${model}`)
-  const localePrefix = !locale || locale === defaultLocale ? '' : `/${locale}`
-  return `${localePrefix}${await routes[model].path(item, locale)}`
+  return await routes[model].path(item, locale)
 }
 
 
