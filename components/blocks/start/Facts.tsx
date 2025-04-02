@@ -40,21 +40,23 @@ function Counter({
 	const ref = useRef<HTMLHeadingElement>(null);
 	const motionValue = useMotionValue(direction === 'down' ? value : 0);
 	const springValue = useSpring(motionValue, { damping: 50, stiffness: 100 });
-	const isInView = useInView(ref, { once: true, margin: '-100px' });
+	const isInView = useInView(ref, { once: true, margin: '0px' });
 
 	useEffect(() => {
 		if (isInView) {
 			motionValue.set(direction === 'down' ? 0 : value);
 		}
-	}, [motionValue, isInView]);
+	}, [isInView, motionValue]);
 
 	useEffect(
 		() =>
 			springValue.on('change', (latest: number) => {
 				if (!ref.current) return;
-				ref.current.textContent = isFloat
+				const val = isFloat
 					? (Math.round(latest * 10) / 10).toFixed(1).replace('.', ',')
 					: Math.ceil(latest).toFixed(0);
+
+				ref.current.textContent = val;
 			}),
 		[springValue]
 	);
