@@ -130,8 +130,8 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 								{allContacts?.map(({ name, email, phone, portrait }, i) => (
 									<li key={i}>
 										<div className={s.name}>
-											{name}
-											<br />
+											<p>
+												{name}</p>
 											<span className='small'>
 												<a href={`mailto:${email}`}>{email}</a>
 											</span>

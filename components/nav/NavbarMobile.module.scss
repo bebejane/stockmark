@@ -135,7 +135,11 @@
 
           li {
             padding-bottom: 1em;
-            //line-height: var(--line-height);
+            line-height: 1.4;
+            p {
+              margin-bottom: -0.2em;
+              margin-top: 0;
+            }
           }
         }
 
