@@ -8,6 +8,7 @@ export const routing = defineRouting({
   locales,
   localePrefix,
   defaultLocale,
+  localeDetection: false,
   pathnames: {
     '/': '/',
     '/om-oss': {
