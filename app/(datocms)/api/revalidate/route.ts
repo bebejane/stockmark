@@ -14,13 +14,7 @@ export async function POST(req: Request) {
 
     const paths: string[] = []
     const path = await buildRoute(api_key, attributes, defaultLocale)
-    //if (locale === defaultLocale)
-
-    paths.push(path)
-    locales.filter(l => l !== defaultLocale).forEach(l => {
-      paths.push(`/${l}${path}`)
-    })
-
+    locales.forEach(l => paths.push(`/${l}${path}`))
     const tags: string[] = [api_key, id].filter(t => t)
     return await revalidate(paths, tags, true)
   })
