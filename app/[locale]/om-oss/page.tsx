@@ -11,7 +11,6 @@ import cn from '@node_modules/classnames';
 import Principles from './Principles';
 import RevealHeader from '@components/common/RevealHeader';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -25,6 +24,7 @@ export default async function About({ params }: PageProps) {
 	const t = await getTranslations('About');
 	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
 		variables: { locale },
+		tags: ['about'],
 	});
 
 	return (
