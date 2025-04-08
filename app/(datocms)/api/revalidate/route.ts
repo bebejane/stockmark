@@ -1,4 +1,4 @@
-import { locales } from '@/i18n/routing';
+import { locales, defaultLocale } from '@/i18n/routing';
 import { buildRoute } from '@lib/routes';
 import { revalidate } from 'next-dato-utils/route-handlers';
 
@@ -13,8 +13,10 @@ export async function POST(req: Request) {
     const { id, attributes } = entity
 
     const paths: string[] = []
-    for (const locale of locales)
-      paths.push(await buildRoute(api_key, attributes, locale))
+    const path = await buildRoute(api_key, attributes, defaultLocale)
+    locales.filter(l => l !== defaultLocale).forEach(l => {
+      paths.push(`/${l}${path}`)
+    })
 
     const tags: string[] = [api_key, id].filter(t => t)
     return await revalidate(paths, tags, true)
