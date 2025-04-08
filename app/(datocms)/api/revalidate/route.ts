@@ -9,11 +9,14 @@ export async function POST(req: Request) {
 
   return await revalidate(req, async (payload, revalidate) => {
 
-    const { api_key, entity, } = payload;
+    const { api_key, entity } = payload;
     const { id, attributes } = entity
 
     const paths: string[] = []
     const path = await buildRoute(api_key, attributes, defaultLocale)
+    //if (locale === defaultLocale)
+
+    paths.push(path)
     locales.filter(l => l !== defaultLocale).forEach(l => {
       paths.push(`/${l}${path}`)
     })
