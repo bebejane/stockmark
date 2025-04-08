@@ -8,10 +8,8 @@ export const dynamic = "force-dynamic"
 export async function POST(req: Request) {
 
   return await revalidate(req, async (payload, revalidate) => {
-
     const { api_key, entity } = payload;
     const { id, attributes } = entity
-
     const paths: string[] = []
     const path = await buildRoute(api_key, attributes, defaultLocale)
     locales.forEach(l => paths.push(`/${l}${path !== '/' ? path : ''}`))
