@@ -27,6 +27,8 @@ export const routing = defineRouting({
   }
 });
 
+export type AppPathnames = keyof typeof routing.pathnames;
+
 export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
 
