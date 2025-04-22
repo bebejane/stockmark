@@ -1,12 +1,9 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
+import { DraftMode } from 'next-dato-utils/components';
 import { TestDocument } from '@/graphql';
-import Header from '@components/common/Header';
-import Content from '@components/content/Content';
-import classNames from '@node_modules/classnames';
 import { setRequestLocale } from 'next-intl/server';
-import HeadlineAndText from '@components/blocks/HeadlineAndText';
+import { Image } from 'react-datocms';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -23,7 +20,10 @@ export default async function Test({ params }: PageProps) {
 
 	return (
 		<>
-			<article className={s.page}>{test.title}</article>
+			<article className={s.page}>
+				<h1>{test.title}</h1>
+				<Image data={test.image.responsiveImage} />
+			</article>
 			<DraftMode url={draftUrl} path={'/test'} />
 		</>
 	);
