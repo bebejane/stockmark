@@ -1,6 +1,7 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
+import { sortSwedish } from 'next-dato-utils/utils';
 import { Image } from 'react-datocms';
 import { PortfolioDocument } from '@/graphql';
 import Header from '@components/common/Header';
@@ -27,7 +28,7 @@ export default async function Home({ params }: PageProps) {
 				<Header content={portfolioHeadline.headline} />
 				<section className={s.companies}>
 					<ul className='grid'>
-						{allCompanies.map((company, i) => (
+						{sortSwedish(allCompanies, 'name').map((company, i) => (
 							<li key={i}>
 								<a href={company.url} target='_blank' rel='noreferrer'>
 									{company.image && (

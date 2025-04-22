@@ -3,7 +3,7 @@
 import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { useLocale } from 'next-intl';
-import { usePathname, Link } from '@/i18n/routing';
+import { usePathname, Link, getPathname } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu } from '@/lib/menu';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
@@ -133,7 +133,7 @@ export default function Navbar({ menu, allContacts }: NavbarProps) {
 						onClose={() => setShowContact(false)}
 					/>
 					<li className={cn(s.locale, hideLocale && s.hidden)}>
-						<Link href={`/`} locale={locale === 'en' ? 'sv' : 'en'}>
+						<Link href={pathname} locale={locale === 'en' ? 'sv' : 'en'}>
 							<span>{locale === 'en' ? 'Sv' : 'En'}</span>
 						</Link>
 					</li>

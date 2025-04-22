@@ -8,6 +8,7 @@ export const routing = defineRouting({
   locales,
   localePrefix,
   defaultLocale,
+  localeDetection: false,
   pathnames: {
     '/': '/',
     '/om-oss': {
@@ -25,6 +26,8 @@ export const routing = defineRouting({
     }
   }
 });
+
+export type AppPathnames = keyof typeof routing.pathnames;
 
 export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
