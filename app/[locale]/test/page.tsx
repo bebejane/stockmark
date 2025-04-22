@@ -1,6 +1,6 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { DraftMode } from 'next-dato-utils/components';
+import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
 import { TestDocument } from '@/graphql';
 import { setRequestLocale } from 'next-intl/server';
 import { Image } from 'react-datocms';
@@ -22,7 +22,11 @@ export default async function Test({ params }: PageProps) {
 		<>
 			<article className={s.page}>
 				<h1>{test.title}</h1>
-				<Image data={test.image.responsiveImage} />
+				{test.image?.responsiveImage ? (
+					<Image data={test.image.responsiveImage} />
+				) : test.image.video ? (
+					<VideoPlayer data={test.image} />
+				) : null}
 			</article>
 			<DraftMode url={draftUrl} path={'/test'} />
 		</>

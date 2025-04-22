@@ -2,7 +2,7 @@ query Test($locale: SiteLocale!) {
 	test(locale: $locale) {
 		title
 		image {
-			...ImageFragment
+			...MediaFragment
 		}
 	}
 }
