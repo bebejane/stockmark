@@ -24,7 +24,7 @@ export default async function Test({ params }: PageProps) {
 				<h1>{test.title}</h1>
 				{test.image?.responsiveImage ? (
 					<Image data={test.image.responsiveImage} />
-				) : test.image.video ? (
+				) : test.image?.video ? (
 					<VideoPlayer data={test.image} />
 				) : null}
 			</article>
