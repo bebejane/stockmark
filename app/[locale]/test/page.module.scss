@@ -1,0 +1,56 @@
+.page {
+  position: relative;
+  --mobilHeight: 60vh;
+
+  .header {
+    height: 100vh;
+    color: var(--white);
+    display: flex;
+    align-items: flex-end;
+    margin-top: calc(-1 * var(--navbar-height));
+    margin-bottom: var(--navbar-height);
+
+    @include mq($until: desktop) {
+      height: var(--mobilHeight);
+    }
+  }
+
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+
+    @include mq($until: desktop) {
+      height: var(--mobilHeight);
+    }
+  }
+
+  .content {
+    margin-bottom: var(--space-big);
+
+    .intro {
+      grid-column: span 2;
+
+      @include mq($until: desktop) {
+        margin-bottom: 1rem;
+      }
+
+      @include mq($from: desktop) {
+        grid-column: span 1;
+      }
+    }
+
+    .text {
+      grid-column: span 2;
+
+      @include mq($from: desktop) {
+        padding-right: var(--space-mid);
+        grid-column: span 1;
+      }
+    }
+  }
+}

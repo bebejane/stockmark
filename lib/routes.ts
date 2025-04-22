@@ -47,6 +47,10 @@ const routes: Routes = {
   "you": {
     typeName: "YouRecord",
     path: async (item, locale) => [getPathname({ locale, href: '/om-dig' })]
+  },
+  "test": {
+    typeName: "TestRecord",
+    path: async (item, locale) => [getPathname({ locale, href: '/test' })]
   }
 }
 

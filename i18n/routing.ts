@@ -23,6 +23,9 @@ export const routing = defineRouting({
     },
     '/kontakt': {
       en: '/contact',
+    },
+    '/test': {
+      en: '/test',
     }
   }
 });
