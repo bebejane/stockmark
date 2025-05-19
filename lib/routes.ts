@@ -30,7 +30,7 @@ const routes: Routes = {
   },
   "contact": {
     typeName: "ContactRecord",
-    path: async (item, locale) => [getPathname({ locale, href: '/kontakt' })]
+    path: async (item, locale) => [getPathname({ locale, href: '/kontakt' }), getPathname({ locale, href: '/om-oss' }), '/']
   },
   "footer": {
     typeName: "FooterRecord",
