@@ -3,10 +3,9 @@ import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
 import { ManifestDocument } from '@/graphql';
 import Header from '@components/common/Header';
-import Content from '@components/content/Content';
-import classNames from '@node_modules/classnames';
 import { setRequestLocale } from 'next-intl/server';
 import HeadlineAndText from '@components/blocks/HeadlineAndText';
+import ScrollButton from './ScrollButton';
 
 export type PageProps = {
 	children: React.ReactNode;
@@ -28,7 +27,7 @@ export default async function Manifest({ params }: PageProps) {
 				<div className={s.header}>
 					<Header content={manifest.headline} midSpace={true} />
 					<VideoPlayer data={manifest.video} className={s.video} />
-					<div className={s.scroll}>(SCROLLA)</div>
+					<ScrollButton />
 				</div>
 				<HeadlineAndText intro={manifest.intro} text={manifest.text} />
 			</article>

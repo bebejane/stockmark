@@ -1,0 +1,20 @@
+.scroll {
+	all: unset;
+	display: none;
+	position: absolute;
+	padding-left: var(--outer-margin) !important;
+	bottom: calc(1 * var(--navbar-height));
+	left: 0;
+	opacity: 1;
+	transition: opacity 0.3s ease-out;
+	z-index: 1000;
+	cursor: pointer;
+
+	&.hide {
+		opacity: 0;
+	}
+
+	@include mq($from: desktop) {
+		display: block;
+	}
+}
