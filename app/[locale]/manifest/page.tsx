@@ -28,6 +28,7 @@ export default async function Manifest({ params }: PageProps) {
 				<div className={s.header}>
 					<Header content={manifest.headline} midSpace={true} />
 					<VideoPlayer data={manifest.video} className={s.video} />
+					<div className={s.scroll}>(SCROLLA)</div>
 				</div>
 				<HeadlineAndText intro={manifest.intro} text={manifest.text} />
 			</article>

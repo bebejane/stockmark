@@ -9,6 +9,8 @@
     align-items: flex-end;
     margin-top: calc(-1 * var(--navbar-height));
     margin-bottom: var(--navbar-height);
+    margin-left: calc(-1 * var(--outer-margin));
+    position: relative;
 
     @include mq($until: desktop) {
       height: var(--mobilHeight);
@@ -29,7 +31,13 @@
     }
   }
 
+  h1 {
+    padding-left: var(--outer-margin) !important;
+  }
+
   .content {
+    padding-left: var(--outer-margin);
+
     margin-bottom: var(--space-big);
 
     .intro {
@@ -52,5 +60,17 @@
         grid-column: span 1;
       }
     }
+  }
+
+  .scroll {
+    display: none;
+    @include mq($from: desktop) {
+      display: block;
+    }
+    position: absolute;
+    padding-left: var(--outer-margin) !important;
+
+    bottom: calc(1 * var(--navbar-height));
+    left: 0;
   }
 }
