@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu, getSelectedMenuItem } from '@/lib/menu';
 import Hamburger from 'hamburger-react';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
-import { invertTopRoutes } from '@components/nav/Navbar';
+import { invertTopRoutes } from '@/components/nav/Navbar';
 
 export type NavbarMobileProps = {
 	menu: Menu;
@@ -130,8 +130,7 @@ export default function NavbarMobile({ menu, allContacts }: NavbarMobileProps) {
 								{allContacts?.map(({ name, email, phone, portrait }, i) => (
 									<li key={i}>
 										<div className={s.name}>
-											<p>
-												{name}</p>
+											<p>{name}</p>
 											<span className='small'>
 												<a href={`mailto:${email}`}>{email}</a>
 											</span>

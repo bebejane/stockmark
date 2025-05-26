@@ -34,5 +34,11 @@
 			"en": "Read more in our manifest",
 			"sv": "Läs mer i vårat manifest"
 		}
+	},
+	"Manifest": {
+		"scroll": {
+			"en": "Scroll",
+			"sv": "Skrolla"
+		}
 	}
 }

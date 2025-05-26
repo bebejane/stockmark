@@ -4,10 +4,10 @@ import s from './Portfolio.module.scss';
 import cn from 'classnames';
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Content from '@components/content/Content';
-import Link from '@node_modules/next/link';
+import Content from '@/components/content/Content';
+import Link from 'next/link';
 import { Image } from 'react-datocms';
-import useIsDesktop from '@lib/useIsDesktop';
+import useIsDesktop from '@/lib/useIsDesktop';
 import { useTranslations } from 'next-intl';
 
 export type HeroProps = {

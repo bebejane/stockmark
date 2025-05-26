@@ -1,11 +1,13 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import s from './ScrollButton.module.scss';
 import cn from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
 import { useEffect, useState } from 'react';
 
-export default function ScrollButton() {
+export default function ScrollButton({ locale }: { locale: string }) {
+	const t = useTranslations('Manifest');
 	const { scrolledPosition, viewportHeight } = useScrollInfo();
 	const [hidden, setHidden] = useState(false);
 
@@ -22,7 +24,7 @@ export default function ScrollButton() {
 
 	return (
 		<button className={cn(s.scroll, hidden && s.hide)} onClick={handleClick}>
-			(SCROLLA)
+			({t('scroll')})
 		</button>
 	);
 }

@@ -2,9 +2,9 @@
 
 import s from './Header.module.scss';
 import cn from 'classnames';
-import RevealHeader from '@components/common/RevealHeader';
+import RevealHeader from '@/components/common/RevealHeader';
 import { motion, MotionStyle } from 'framer-motion';
-import { extractHeaders } from '@lib/utils';
+import { extractHeaders } from '@/lib/utils';
 
 export type HeaderProps = {
 	content: any;

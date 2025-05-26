@@ -2,9 +2,9 @@
 
 import s from './Principles.module.scss';
 import cn from 'classnames';
-import Content from '@components/content/Content';
+import Content from '@/components/content/Content';
 import { motion, stagger } from 'framer-motion';
-import RevealHeader from '@components/common/RevealHeader';
+import RevealHeader from '@/components/common/RevealHeader';
 
 export type Props = {
 	about: AboutQuery['about'];

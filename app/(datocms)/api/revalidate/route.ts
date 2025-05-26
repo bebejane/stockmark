@@ -1,5 +1,5 @@
 import { locales, defaultLocale } from '@/i18n/routing';
-import { buildRoute } from '@lib/routes';
+import { buildRoute } from '@/lib/routes';
 import { sleep } from 'next-dato-utils/utils';
 import { revalidate } from 'next-dato-utils/route-handlers';
 

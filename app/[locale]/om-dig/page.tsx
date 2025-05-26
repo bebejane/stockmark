@@ -3,10 +3,10 @@ import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { YouDocument } from '@/graphql';
-import Header from '@components/common/Header';
-import { extractHeaders } from '@lib/utils';
-import Content from '@components/content/Content';
-import classNames from '@node_modules/classnames';
+import Header from '@/components/common/Header';
+import { extractHeaders } from '@/lib/utils';
+import Content from '@/components/content/Content';
+import classNames from 'classnames';
 import { setRequestLocale } from 'next-intl/server';
 import RevealInvest from './RevealInvest';
 

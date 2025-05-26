@@ -2,9 +2,9 @@ import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode, VideoPlayer } from 'next-dato-utils/components';
 import { ManifestDocument } from '@/graphql';
-import Header from '@components/common/Header';
+import Header from '@/components/common/Header';
 import { setRequestLocale } from 'next-intl/server';
-import HeadlineAndText from '@components/blocks/HeadlineAndText';
+import HeadlineAndText from '@/components/blocks/HeadlineAndText';
 import ScrollButton from './ScrollButton';
 
 export type PageProps = {
@@ -27,7 +27,7 @@ export default async function Manifest({ params }: PageProps) {
 				<div className={s.header}>
 					<Header content={manifest.headline} midSpace={true} />
 					<VideoPlayer data={manifest.video} className={s.video} />
-					<ScrollButton />
+					<ScrollButton locale={locale} />
 				</div>
 				<HeadlineAndText intro={manifest.intro} text={manifest.text} />
 			</article>

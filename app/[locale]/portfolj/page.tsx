@@ -4,9 +4,9 @@ import { DraftMode } from 'next-dato-utils/components';
 import { sortSwedish } from 'next-dato-utils/utils';
 import { Image } from 'react-datocms';
 import { PortfolioDocument } from '@/graphql';
-import Header from '@components/common/Header';
-import Content from '@components/content/Content';
-import cn from '@node_modules/classnames';
+import Header from '@/components/common/Header';
+import Content from '@/components/content/Content';
+import cn from 'classnames';
 
 export type PageProps = {
 	children: React.ReactNode;

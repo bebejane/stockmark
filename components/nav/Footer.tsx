@@ -9,7 +9,7 @@ import { Autoplay } from 'swiper/modules';
 import type { Swiper } from 'swiper';
 import { use, useEffect, useRef, useState } from 'react';
 import { useInViewRef } from 'rooks';
-import Content from '@components/content/Content';
+import Content from '@/components/content/Content';
 import { Link } from '@/i18n/routing';
 
 type Props = {

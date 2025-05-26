@@ -7,7 +7,7 @@ import { usePathname, Link, getPathname } from '@/i18n/routing';
 import { useEffect, useRef, useState } from 'react';
 import { Menu } from '@/lib/menu';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
-import ContactPopup from '@components/nav/ContactPopup';
+import ContactPopup from '@/components/nav/ContactPopup';
 import { locales } from '@/i18n/routing';
 
 export type NavbarProps = {

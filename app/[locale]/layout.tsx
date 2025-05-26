@@ -1,16 +1,16 @@
-import '@styles/index.scss';
+import '@/styles/index.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { AllContactsDocument, FooterDocument, GlobalDocument } from '@graphql';
+import { AllContactsDocument, FooterDocument, GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import Navbar from '@/components/nav/Navbar';
 import { buildMenu } from '@/lib/menu';
 import Footer from '@/components/nav/Footer';
 import { notFound } from 'next/navigation';
-import NavbarMobile from '@components/nav/NavbarMobile';
+import NavbarMobile from '@/components/nav/NavbarMobile';
 
 export type RootLayoutProps = {
 	children: React.ReactNode;

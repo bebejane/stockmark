@@ -4,7 +4,7 @@ import s from './HeadlineAndText.module.scss';
 import cn from 'classnames';
 import React, { useRef } from 'react';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
-import Content from '@components/content/Content';
+import Content from '@/components/content/Content';
 import { Link } from '@/i18n/routing';
 import { useLocale } from 'next-intl';
 
@@ -55,7 +55,7 @@ export default function HeadlineAndText({ text, intro, link, margins }: HeroProp
 							href={link.href}
 							locale={locale}
 						>
-							{link.label}  →
+							{link.label} →
 						</Link>
 					</p>
 				)}

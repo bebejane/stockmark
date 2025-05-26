@@ -5,11 +5,11 @@ import { Image } from 'react-datocms';
 import { Link, routing } from '@/i18n/routing';
 import { AboutDocument } from '@/graphql';
 import AboutGallery from './AboutGallery';
-import Header from '@components/common/Header';
-import Content from '@components/content/Content';
-import cn from '@node_modules/classnames';
+import Header from '@/components/common/Header';
+import Content from '@/components/content/Content';
+import cn from 'classnames';
 import Principles from './Principles';
-import RevealHeader from '@components/common/RevealHeader';
+import RevealHeader from '@/components/common/RevealHeader';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export type PageProps = {
