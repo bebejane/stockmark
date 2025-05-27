@@ -27,7 +27,7 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
     slug: '/manifest',
   }, {
     id: 'portfolio',
-    title: locale === 'en' ? 'Portfolio' : 'Innehav',
+    title: locale === 'en' ? 'Companies' : 'Bolag',
     slug: '/portfolj',
   }, {
     id: 'contact',
