@@ -50,21 +50,6 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 	);
 }
 
-export type BodyProps = {
-	children: React.ReactNode;
-	locale?: string;
-};
-
-function Body({ children, locale }: BodyProps) {
-	const messages = useMessages();
-
-	return (
-		<NextIntlClientProvider locale={locale} messages={messages}>
-			{children}
-		</NextIntlClientProvider>
-	);
-}
-
 export async function generateMetadata() {
 	const {
 		site: { globalSeo, faviconMetaTags },
