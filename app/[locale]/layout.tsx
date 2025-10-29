@@ -26,11 +26,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 	setRequestLocale(locale);
 
 	const menu = await buildMenu(locale as SiteLocale);
-	const { allContacts } = await apiQuery<AllContactsQuery, AllContactsQueryVariables>(
-		AllContactsDocument,
-		{ variables: { locale } }
-	);
-	const { footer } = await apiQuery<FooterQuery, FooterQueryVariables>(FooterDocument, {
+	const { allContacts } = await apiQuery(AllContactsDocument, { variables: { locale } });
+	const { footer } = await apiQuery(FooterDocument, {
 		variables: { locale },
 	});
 
@@ -53,7 +50,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 export async function generateMetadata() {
 	const {
 		site: { globalSeo, faviconMetaTags },
-	} = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, {
+	} = await apiQuery(GlobalDocument, {
 		variables: {},
 		revalidate: 60 * 60,
 	});

@@ -15,10 +15,7 @@ export type PageProps = {
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
-	const { portfolioHeadline, allCompanies, draftUrl } = await apiQuery<
-		PortfolioQuery,
-		PortfolioQueryVariables
-	>(PortfolioDocument, {
+	const { portfolioHeadline, allCompanies, draftUrl } = await apiQuery(PortfolioDocument, {
 		variables: { locale },
 	});
 

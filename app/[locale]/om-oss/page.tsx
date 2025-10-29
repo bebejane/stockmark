@@ -22,9 +22,8 @@ export default async function About({ params }: PageProps) {
 	setRequestLocale(locale);
 
 	const t = await getTranslations('About');
-	const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+	const { about, draftUrl } = await apiQuery(AboutDocument, {
 		variables: { locale },
-		tags: ['about'],
 	});
 
 	return (

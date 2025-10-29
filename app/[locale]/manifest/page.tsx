@@ -16,10 +16,7 @@ export default async function Manifest({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { manifest, draftUrl } = await apiQuery<ManifestQuery, ManifestQueryVariables>(
-		ManifestDocument,
-		{ variables: { locale } }
-	);
+	const { manifest, draftUrl } = await apiQuery(ManifestDocument, { variables: { locale } });
 
 	return (
 		<>

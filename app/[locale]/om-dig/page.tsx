@@ -19,7 +19,7 @@ export default async function You({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { you, draftUrl } = await apiQuery<YouQuery, YouQueryVariables>(YouDocument, {
+	const { you, draftUrl } = await apiQuery(YouDocument, {
 		variables: { locale },
 	});
 

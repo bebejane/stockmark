@@ -17,9 +17,7 @@ export default function Template({ children }) {
 		}
 		function setupSnaps() {
 			const snap = new Snap(lenis, {});
-			const sections = Array.from(
-				document.querySelectorAll<HTMLDivElement>('[data-lenis-snap="true"]')
-			);
+			const sections = Array.from(document.querySelectorAll<HTMLDivElement>('[data-lenis-snap="true"]'));
 			sections.forEach((section) => {
 				snap.add(section.getBoundingClientRect().top);
 			});

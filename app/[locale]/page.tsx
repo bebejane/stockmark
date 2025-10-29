@@ -19,7 +19,7 @@ export default async function Home({ params }: PageProps) {
 
 	if (!locales.includes(locale)) return notFound();
 
-	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
+	const { start, draftUrl } = await apiQuery(StartDocument, {
 		variables: { locale },
 	});
 	const t = await getTranslations('Start');
