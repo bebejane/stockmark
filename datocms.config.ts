@@ -23,7 +23,7 @@ export default {
 			getPathname({ locale, href: '/' }),
 		],
 		you: async (record, locale) => [getPathname({ locale, href: '/om-dig' })],
-		upload: async (record, locale) => getUploadReferenceRoutes(record),
+		upload: async ({ id }) => getUploadReferenceRoutes(id),
 	},
 	sitemap: async () => {
 		const canonicalPaths: AppPathnames[] = ['/', '/manifest', '/om-dig', '/om-oss', '/portfolj', '/kontakt'];
